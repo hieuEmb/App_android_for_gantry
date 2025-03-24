@@ -64,7 +64,7 @@ namespace App_android_for_gantry.Services
 
             return await Task.Run(() => _modbusMaster.ReadCoils(slaveId, startAddress, count));
         }
-
+        
         /// <summary>
         /// Đọc giá trị từ PLC và cập nhật BoxView liên tục
         /// </summary>
