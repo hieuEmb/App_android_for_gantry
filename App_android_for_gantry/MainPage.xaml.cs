@@ -5,7 +5,7 @@ using System.ComponentModel;
 using System.Diagnostics;
 using App_android_for_gantry.ViewModels;
 namespace App_android_for_gantry
-
+// //
 {
     public partial class MainPage : ContentPage
     {
