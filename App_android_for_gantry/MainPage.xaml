@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App_android_for_gantry.MainPage">
+
+    <ScrollView>
+        <!-- RowDefinitions="*,*,*,*"(Xac dinh 4 hang trong grip, chia deu khon gian) -->
+        <!-- ColumnDefinitions="*,*,*,*"(Xac dinh 4 cot trong grip, chia deu khon gian) -->
+        <!--  Padding="10"( Khoang cach tu le Grip den noi dung ben trong) -->
+        <!-- RowSpacing="10" (khoang cach giua cac hang) -->
+        <!-- ColumnSpacing="10" (khoang cach giua cac cot) -->
+        <Grid
+            RowDefinitions="*,*,*,*,*"
+            ColumnDefinitions="*,*,*,*,*,*"
+            Padding="10"
+            RowSpacing="10"
+            ColumnSpacing="10">
+
+
+            <!-- x:Name="Button1"(Ten button de truy xuat trong c#) -->
+            <!-- Text="Start"(Noi dung hien thi) -->
+            <!-- Clicked="OnButtonClicked"(Xu ly su kien nhan nut or goi ham sau c# khi nhan nut) -->
+            <!-- Grid.Row="0" (Dat button vao cot thu 0 cua grip) -->
+            <!-- Grid.Column="0" (Dat button vao hang thu 0 cua grip) -->
+            <!-- HorizontalOptions="Fill" (Button gian ra theo chieu ngang cua o grip) -->
+            <!-- VerticalOptions="Fill" (Button gian ra theo chieu doc cua o grip)-->
+
+
+            <!-- Connect -->
+            <Button 
+                x:Name="Modbus_Tcp"    
+                Text="Connection"
+                BackgroundColor="LightGray"
+                Clicked="Modbus_Tcp_System"
+                Grid.Row="0"
+                Grid.Column="0"
+                HorizontalOptions="Fill"
+                VerticalOptions="Fill"/>
+
+            <!-- disconnect  -->
+            <Button 
+                x:Name="Dis_Modbus_Tcp"    
+                Text="DisConnection"
+                BackgroundColor="LightGray"
+                Clicked="Dis_Modbus_Tcp_System"
+                Grid.Row="0"
+                Grid.Column="3"
+                HorizontalOptions="Fill"
+                VerticalOptions="Fill"/>
+            <!-- Start -->
+            <Button 
+                x:Name="Start"    
+                Text="START"
+                BackgroundColor="LightGray"
+                Clicked="Start_System"
+                Grid.Row="1"
+                Grid.Column="0"
+                HorizontalOptions="Fill"
+                VerticalOptions="Fill"/>
+
+             <!-- Stop -->
+            <Button 
+                x:Name="Stop"
+                Text="STOP"
+                BackgroundColor="LightGray"
+                Clicked="Stop_System"
+                Grid.Row="1"
+                Grid.Column="1"
+                HorizontalOptions="Fill"
+                VerticalOptions="Fill"/>
+            <!-- Test -->
+            <Button 
+               x:Name="Test"
+               Text="Test"
+               BackgroundColor="LightGray"           
+               Pressed="Test_System_Pressed"
+               Released="Test_System_Released"
+               Grid.Row="0"
+               Grid.Column="2"
+               HorizontalOptions="Fill"
+               VerticalOptions="Fill"/>
+
+            <!--HOME_X -->
+            <Button 
+                x:Name="Home_X"
+                Text="Home_X"
+                Grid.Row="1"
+                Grid.Column="2"
+                HorizontalOptions="Fill"
+                VerticalOptions="Fill"/>
+
+            <!-- HOME_Y-->
+            <Button 
+                x:Name="Home_Y"
+                Text="Home_Y"
+                Grid.Row="1"
+                Grid.Column="3"
+                HorizontalOptions="Fill"
+                VerticalOptions="Fill"/>
+
+            <!-- JOG_X_DOWN-->
+            <Button 
+               x:Name="Jog_X_Down"
+               Text="JOG_X_DOWN"
+               Pressed="Jog_X_Down_System_Pressed"
+               Released="Jog_X_Down_System_Released"
+               BackgroundColor="LightGray"
+               Grid.Row="2"
+               Grid.Column="0"
+               HorizontalOptions="Fill"
+               VerticalOptions="Fill"/>
+
+            <!-- JOG_X_UP -->
+            <Button 
+               x:Name="Jog_X_Up"
+               Text="JOG_X_UP"
+               Pressed="Jog_X_Up_System_Pressed"
+               Released="Jog_X_Up_System_Released"
+               BackgroundColor="LightGray"
+               Grid.Row="2"
+               Grid.Column="1"
+               HorizontalOptions="Fill"
+               VerticalOptions="Fill"/>
+
+            <!-- JOG_Y_RIGHT -->
+            <Button 
+               x:Name="Jog_Y_Right"
+               Text="JOG_Y_RIGHT"
+               Pressed="Jog_Y_Right_System_Pressed"
+               Released="Jog_Y_Right_System_Released"
+               BackgroundColor="LightGray"
+               Grid.Row="3"
+               Grid.Column="0"
+               HorizontalOptions="Fill"
+               VerticalOptions="Fill"/>
+
+            <!-- JOG_Y_LEFT -->
+            <Button 
+               x:Name="Jog_Y_Left"
+               Text="JOG_Y_LEFT"
+               Pressed="Jog_Y_Left_System_Pressed"
+               Released="Jog_Y_Left_System_Released"
+               BackgroundColor="LightGray"
+               Grid.Row="3"
+               Grid.Column="1"
+               HorizontalOptions="Fill"
+               VerticalOptions="Fill"/>
+
+            <!-- JOG_Z__DOWN -->
+            <Button 
+               x:Name="Jog_Z__Down"
+               Text="JOG_Z__DOWN"
+               Pressed="Jog_Z__Down_System_Pressed"
+               Released="Jog_Z__Down_System_Released"
+               BackgroundColor="LightGray"
+               Grid.Row="4"
+               Grid.Column="0"
+               HorizontalOptions="Fill"
+               VerticalOptions="Fill"/>
+
+            <!-- JOG_Z_UP -->
+            <Button 
+               x:Name="Jog_Z_Up"
+               Text="JOG_Z_UP"
+               Pressed="Jog_Z_Up_System_Pressed"
+               Released="Jog_Z_Up_System_Released"
+               BackgroundColor="LightGray"
+               Grid.Row="4"
+               Grid.Column="1"
+               HorizontalOptions="Fill"
+               VerticalOptions="Fill"/>
+
+            <Label 
+                Text="Vị trí X:" 
+                FontSize="18"
+                Grid.Row="2"
+                Grid.Column="3"/>
+            <Label 
+                Text="{Binding RealPosX}" 
+                FontSize="24" 
+                TextColor="Blue"
+                Grid.Row="2"
+                Grid.Column="4"/>
+
+            <Label 
+              Text="Vị trí Y:" 
+              FontSize="18"
+              Grid.Row="3"
+              Grid.Column="3"/>
+            <Label 
+              Text="{Binding RealPosY}" 
+              FontSize="24" 
+              TextColor="Blue"
+              Grid.Row="3"
+              Grid.Column="4"/>
+
+            <Label 
+              Text="Vị trí Z :" 
+              FontSize="18"
+              Grid.Row="4"
+              Grid.Column="3"/>
+            <Label 
+              Text="{Binding RealPosZ}" 
+              FontSize="24" 
+              TextColor="Blue"
+              Grid.Row="4"
+              Grid.Column="4"/>
+
+
+
+            <BoxView
+                x:Name="Conveyor"
+                Color="LightGray"
+                CornerRadius="10"
+                Grid.Row="0"
+                Grid.Column="1"
+                VerticalOptions="Fill"
+                HorizontalOptions="Fill"/>
+            
+            <Label 
+               Text="CONVEYOR"
+               Grid.Row="0"
+               Grid.Column="1"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"
+               FontSize="16"
+               FontAttributes="Bold"
+               TextColor="White"/>
+            
+
+        </Grid>
+    </ScrollView>
+
+</ContentPage>
