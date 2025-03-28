@@ -10,11 +10,11 @@
         <!-- RowSpacing="10" (khoang cach giua cac hang) -->
         <!-- ColumnSpacing="10" (khoang cach giua cac cot) -->
         <Grid
-            RowDefinitions="*,*,*,*,*"
-            ColumnDefinitions="*,*,*,*,*,*"
-            Padding="10"
-            RowSpacing="10"
-            ColumnSpacing="10">
+            RowDefinitions="*,*,*,*,*,*,*"
+            ColumnDefinitions="*,*,*,*"
+            Padding="50"
+            RowSpacing="5"
+            ColumnSpacing="5">
 
 
             <!-- x:Name="Button1"(Ten button de truy xuat trong c#) -->
@@ -34,17 +34,42 @@
                 Clicked="Modbus_Tcp_System"
                 Grid.Row="0"
                 Grid.Column="0"
+                WidthRequest="200"
+                HeightRequest="50"
                 HorizontalOptions="Fill"
                 VerticalOptions="Fill"/>
+
+            <!--<BoxView
+               x:Name="Connection"
+               Color="LightGray"
+               CornerRadius="10"
+               Grid.Row="0"
+               Grid.Column="0"
+               WidthRequest="200"
+               HeightRequest="50"
+               VerticalOptions="Fill"
+               HorizontalOptions="Fill"/>
+
+            <Label 
+               Text="CONNECTION"
+               Grid.Row="0"
+               Grid.Column="0"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"
+               FontSize="16"
+               FontAttributes="Bold"
+               TextColor="White"/>-->
 
             <!-- disconnect  -->
             <Button 
                 x:Name="Dis_Modbus_Tcp"    
-                Text="DisConnection"
+                Text="Disconnection"
                 BackgroundColor="LightGray"
                 Clicked="Dis_Modbus_Tcp_System"
                 Grid.Row="0"
                 Grid.Column="3"
+                WidthRequest="200"
+                HeightRequest="50"
                 HorizontalOptions="Fill"
                 VerticalOptions="Fill"/>
             <!-- Start -->
@@ -55,6 +80,8 @@
                 Clicked="Start_System"
                 Grid.Row="1"
                 Grid.Column="0"
+                WidthRequest="200"
+                HeightRequest="50"
                 HorizontalOptions="Fill"
                 VerticalOptions="Fill"/>
 
@@ -66,37 +93,155 @@
                 Clicked="Stop_System"
                 Grid.Row="1"
                 Grid.Column="1"
+                WidthRequest="200"
+                HeightRequest="50"
                 HorizontalOptions="Fill"
                 VerticalOptions="Fill"/>
-            <!-- Test -->
-            <Button 
-               x:Name="Test"
-               Text="Test"
-               BackgroundColor="LightGray"           
-               Pressed="Test_System_Pressed"
-               Released="Test_System_Released"
-               Grid.Row="0"
+            <!--AUTO_MODE -->
+            <Button
+               x:Name="Auto_Mode"
+               Text="AUTO_MODE"
+               BackgroundColor="LightGray"
+               Clicked="Auto_Mode_System"
+               Grid.Row="1"
                Grid.Column="2"
+               WidthRequest="200"
+               HeightRequest="50"
+               HorizontalOptions="Fill"
+               VerticalOptions="Fill"/>
+
+            <!--MAN_MODE -->
+            <Button
+               x:Name="Man_Mode"
+               Text="MAN_MODE"
+               BackgroundColor="LightGray"
+               Clicked="Man_Mode_System"
+               Grid.Row="1"
+               Grid.Column="3"
+               WidthRequest="200"
+               HeightRequest="50"
                HorizontalOptions="Fill"
                VerticalOptions="Fill"/>
 
             <!--HOME_X -->
-            <Button 
-                x:Name="Home_X"
-                Text="Home_X"
-                Grid.Row="1"
-                Grid.Column="2"
+            <BoxView
+               x:Name="Home_X"
+               Color="LightGray"
+               CornerRadius="10"
+               Grid.Row="2"
+               Grid.Column="0"
+               WidthRequest="200"
+               HeightRequest="50"
+               VerticalOptions="Fill"
+               HorizontalOptions="Fill"/>
+
+            <Label 
+               Text="HOME_X"
+               Grid.Row="2"
+               Grid.Column="0"
+               HorizontalOptions="Center"
+               VerticalOptions="Center"
+               FontSize="16"
+               FontAttributes="Bold"
+               TextColor="White"/>
+
+            <!-- HOME_Y-->
+           <BoxView
+              x:Name="Home_Y"
+              Color="LightGray"
+              CornerRadius="10"
+              Grid.Row="2"
+              Grid.Column="1"
+              WidthRequest="200"
+              HeightRequest="50"
+              VerticalOptions="Fill"
+              HorizontalOptions="Fill"/>
+
+                <Label 
+              Text="HOME_Y"
+              Grid.Row="2"
+              Grid.Column="1"
+              HorizontalOptions="Center"
+              VerticalOptions="Center"
+              FontSize="16"
+              FontAttributes="Bold"
+              TextColor="White"/>
+
+                <!-- HOME_Z-->
+            <BoxView
+              x:Name="Home_Z"
+              Color="LightGray"
+              CornerRadius="10"
+              Grid.Row="2"
+              Grid.Column="2"
+              WidthRequest="200"
+              HeightRequest="50"
+              VerticalOptions="Fill"
+              HorizontalOptions="Fill"/>
+
+            <Label 
+              Text="HOME_Z"
+              Grid.Row="2"
+              Grid.Column="2"
+              HorizontalOptions="Center"
+              VerticalOptions="Center"
+              FontSize="16"
+              FontAttributes="Bold"
+              TextColor="White"/>
+
+            <!-- IMPORT_MODE-->
+            <Button
+                x:Name="Improt_Mode"
+                Text="IMPORT_MODE"
+                BackgroundColor="LightGray"
+                Clicked="Improt_Mode_System"
+                Grid.Row="3"
+                Grid.Column="0"
+                WidthRequest="200"
+                HeightRequest="50"
                 HorizontalOptions="Fill"
                 VerticalOptions="Fill"/>
 
-            <!-- HOME_Y-->
-            <Button 
-                x:Name="Home_Y"
-                Text="Home_Y"
-                Grid.Row="1"
-                Grid.Column="3"
+            <!-- EXPORT_MODE-->
+            <Button
+                x:Name="Export_Mode"
+                Text="EXPORT_MODE"
+                BackgroundColor="LightGray"
+                Clicked="Export_Mode_System"
+                Grid.Row="3"
+                Grid.Column="1"
+                WidthRequest="200"
+                HeightRequest="50"
                 HorizontalOptions="Fill"
                 VerticalOptions="Fill"/>
+
+            <!-- Bang_tai_MAN-->
+            <Button
+                x:Name="Bang_Tai_Man"
+                Text="BANG_TAI_MAN"
+                BackgroundColor="LightGray"
+                Pressed="Bang_Tai_Man_System_Pressed"
+                Released="Bang_Tai_Man_System_Released"
+                Grid.Row="3"
+                Grid.Column="2"
+                WidthRequest="200"
+                HeightRequest="50"
+                HorizontalOptions="Fill"
+                VerticalOptions="Fill"/>
+
+            <!-- Vacum_MAN-->
+            <Button
+                x:Name="Vacum_Man"
+                Text="VANCUM_MAN"
+                BackgroundColor="LightGray"
+                Clicked="Vacum_Man_System"
+                Grid.Row="3"
+                Grid.Column="3"
+                WidthRequest="200"
+                HeightRequest="50"
+                HorizontalOptions="Fill"
+                VerticalOptions="Fill"/>
+            
 
             <!-- JOG_X_DOWN-->
             <Button 
@@ -105,8 +250,10 @@
                Pressed="Jog_X_Down_System_Pressed"
                Released="Jog_X_Down_System_Released"
                BackgroundColor="LightGray"
-               Grid.Row="2"
+               Grid.Row="4"
                Grid.Column="0"
+               WidthRequest="200"
+               HeightRequest="50"
                HorizontalOptions="Fill"
                VerticalOptions="Fill"/>
 
@@ -117,8 +264,10 @@
                Pressed="Jog_X_Up_System_Pressed"
                Released="Jog_X_Up_System_Released"
                BackgroundColor="LightGray"
-               Grid.Row="2"
+               Grid.Row="4"
                Grid.Column="1"
+               WidthRequest="200"
+               HeightRequest="50"
                HorizontalOptions="Fill"
                VerticalOptions="Fill"/>
 
@@ -129,8 +278,10 @@
                Pressed="Jog_Y_Right_System_Pressed"
                Released="Jog_Y_Right_System_Released"
                BackgroundColor="LightGray"
-               Grid.Row="3"
+               Grid.Row="5"
                Grid.Column="0"
+               WidthRequest="200"
+               HeightRequest="50"
                HorizontalOptions="Fill"
                VerticalOptions="Fill"/>
 
@@ -141,8 +292,10 @@
                Pressed="Jog_Y_Left_System_Pressed"
                Released="Jog_Y_Left_System_Released"
                BackgroundColor="LightGray"
-               Grid.Row="3"
+               Grid.Row="5"
                Grid.Column="1"
+               WidthRequest="200"
+               HeightRequest="50"
                HorizontalOptions="Fill"
                VerticalOptions="Fill"/>
 
@@ -153,8 +306,10 @@
                Pressed="Jog_Z__Down_System_Pressed"
                Released="Jog_Z__Down_System_Released"
                BackgroundColor="LightGray"
-               Grid.Row="4"
+               Grid.Row="6"
                Grid.Column="0"
+               WidthRequest="200"
+               HeightRequest="50"
                HorizontalOptions="Fill"
                VerticalOptions="Fill"/>
 
@@ -165,57 +320,73 @@
                Pressed="Jog_Z_Up_System_Pressed"
                Released="Jog_Z_Up_System_Released"
                BackgroundColor="LightGray"
-               Grid.Row="4"
+               Grid.Row="6"
                Grid.Column="1"
+               WidthRequest="200"
+               HeightRequest="50"
                HorizontalOptions="Fill"
                VerticalOptions="Fill"/>
 
             <Label 
                 Text="Vị trí X:" 
                 FontSize="18"
-                Grid.Row="2"
-                Grid.Column="3"/>
+                Grid.Row="4"
+                Grid.Column="2"
+        
+                HorizontalOptions="Fill"
+                VerticalOptions="Fill"/>
             <Label 
                 Text="{Binding RealPosX}" 
                 FontSize="24" 
                 TextColor="Blue"
-                Grid.Row="2"
-                Grid.Column="4"/>
+                Grid.Row="4"
+                Grid.Column="3"
+                MinimumWidthRequest="200"
+                MinimumHeightRequest="50"/>
 
             <Label 
               Text="Vị trí Y:" 
               FontSize="18"
-              Grid.Row="3"
-              Grid.Column="3"/>
+              Grid.Row="5"
+              Grid.Column="2"
+              MinimumWidthRequest="200"
+              MinimumHeightRequest="50"/>
             <Label 
               Text="{Binding RealPosY}" 
               FontSize="24" 
               TextColor="Blue"
-              Grid.Row="3"
-              Grid.Column="4"/>
+              Grid.Row="5"
+              Grid.Column="3"
+              MinimumWidthRequest="200"
+              MinimumHeightRequest="50"/>
 
             <Label 
               Text="Vị trí Z :" 
               FontSize="18"
-              Grid.Row="4"
-              Grid.Column="3"/>
+              Grid.Row="6"
+              Grid.Column="2"
+              MinimumWidthRequest="200"
+              MinimumHeightRequest="50"/>
+            
             <Label 
               Text="{Binding RealPosZ}" 
               FontSize="24" 
               TextColor="Blue"
-              Grid.Row="4"
-              Grid.Column="4"/>
+              Grid.Row="6"
+              Grid.Column="3"
+              MinimumWidthRequest="200"
+              MinimumHeightRequest="50"/>
 
 
 
-            <BoxView
+            <!--<BoxView
                 x:Name="Conveyor"
                 Color="LightGray"
                 CornerRadius="10"
                 Grid.Row="0"
                 Grid.Column="1"
                 VerticalOptions="Fill"
-                HorizontalOptions="Fill"/>
+                HorizontalOptions="Fill"/>-->
             
             <Label 
                Text="CONVEYOR"

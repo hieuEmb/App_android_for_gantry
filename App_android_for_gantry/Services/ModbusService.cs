@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using NModbus;
 using NModbus.Device;
 
-namespace App_android_for_gantry.Services
+namespace App_android_for_gantry.Services // Dung namespace de to chuc cau truc file code
 {
     class ModbusService
     {
@@ -68,7 +68,7 @@ namespace App_android_for_gantry.Services
         /// <summary>
         /// Đọc giá trị từ PLC và cập nhật BoxView liên tục
         /// </summary>
-        public async Task StartReadingCoilAsync(BoxView boxView, byte slaveId, ushort startAddress)
+        public async Task StartReadingCoilAsync(BoxView boxView, byte slaveId, ushort registerAddress)
         {
             _isReading = true;
 
@@ -78,23 +78,35 @@ namespace App_android_for_gantry.Services
                 {
                     if (IsConnected)
                     {
-                        bool[] coils = await ReadCoilsAsync(slaveId, startAddress, 1);
+                        bool Register_State = await ReadRegisterAsBoolAsync(slaveId, registerAddress);
 
                         // Cập nhật UI trên MainThread
                         MainThread.BeginInvokeOnMainThread(() =>
                         {
-                            boxView.Color = coils[0] ? Colors.Green : Colors.Red;
+                            boxView.Color = Register_State ? Colors.Green : Colors.Red;
                         });
                     }
                 }
-                catch (Exception ex)
+                catch
                 {
-                    Console.WriteLine($"Lỗi khi đọc coil: {ex.Message}");
+                    
                 }
-
                 await Task.Delay(500); // Đọc dữ liệu mỗi 500ms
             }
         }
+
+        public async Task<bool> ReadRegisterAsBoolAsync(byte slaveId, ushort registerAddress)
+        {
+            if (_modbusMaster == null || _tcpClient == null || !_tcpClient.Connected)
+                throw new InvalidOperationException("Chưa kết nối PLC");
+
+            // Đọc 1 thanh ghi tại địa chỉ truyền vào
+            ushort[] register = await Task.Run(() => _modbusMaster.ReadHoldingRegisters(slaveId, registerAddress, 1));
+
+            // Lấy bit 0 của thanh ghi (chuyển đổi sang bool)
+            return (register[0] & 0x0001) != 0;
+        }
+
 
 
         /// <summary>

@@ -2,14 +2,12 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-
-
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace App_android_for_gantry.ViewModels
+namespace App_android_for_gantry.ViewModels // Dung namespace de to chuc file code
 {
     public class MainViewModel : INotifyPropertyChanged
     {
