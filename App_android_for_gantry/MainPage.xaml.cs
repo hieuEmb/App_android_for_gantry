@@ -9,6 +9,7 @@ namespace App_android_for_gantry
     public partial class MainPage : ContentPage // Ham main mac dinh cua .netmaui, tien hanh viet cac ham con o phia duoi.
     {
 
+
         public MainPage()// Day la constructor cua MainPage, khi MainPage duoc khoi tao.
         {
             InitializeComponent();// Khoi tao va tai cac giao dien trong MainPage.xaml, tom lai la hien thi UI
