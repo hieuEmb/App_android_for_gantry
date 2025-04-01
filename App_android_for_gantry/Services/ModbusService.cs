@@ -54,6 +54,7 @@ namespace App_android_for_gantry.Services // Dung namespace de to chuc cau truc 
             }
         }
 
+
         /// <summary>
         /// Đọc trạng thái của Coil (bit ON/OFF)
         /// </summary>
@@ -65,6 +66,7 @@ namespace App_android_for_gantry.Services // Dung namespace de to chuc cau truc 
             return await Task.Run(() => _modbusMaster.ReadCoils(slaveId, startAddress, count));
         }
         
+
         /// <summary>
         /// Đọc giá trị từ PLC và cập nhật BoxView liên tục
         /// </summary>
@@ -72,18 +74,18 @@ namespace App_android_for_gantry.Services // Dung namespace de to chuc cau truc 
         {
             _isReading = true;
 
-            while (IsConnected)
+            while (IsConnected && _isReading)
             {
                 try
                 {
-                    if (IsConnected)
+                    if (IsConnected && _isReading)
                     {
                         bool Register_State = await ReadRegisterAsBoolAsync(slaveId, registerAddress);
 
                         // Cập nhật UI trên MainThread
                         MainThread.BeginInvokeOnMainThread(() =>
-                        {
-                            boxView.Color = Register_State ? Colors.Green : Colors.Red;
+                        {                      
+                            boxView.Color = Register_State ? Colors.Green : Colors.Red;                        
                         });
                     }
                 }
@@ -102,6 +104,9 @@ namespace App_android_for_gantry.Services // Dung namespace de to chuc cau truc 
 
             // Đọc 1 thanh ghi tại địa chỉ truyền vào
             ushort[] register = await Task.Run(() => _modbusMaster.ReadHoldingRegisters(slaveId, registerAddress, 1));
+
+            // In giá trị thanh ghi ra console
+            System.Diagnostics.Debug.WriteLine($"Giá trị thanh ghi tại {registerAddress}: {register[0]}");
 
             // Lấy bit 0 của thanh ghi (chuyển đổi sang bool)
             return (register[0] & 0x0001) != 0;
@@ -183,6 +188,7 @@ namespace App_android_for_gantry.Services // Dung namespace de to chuc cau truc 
 
             // Chuyển byte[] thành double (IEEE 754)
             return BitConverter.ToDouble(bytes, 0);
+
         }
 
 

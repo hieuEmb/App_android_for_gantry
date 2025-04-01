@@ -39,12 +39,12 @@
                 HorizontalOptions="Fill"
                 VerticalOptions="Fill"/>
 
-            <!--<BoxView
+            <BoxView
                x:Name="Connection"
                Color="LightGray"
                CornerRadius="10"
                Grid.Row="0"
-               Grid.Column="0"
+               Grid.Column="1"
                WidthRequest="200"
                HeightRequest="50"
                VerticalOptions="Fill"
@@ -53,12 +53,12 @@
             <Label 
                Text="CONNECTION"
                Grid.Row="0"
-               Grid.Column="0"
+               Grid.Column="1"
                HorizontalOptions="Center"
                VerticalOptions="Center"
                FontSize="16"
                FontAttributes="Bold"
-               TextColor="White"/>-->
+               TextColor="White"/>
 
             <!-- disconnect  -->
             <Button 
@@ -388,7 +388,7 @@
                 VerticalOptions="Fill"
                 HorizontalOptions="Fill"/>-->
             
-            <Label 
+            <!--<Label 
                Text="CONVEYOR"
                Grid.Row="0"
                Grid.Column="1"
@@ -396,7 +396,7 @@
                VerticalOptions="Center"
                FontSize="16"
                FontAttributes="Bold"
-               TextColor="White"/>
+               TextColor="White"/>-->
             
 
         </Grid>

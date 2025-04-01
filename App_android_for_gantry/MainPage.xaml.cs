@@ -23,15 +23,15 @@ namespace App_android_for_gantry
         public MainViewModel ViewModel { get; set; } = new MainViewModel();
 
         //Tu ket noi khi mo App
-        //protected override async void OnAppearing()
-        //{
-        //    base.OnAppearing();
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            // Khi mở ứng dụng, thử kết nối Modbus
+            bool isConnected = await _modbusService.ConnectPLCAsync();
+            Connection.Color = isConnected ? Colors.Green : Colors.Red;
+            await TryConnectModbusAsync();
+        }
 
-        //    // Khi mở ứng dụng, thử kết nối Modbus
-        //    bool isConnected = await _modbusService.ConnectPLCAsync();
-        //    Connection.BackgroundColor = isConnected ? Colors.Green : Colors.Red;
-        //}
-        //
 
         // Connection
         private async void Modbus_Tcp_System(object sender, EventArgs e)
@@ -54,16 +54,20 @@ namespace App_android_for_gantry
 
         private async Task TryConnectModbusAsync()
         {
+           
             if (!isConnected)
             {
+               
                 isConnected = await _modbusService.ConnectPLCAsync();
             }
 
             if (isConnected)
             {
-                Home_X.Color = Colors.Green;// Màu xanh khi kết nối thành công
-                await _modbusService.StartReadingCoilAsync(Home_X, 13, 1); // Đọc trạng thái coil
-                
+                var homeXTask = _modbusService.StartReadingCoilAsync(Home_X, 1, 13);
+                var homeYTask = _modbusService.StartReadingCoilAsync(Home_Y, 1, 14);
+                var homeZTask = _modbusService.StartReadingCoilAsync(Home_Z, 1, 15);
+
+                await Task.WhenAll(homeXTask, homeYTask, homeZTask);
             }
             else
             {
@@ -74,10 +78,10 @@ namespace App_android_for_gantry
         //XỬ LÝ KHI MẠNG THAY ĐỔI
         private async void OnConnectivityChanged(object? sender, ConnectivityChangedEventArgs e)
         {
-            Home_Y.Color = Colors.Red;
+            Home_Y.Color = Colors.Green;
             if (e.NetworkAccess == NetworkAccess.Internet && !isConnected)
             {
-                Home_Y.Color = Colors.Green;
+                Home_Y.Color = Colors.Black;
                 await TryConnectModbusAsync();
 
             }

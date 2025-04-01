@@ -84,7 +84,7 @@ namespace App_android_for_gantry.ViewModels // Dung namespace de to chuc file co
                             }
                         }
 
-                        RealPosX = await _modbusService.ReadLREALAsync(60);
+                        RealPosX = await _modbusService.ReadLREALAsync(2);
                         RealPosY = await _modbusService.ReadLREALAsync(4);
                         RealPosZ = await _modbusService.ReadLREALAsync(6);
                     }
