@@ -4,6 +4,15 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:App_android_for_gantry"
+    xmlns:settings="clr-namespace:App_android_for_gantry.Pages.Settings"
+    xmlns:billoder="clr-namespace:App_android_for_gantry.Pages.BillOder"
+    xmlns:exportmode="clr-namespace:App_android_for_gantry.Pages.ExportMode"
+    xmlns:importmode="clr-namespace:App_android_for_gantry.Pages.ImportMode"
+    xmlns:manualMode="clr-namespace:App_android_for_gantry.Pages.ManualMode"
+    xmlns:storage="clr-namespace:App_android_for_gantry.Pages.Storage"
+    xmlns:alarm="clr-namespace:App_android_for_gantry.Pages.Alarm"
+    xmlns:resetethercat="clr-namespace:App_android_for_gantry.Pages.ResetEthercat;"
+    xmlns:resetsystem="clr-namespace:App_android_for_gantry.Pages.ResetSystem"
     Shell.FlyoutBehavior="Flyout"
     Title="App_android_for_gantry">
 
@@ -12,6 +21,56 @@
         ContentTemplate="{DataTemplate local:MainPage}"
         Route="MainPage" />
 
-    
+    <ShellContent 
+        Title="Settings" 
+        ContentTemplate="{DataTemplate settings:SettingPage}" 
+        Route="SettingPage"/>
+
+    <ShellContent 
+       Title="BillOder" 
+       ContentTemplate="{DataTemplate billoder:BillOderPage}" 
+       Route="BillOderPage"/>
+
+    <ShellContent 
+       Title="ExportMode" 
+       ContentTemplate="{DataTemplate exportmode:ExportModePage}" 
+       Route="ExportModePage"/>
+
+    <ShellContent 
+       Title="ImportMode" 
+       ContentTemplate="{DataTemplate importmode:ImportModePage}" 
+       Route="ImportModePage"/>
+
+    <ShellContent 
+       Title="ManualMode" 
+       ContentTemplate="{DataTemplate manualMode:ManualModePage}" 
+       Route="ManualModePage"/>
+
+    <ShellContent 
+       Title="Storage" 
+       ContentTemplate="{DataTemplate storage:StoragePage}" 
+       Route="StoragePage"/>
+
+    <ShellContent 
+     Title="Alarm" 
+     ContentTemplate="{DataTemplate alarm:AlarmPage}" 
+     Route=" AlarmPage"/>
+
+
+    <ShellContent 
+     Title="Alarm" 
+     ContentTemplate="{DataTemplate alarm:AlarmPage}" 
+     Route=" AlarmPage"/>
+
+
+    <ShellContent 
+     Title="ResetEthercat" 
+     ContentTemplate="{DataTemplate resetethercat:ResetEthercatPage}" 
+     Route=" ResetEthercatPage"/>
+
+    <ShellContent 
+     Title="ResetSystem" 
+     ContentTemplate="{DataTemplate resetsystem:ResetSystemPage}" 
+     Route="ResetSystemPage"/>
 
 </Shell>
