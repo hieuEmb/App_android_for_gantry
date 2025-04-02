@@ -9,31 +9,60 @@ namespace App_android_for_gantry
     public partial class MainPage : ContentPage // Ham main mac dinh cua .netmaui, tien hanh viet cac ham con o phia duoi.
     {
 
-
         public MainPage()// Day la constructor cua MainPage, khi MainPage duoc khoi tao.
         {
             InitializeComponent();// Khoi tao va tai cac giao dien trong MainPage.xaml, tom lai la hien thi UI
-
-            Connectivity.ConnectivityChanged += OnConnectivityChanged; // khi co su thay doi ket noi mang, ham OnConnectivityChanged se duoc goi tu dong
             BindingContext = ViewModel;// Thiet lap Bindingcontext cua MainPage giup trang ket noi du lieu tu ViewModel va Cap nhat giao dien UI  tu dong          
         }
 
+        // Khai bao khoi tao thuoc tinh ModbusService, truy cap phuong thuc thong qua  _modbusService
         private ModbusService _modbusService = new ModbusService();
-        private bool isConnected = false;
-        //public double RealPosX { get; set; }
+        // Khai bao  khoi tao thuoc tinh MainViewModel, truy cap phuong thuc thong qua ViewModel
         public MainViewModel ViewModel { get; set; } = new MainViewModel();
+        private bool isConnected = false;// Xu ly nut nhan connection
+        //public double RealPosX { get; set; }
+       
 
+/// //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //Tu ket noi khi mo App
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            // Khi mở ứng dụng, thử kết nối Modbus
-            bool isConnected = await _modbusService.ConnectPLCAsync();
-            Connection.Color = isConnected ? Colors.Green : Colors.Red;
             await TryConnectModbusAsync();
+            await _modbusService.StartConnectionMonitoringAsync(Connection);// bat dong bo. ten doi tuong. ten method (danh sach doi so)
         }
+        protected override async void OnDisappearing()
+        {
+            base.OnDisappearing();
+            // Ngắt kết nối Modbus nếu đang kết nối
+            if (_modbusService != null && _modbusService.IsConnected)
+            {
+                await _modbusService.Disconnect();
+            }
+        }
+        /// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // Read 1 bit  registerhoding
+        private async Task TryConnectModbusAsync()
+        {
 
+            if (_modbusService.IsConnected) // Kiểm tra kết nối trực tiếp
+            {
+                await Task.WhenAll(
+                    _modbusService.StartReadingRegisterAsync(Home_X, 1, 13),
+                    _modbusService.StartReadingRegisterAsync(Home_Y, 1, 14),
+                    _modbusService.StartReadingRegisterAsync(Home_Z, 1, 15)
+                );
+            }
+            else
+            {
+                Home_X.Color = Colors.LightGray;
+                Home_Y.Color = Colors.LightGray;
+                Home_Z.Color = Colors.LightGray;
+            }
+        }
+        /// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+        //Write 16 bit registerhoding
         // Connection
         private async void Modbus_Tcp_System(object sender, EventArgs e)
         {
@@ -45,72 +74,6 @@ namespace App_android_for_gantry
             Modbus_Tcp.BackgroundColor = isConnected ? Colors.Green : Colors.Red;
 
         }
-
-        // Disconnection
-        private async void Dis_Modbus_Tcp_System(object sender, EventArgs e)
-        {
-            await _modbusService.Disconnect();
-            Modbus_Tcp.BackgroundColor = Colors.Red;
-        }
-
-        private async Task TryConnectModbusAsync()
-        {
-           
-            if (!isConnected)
-            {
-               
-                isConnected = await _modbusService.ConnectPLCAsync();
-            }
-
-            if (isConnected)
-            {
-                var homeXTask = _modbusService.StartReadingCoilAsync(Home_X, 1, 13);
-                var homeYTask = _modbusService.StartReadingCoilAsync(Home_Y, 1, 14);
-                var homeZTask = _modbusService.StartReadingCoilAsync(Home_Z, 1, 15);
-
-                await Task.WhenAll(homeXTask, homeYTask, homeZTask);
-            }
-            else
-            {
-                Home_X.Color = Colors.LightGray; // Màu xám khi chưa kết nối được
-            }
-        }
-
-        //XỬ LÝ KHI MẠNG THAY ĐỔI
-        private async void OnConnectivityChanged(object? sender, ConnectivityChangedEventArgs e)
-        {
-            Home_Y.Color = Colors.Green;
-            if (e.NetworkAccess == NetworkAccess.Internet && !isConnected)
-            {
-                Home_Y.Color = Colors.Black;
-                await TryConnectModbusAsync();
-
-            }
-        }
-
-        ~MainPage()
-        {
-            // Hủy đăng ký sự kiện khi trang bị đóng
-            Connectivity.ConnectivityChanged -= OnConnectivityChanged;
-        }
-
-
-        // Test
-        //private async void Test_System_Pressed(object sender, EventArgs e)
-        //{
-
-        //    await _modbusService.WriteHoldingRegisterAsync(1, 50, 1); // Ghi giá trị 1 vào MW0
-        //    Test.Background = Colors.Green;
-        //}
-
-        //private async void Test_System_Released(object sender, EventArgs e)
-        //{           
-        //    await _modbusService.WriteHoldingRegisterAsync(1, 50, 0); // Reset về 0
-        //    Test.Background = Colors.LightGray;
-        //}
-
-
-
         // Start
         private async void Start_System(object sender, EventArgs e)
         {
@@ -184,7 +147,6 @@ namespace App_android_for_gantry
             await _modbusService.WriteHoldingRegisterAsync(1, 16, 1); // Ghi giá trị 1 vào MW16
 
         }
-
 
         // JOG_X
         private async void Jog_X_Down_System_Pressed(object sender, EventArgs e)
@@ -261,7 +223,7 @@ namespace App_android_for_gantry
             await _modbusService.WriteHoldingRegisterAsync(1, 45, 0); // Ghi giá trị 1 vào MW30
             Jog_Z_Up.Background = Colors.LightGray;
         }
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     }
 
 }

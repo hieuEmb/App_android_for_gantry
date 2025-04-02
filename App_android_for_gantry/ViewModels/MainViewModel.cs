@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace App_android_for_gantry.ViewModels // Dung namespace de to chuc file code
 {
+    // Get, gia tri (Pos_X, Pos_Y, Pos_Z) tu Class MainViewModel 
+    /// ///////////////////////////////////////////////////////////////////////////////////
+    // Pos_X
     public class MainViewModel : INotifyPropertyChanged
     {
         private double _realPosX;
@@ -24,6 +27,8 @@ namespace App_android_for_gantry.ViewModels // Dung namespace de to chuc file co
                 }
             }
         }
+
+        // Pos_Y
         private double _realPosY;
         public double RealPosY
         {
@@ -38,6 +43,7 @@ namespace App_android_for_gantry.ViewModels // Dung namespace de to chuc file co
             }
         }
 
+        // Pos_Z
         private double _realPosZ;
         public double RealPosZ
         {
@@ -51,53 +57,58 @@ namespace App_android_for_gantry.ViewModels // Dung namespace de to chuc file co
                 }
             }
         }
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+        // Ham duoc goi khi gia tri cua _realPosX, _realPosY,_realPosZ
+        /// //////////////////////////////////////////////////////////////////      
         public event PropertyChangedEventHandler? PropertyChanged;
         protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-
+        /// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        
         private readonly ModbusService _modbusService;
-
+        private bool _isReading_Pos = false;
         public MainViewModel()
         {
-            _modbusService = new ModbusService(); // Giả sử bạn đã có class ModbusService
+            _modbusService = new ModbusService(); // Khoi tao class ModbusService su dung thong qua tu khoa  _modbusService, chi doc ra tu Class ModbusService
             StartReadingPositions();
         }
 
+        // Ham doc RealPosX, RealPosY, RealPosZ 
+        /// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         private void StartReadingPositions()
         {
             Task.Run(async () =>
             {
-                while (true)
+                _isReading_Pos = true;
+                while (_isReading_Pos && _modbusService.IsConnected)
                 {
                     try
                     {
-                        if (!_modbusService.IsConnected)
-                        {
-                            bool success = await _modbusService.ConnectPLCAsync();
-                            if (!success)
-                            {
-                                await Task.Delay(2000);
-                                continue;
-                            }
-                        }
+                        // Đọc ba giá trị cùng lúc
+                        var readXTask = _modbusService.ReadLREALAsync(2);
+                        var readYTask = _modbusService.ReadLREALAsync(4);
+                        var readZTask = _modbusService.ReadLREALAsync(6);
 
-                        RealPosX = await _modbusService.ReadLREALAsync(2);
-                        RealPosY = await _modbusService.ReadLREALAsync(4);
-                        RealPosZ = await _modbusService.ReadLREALAsync(6);
+                        // Đợi tất cả các tác vụ đọc xong
+                        await Task.WhenAll(readXTask, readYTask, readZTask);
+
+                        // Cập nhật các giá trị sau khi hoàn thành đọc
+                        RealPosX = await readXTask;
+                        RealPosY = await readYTask;
+                        RealPosZ = await readZTask;
                     }
                     catch
                     {
 
-
-                        // Bỏ qua lỗi, tiếp tục vòng lặp
                     }
 
                     await Task.Delay(500);
                 }
             });
         }
+        // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     }
 }

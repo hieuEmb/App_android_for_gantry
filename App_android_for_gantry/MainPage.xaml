@@ -60,18 +60,6 @@
                FontAttributes="Bold"
                TextColor="White"/>
 
-            <!-- disconnect  -->
-            <Button 
-                x:Name="Dis_Modbus_Tcp"    
-                Text="Disconnection"
-                BackgroundColor="LightGray"
-                Clicked="Dis_Modbus_Tcp_System"
-                Grid.Row="0"
-                Grid.Column="3"
-                WidthRequest="200"
-                HeightRequest="50"
-                HorizontalOptions="Fill"
-                VerticalOptions="Fill"/>
             <!-- Start -->
             <Button 
                 x:Name="Start"    
