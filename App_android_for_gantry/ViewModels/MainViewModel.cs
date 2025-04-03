@@ -79,7 +79,7 @@ namespace App_android_for_gantry.ViewModels // Dung namespace de to chuc file co
 
         // Ham doc RealPosX, RealPosY, RealPosZ 
         /// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        private void StartReadingPositions()
+        public void StartReadingPositions()
         {
             Task.Run(async () =>
             {
@@ -91,7 +91,7 @@ namespace App_android_for_gantry.ViewModels // Dung namespace de to chuc file co
                     try
                     {
                         // Đọc ba giá trị cùng lúc
-                        var readXTask = _modbusService.ReadLREALAsync(2);
+                        var readXTask = _modbusService.ReadLREALAsync(130);
                         var readYTask = _modbusService.ReadLREALAsync(4);
                         var readZTask = _modbusService.ReadLREALAsync(6);
 

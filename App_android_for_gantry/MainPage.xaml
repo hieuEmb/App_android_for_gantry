@@ -60,6 +60,32 @@
                FontAttributes="Bold"
                TextColor="White"/>
 
+            <!-- Write -->
+            <Button 
+                x:Name=" Write"    
+                Text="Write"
+                BackgroundColor="LightGray"
+                Clicked="Write_System"
+                Grid.Row="0"
+                Grid.Column="2"
+                WidthRequest="200"
+                HeightRequest="50"
+                HorizontalOptions="Fill"
+                VerticalOptions="Fill"/>
+            
+            <!-- 123 -->
+            <Entry 
+                x:Name="entryValue" 
+                Placeholder="Nhập giá trị"
+                Keyboard="Numeric"
+                Grid.Row="0"
+                Grid.Column="3"
+                WidthRequest="200"
+                HeightRequest="50"
+                HorizontalOptions="Fill"
+                VerticalOptions="Fill"/>
+                
+
             <!-- Start -->
             <Button 
                 x:Name="Start"    

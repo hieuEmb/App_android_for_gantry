@@ -12,11 +12,12 @@ namespace App_android_for_gantry
         public MainPage()// Day la constructor cua MainPage, khi MainPage duoc khoi tao.
         {
             InitializeComponent();// Khoi tao va tai cac giao dien trong MainPage.xaml, tom lai la hien thi UI
-            BindingContext = ViewModel;// Thiet lap Bindingcontext cua MainPage giup trang ket noi du lieu tu ViewModel va Cap nhat giao dien UI  tu dong          
+            BindingContext = ViewModel;// Thiet lap Bindingcontext cua MainPage giup trang ket noi du lieu tu ViewModel va Cap nhat giao dien UI  tu dong
+            //Connectivity.ConnectivityChanged += OnConnectivityChanged;
         }
 
         // Khai bao khoi tao thuoc tinh ModbusService, truy cap phuong thuc thong qua  _modbusService
-        private ModbusService _modbusService = new ModbusService();
+        private ModbusService _modbusService= new ModbusService();
         // Khai bao  khoi tao thuoc tinh MainViewModel, truy cap phuong thuc thong qua ViewModel
         public MainViewModel ViewModel { get; set; } = new MainViewModel();
         private bool isConnected = false;// Xu ly nut nhan connection
@@ -29,18 +30,35 @@ namespace App_android_for_gantry
         {          
             base.OnAppearing();
             await _modbusService.ConnectPLCAsync();// Boxview HOMEx, Homey, HomeZ
-            _ =TryConnectModbusAsync();// Boxview ket noi, tu dong ket noi lai
-            _ =_modbusService.StartConnectionMonitoringAsync(Connection); // Ham TryConnectModbusAsync() va StartConnectionMonitoringAsync, se duoc goi cung luc
+            _ = _modbusService.StartConnectionMonitoringAsync(Connection); // Ham TryConnectModbusAsync() va StartConnectionMonitoringAsync, se duoc goi cung luc
+            _ =TryConnectModbusAsync();// Boxview ket noi, tu dong ket noi lai           
         }
-        protected override async void OnDisappearing()
-        {
-            base.OnDisappearing();
-            // Ngắt kết nối Modbus nếu đang kết nối
-            if (_modbusService != null && _modbusService.IsConnected)
-            {
-                await _modbusService.Disconnect();
-            }
-        }
+        //protected override async void OnDisappearing()
+        //{
+        //    base.OnDisappearing();
+        //    // Ngắt kết nối Modbus nếu đang kết nối
+        //    if (_modbusService != null && _modbusService.IsConnected)
+        //    {
+        //        await _modbusService.Disconnect();
+        //    }
+        //}
+        //// Xu ly mang
+        //private async void OnConnectivityChanged(object sender, ConnectivityChangedEventArgs e)
+        //{
+        //    if (e.NetworkAccess == NetworkAccess.Internet)
+        //    {
+        //        System.Diagnostics.Debug.WriteLine($"value:");
+        //        //await _modbusService.ConnectPLCAsync();
+        //        _ = TryConnectModbusAsync();
+        //        ViewModel.StartReadingPositions();// Doc Pos sau khi co mang tro lai
+
+        //    }
+        //    else
+        //    {
+        //        Console.WriteLine("🚨 Mất kết nối mạng, không thể kết nối với PLC.");
+        //    }
+        //}
+
         /// ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         // Read 1 bit  registerhoding
         private async Task TryConnectModbusAsync()
@@ -224,7 +242,34 @@ namespace App_android_for_gantry
             await _modbusService.WriteHoldingRegisterAsync(1, 45, 0); // Ghi giá trị 1 vào MW30
             Jog_Z_Up.Background = Colors.LightGray;
         }
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+        // Write
+        private async void Write_System(object sender, EventArgs e)
+        {
+            // Kiểm tra xem Entry có dữ liệu không
+            if (ushort.TryParse(entryValue.Text, out ushort value))
+            {               
+                try
+                {
+                    System.Diagnostics.Debug.WriteLine($"value: {value}");
+                    // Ghi giá trị vào thanh ghi Modbus
+                    await _modbusService.WriteHoldingRegisterAsync(1, 112, value);
+                    await DisplayAlert("Thành công", $"Đã ghi {value} vào thanh ghi MW0", "OK");
+                }
+                catch (Exception ex)
+                {
+                    await DisplayAlert("Lỗi", $"Không thể ghi dữ liệu: {ex.Message}", "OK");
+                }
+            }
+            else
+            {
+                await DisplayAlert("Lỗi", "Vui lòng nhập số hợp lệ!", "OK");
+            }
+        }
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     }
 
-}
+
+
+    }

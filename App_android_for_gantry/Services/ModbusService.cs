@@ -22,9 +22,8 @@ namespace App_android_for_gantry.Services // Dung namespace de to chuc cau truc 
         private bool _isMonitoring = false;// Dieu kien vong lap cho boxview ket noi
         private bool _isReading = false;
         private static double _fallbackValue = 0; // Biến lưu giá trị khi lỗi
-        
 
-/// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         public async Task<bool> ConnectPLCAsync(int timeoutMs = 2000)
         {
             try
@@ -71,6 +70,7 @@ namespace App_android_for_gantry.Services // Dung namespace de to chuc cau truc 
                     // Nếu mất kết nối, thử kết nối lại
                     if (!_isConnected)
                     {
+                        await Application.Current.MainPage.DisplayAlert("Lỗi", "Kiểm tra lại kết nối sau đó thử lại...", "Recon");
                         await ConnectPLCAsync();
                     }
                 }
@@ -130,6 +130,7 @@ namespace App_android_for_gantry.Services // Dung namespace de to chuc cau truc 
                             boxView.Color = Register_State ? Colors.Green : Colors.Red;                        
                         });
                     }
+
                 }
                 catch
                 {

@@ -11,7 +11,7 @@
     xmlns:manualMode="clr-namespace:App_android_for_gantry.Pages.ManualMode"
     xmlns:storage="clr-namespace:App_android_for_gantry.Pages.Storage"
     xmlns:alarm="clr-namespace:App_android_for_gantry.Pages.Alarm"
-    xmlns:resetethercat="clr-namespace:App_android_for_gantry.Pages.ResetEthercat;"
+    xmlns:resetethercat="clr-namespace:App_android_for_gantry.Pages.ResetEthercat"
     xmlns:resetsystem="clr-namespace:App_android_for_gantry.Pages.ResetSystem"
     Shell.FlyoutBehavior="Flyout"
     Title="App_android_for_gantry">
