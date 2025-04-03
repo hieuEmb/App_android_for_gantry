@@ -68,14 +68,14 @@ namespace App_android_for_gantry
             if (_modbusService.IsConnected) // Kiểm tra kết nối trực tiếp
             {
                 await Task.WhenAll(
-                    _modbusService.StartReadingRegisterAsync(Home_X, 1, 13),
+                    //_modbusService.StartReadingRegisterAsync(Home_X, 1, 13),
                     _modbusService.StartReadingRegisterAsync(Home_Y, 1, 14),
                     _modbusService.StartReadingRegisterAsync(Home_Z, 1, 15)
                 );
             }
             else
             {
-                Home_X.Color = Colors.LightGray;
+                //Home_X.Color = Colors.LightGray;
                 Home_Y.Color = Colors.LightGray;
                 Home_Z.Color = Colors.LightGray;
             }
@@ -83,17 +83,7 @@ namespace App_android_for_gantry
         /// /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         //Write 16 bit registerhoding
-        // Connection
-        private async void Modbus_Tcp_System(object sender, EventArgs e)
-        {
-            isConnected = await _modbusService.ConnectPLCAsync();
-            if (!isConnected)
-            {
-                isConnected = await _modbusService.ConnectPLCAsync();
-            }
-            Modbus_Tcp.BackgroundColor = isConnected ? Colors.Green : Colors.Red;
 
-        }
         // Start
         private async void Start_System(object sender, EventArgs e)
         {

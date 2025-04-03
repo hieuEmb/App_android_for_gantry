@@ -1,7 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="App_android_for_gantry.MainPage">
+             x:Class="App_android_for_gantry.MainPage"
+             BackgroundImageSource="bg_5.png">
+                
+               
 
     <ScrollView>
         <!-- RowDefinitions="*,*,*,*"(Xac dinh 4 hang trong grip, chia deu khon gian) -->
@@ -10,11 +13,11 @@
         <!-- RowSpacing="10" (khoang cach giua cac hang) -->
         <!-- ColumnSpacing="10" (khoang cach giua cac cot) -->
         <Grid
-            RowDefinitions="*,*,*,*,*,*,*"
-            ColumnDefinitions="*,*,*,*"
-            Padding="50"
-            RowSpacing="5"
-            ColumnSpacing="5">
+            RowDefinitions="*,*,*,*,*,*,*,*,*,*"
+            ColumnDefinitions="*,*,*,*,*"
+            Padding="0"
+            RowSpacing="0"
+            ColumnSpacing="0">
 
 
             <!-- x:Name="Button1"(Ten button de truy xuat trong c#) -->
@@ -26,39 +29,26 @@
             <!-- VerticalOptions="Fill" (Button gian ra theo chieu doc cua o grip)-->
 
 
-            <!-- Connect -->
-            <Button 
-                x:Name="Modbus_Tcp"    
-                Text="Connection"
-                BackgroundColor="LightGray"
-                Clicked="Modbus_Tcp_System"
-                Grid.Row="0"
-                Grid.Column="0"
-                WidthRequest="200"
-                HeightRequest="50"
-                HorizontalOptions="Fill"
-                VerticalOptions="Fill"/>
-
             <BoxView
                x:Name="Connection"
                Color="LightGray"
                CornerRadius="10"
                Grid.Row="0"
-               Grid.Column="1"
-               WidthRequest="200"
-               HeightRequest="50"
+               Grid.Column="0"
+               WidthRequest="30"
+               HeightRequest="30"
                VerticalOptions="Fill"
                HorizontalOptions="Fill"/>
 
             <Label 
-               Text="CONNECTION"
-               Grid.Row="0"
-               Grid.Column="1"
-               HorizontalOptions="Center"
-               VerticalOptions="Center"
-               FontSize="16"
-               FontAttributes="Bold"
-               TextColor="White"/>
+              Text="Connection"
+              Grid.Row="1"
+              Grid.Column="0"
+              HorizontalOptions="Fill"
+              VerticalOptions="Fill"
+              FontSize="16"
+              FontAttributes="Bold"
+              TextColor="Black"/>
 
             <!-- Write -->
             <Button 
@@ -68,7 +58,7 @@
                 Clicked="Write_System"
                 Grid.Row="0"
                 Grid.Column="2"
-                WidthRequest="200"
+                WidthRequest="100"
                 HeightRequest="50"
                 HorizontalOptions="Fill"
                 VerticalOptions="Fill"/>
@@ -80,7 +70,7 @@
                 Keyboard="Numeric"
                 Grid.Row="0"
                 Grid.Column="3"
-                WidthRequest="200"
+                WidthRequest="100"
                 HeightRequest="50"
                 HorizontalOptions="Fill"
                 VerticalOptions="Fill"/>
@@ -89,12 +79,12 @@
             <!-- Start -->
             <Button 
                 x:Name="Start"    
-                Text="START"
+                Text="HOME"
                 BackgroundColor="LightGray"
                 Clicked="Start_System"
-                Grid.Row="1"
+                Grid.Row="2"
                 Grid.Column="0"
-                WidthRequest="200"
+                WidthRequest="100"
                 HeightRequest="50"
                 HorizontalOptions="Fill"
                 VerticalOptions="Fill"/>
@@ -105,21 +95,21 @@
                 Text="STOP"
                 BackgroundColor="LightGray"
                 Clicked="Stop_System"
-                Grid.Row="1"
+                Grid.Row="2"
                 Grid.Column="1"
-                WidthRequest="200"
+                WidthRequest="100"
                 HeightRequest="50"
                 HorizontalOptions="Fill"
                 VerticalOptions="Fill"/>
             <!--AUTO_MODE -->
             <Button
                x:Name="Auto_Mode"
-               Text="AUTO_MODE"
+               Text="AUTO"
                BackgroundColor="LightGray"
                Clicked="Auto_Mode_System"
-               Grid.Row="1"
-               Grid.Column="2"
-               WidthRequest="200"
+               Grid.Row="3"
+               Grid.Column="0"
+               WidthRequest="100"
                HeightRequest="50"
                HorizontalOptions="Fill"
                VerticalOptions="Fill"/>
@@ -127,12 +117,12 @@
             <!--MAN_MODE -->
             <Button
                x:Name="Man_Mode"
-               Text="MAN_MODE"
+               Text="MAN"
                BackgroundColor="LightGray"
                Clicked="Man_Mode_System"
-               Grid.Row="1"
-               Grid.Column="3"
-               WidthRequest="200"
+               Grid.Row="3"
+               Grid.Column="1"
+               WidthRequest="100"
                HeightRequest="50"
                HorizontalOptions="Fill"
                VerticalOptions="Fill"/>
@@ -142,76 +132,76 @@
                x:Name="Home_X"
                Color="LightGray"
                CornerRadius="10"
-               Grid.Row="2"
+               Grid.Row="5"
                Grid.Column="0"
-               WidthRequest="200"
-               HeightRequest="50"
+               WidthRequest="30"
+               HeightRequest="30"
                VerticalOptions="Fill"
                HorizontalOptions="Fill"/>
 
             <Label 
                Text="HOME_X"
-               Grid.Row="2"
+               Grid.Row="6"
                Grid.Column="0"
-               HorizontalOptions="Center"
-               VerticalOptions="Center"
+               HorizontalOptions="Fill"
+               VerticalOptions="Fill"
                FontSize="16"
                FontAttributes="Bold"
-               TextColor="White"/>
+               TextColor="Black"/>
 
             <!-- HOME_Y-->
            <BoxView
               x:Name="Home_Y"
               Color="LightGray"
               CornerRadius="10"
-              Grid.Row="2"
+              Grid.Row="5"
               Grid.Column="1"
-              WidthRequest="200"
-              HeightRequest="50"
+              WidthRequest="30"
+              HeightRequest="30"
               VerticalOptions="Fill"
               HorizontalOptions="Fill"/>
 
                 <Label 
               Text="HOME_Y"
-              Grid.Row="2"
+              Grid.Row="6"
               Grid.Column="1"
-              HorizontalOptions="Center"
-              VerticalOptions="Center"
+              HorizontalOptions="Fill"
+              VerticalOptions="Fill"
               FontSize="16"
               FontAttributes="Bold"
-              TextColor="White"/>
+              TextColor="Black"/>
 
                 <!-- HOME_Z-->
             <BoxView
               x:Name="Home_Z"
               Color="LightGray"
               CornerRadius="10"
-              Grid.Row="2"
+              Grid.Row="5"
               Grid.Column="2"
-              WidthRequest="200"
-              HeightRequest="50"
+              WidthRequest="30"
+              HeightRequest="30"
               VerticalOptions="Fill"
               HorizontalOptions="Fill"/>
 
             <Label 
               Text="HOME_Z"
-              Grid.Row="2"
+              Grid.Row="6"
               Grid.Column="2"
-              HorizontalOptions="Center"
-              VerticalOptions="Center"
+              HorizontalOptions="Fill"
+              VerticalOptions="Fill"
               FontSize="16"
               FontAttributes="Bold"
-              TextColor="White"/>
+              TextColor="Black"/>
 
             <!-- IMPORT_MODE-->
             <Button
                 x:Name="Improt_Mode"
-                Text="IMPORT_MODE"
+                Text="IMPORT"
                 BackgroundColor="LightGray"
                 Clicked="Improt_Mode_System"
-                Grid.Row="3"
+                Grid.Row="4"
                 Grid.Column="0"
-                WidthRequest="200"
+                WidthRequest="100"
                 HeightRequest="50"
                 HorizontalOptions="Fill"
                 VerticalOptions="Fill"/>
@@ -219,12 +209,12 @@
             <!-- EXPORT_MODE-->
             <Button
                 x:Name="Export_Mode"
-                Text="EXPORT_MODE"
+                Text="EXPORT"
                 BackgroundColor="LightGray"
                 Clicked="Export_Mode_System"
-                Grid.Row="3"
+                Grid.Row="4"
                 Grid.Column="1"
-                WidthRequest="200"
+                WidthRequest="100"
                 HeightRequest="50"
                 HorizontalOptions="Fill"
                 VerticalOptions="Fill"/>
@@ -236,9 +226,9 @@
                 BackgroundColor="LightGray"
                 Pressed="Bang_Tai_Man_System_Pressed"
                 Released="Bang_Tai_Man_System_Released"
-                Grid.Row="3"
-                Grid.Column="2"
-                WidthRequest="200"
+                Grid.Row="2"
+                Grid.Column="3"
+                WidthRequest="100"
                 HeightRequest="50"
                 HorizontalOptions="Fill"
                 VerticalOptions="Fill"/>
@@ -249,9 +239,9 @@
                 Text="VANCUM_MAN"
                 BackgroundColor="LightGray"
                 Clicked="Vacum_Man_System"
-                Grid.Row="3"
+                Grid.Row="4"
                 Grid.Column="3"
-                WidthRequest="200"
+                WidthRequest="100"
                 HeightRequest="50"
                 HorizontalOptions="Fill"
                 VerticalOptions="Fill"/>
@@ -264,9 +254,9 @@
                Pressed="Jog_X_Down_System_Pressed"
                Released="Jog_X_Down_System_Released"
                BackgroundColor="LightGray"
-               Grid.Row="4"
+               Grid.Row="7"
                Grid.Column="0"
-               WidthRequest="200"
+               WidthRequest="100"
                HeightRequest="50"
                HorizontalOptions="Fill"
                VerticalOptions="Fill"/>
@@ -278,9 +268,9 @@
                Pressed="Jog_X_Up_System_Pressed"
                Released="Jog_X_Up_System_Released"
                BackgroundColor="LightGray"
-               Grid.Row="4"
+               Grid.Row="7"
                Grid.Column="1"
-               WidthRequest="200"
+               WidthRequest="100"
                HeightRequest="50"
                HorizontalOptions="Fill"
                VerticalOptions="Fill"/>
@@ -292,9 +282,9 @@
                Pressed="Jog_Y_Right_System_Pressed"
                Released="Jog_Y_Right_System_Released"
                BackgroundColor="LightGray"
-               Grid.Row="5"
+               Grid.Row="8"
                Grid.Column="0"
-               WidthRequest="200"
+               WidthRequest="100"
                HeightRequest="50"
                HorizontalOptions="Fill"
                VerticalOptions="Fill"/>
@@ -306,9 +296,9 @@
                Pressed="Jog_Y_Left_System_Pressed"
                Released="Jog_Y_Left_System_Released"
                BackgroundColor="LightGray"
-               Grid.Row="5"
+               Grid.Row="8"
                Grid.Column="1"
-               WidthRequest="200"
+               WidthRequest="100"
                HeightRequest="50"
                HorizontalOptions="Fill"
                VerticalOptions="Fill"/>
@@ -320,9 +310,9 @@
                Pressed="Jog_Z__Down_System_Pressed"
                Released="Jog_Z__Down_System_Released"
                BackgroundColor="LightGray"
-               Grid.Row="6"
+               Grid.Row="9"
                Grid.Column="0"
-               WidthRequest="200"
+               WidthRequest="100"
                HeightRequest="50"
                HorizontalOptions="Fill"
                VerticalOptions="Fill"/>
@@ -334,9 +324,9 @@
                Pressed="Jog_Z_Up_System_Pressed"
                Released="Jog_Z_Up_System_Released"
                BackgroundColor="LightGray"
-               Grid.Row="6"
+               Grid.Row="9"
                Grid.Column="1"
-               WidthRequest="200"
+               WidthRequest="100"
                HeightRequest="50"
                HorizontalOptions="Fill"
                VerticalOptions="Fill"/>
@@ -344,7 +334,7 @@
             <Label 
                 Text="Vị trí X:" 
                 FontSize="18"
-                Grid.Row="4"
+                Grid.Row="7"
                 Grid.Column="2"
         
                 HorizontalOptions="Fill"
@@ -353,42 +343,42 @@
                 Text="{Binding RealPosX}" 
                 FontSize="24" 
                 TextColor="Blue"
-                Grid.Row="4"
+                Grid.Row="7"
                 Grid.Column="3"
-                MinimumWidthRequest="200"
+                MinimumWidthRequest="100"
                 MinimumHeightRequest="50"/>
 
             <Label 
               Text="Vị trí Y:" 
               FontSize="18"
-              Grid.Row="5"
+              Grid.Row="8"
               Grid.Column="2"
-              MinimumWidthRequest="200"
+              MinimumWidthRequest="100"
               MinimumHeightRequest="50"/>
             <Label 
               Text="{Binding RealPosY}" 
               FontSize="24" 
               TextColor="Blue"
-              Grid.Row="5"
+              Grid.Row="8"
               Grid.Column="3"
-              MinimumWidthRequest="200"
+              MinimumWidthRequest="100"
               MinimumHeightRequest="50"/>
 
             <Label 
               Text="Vị trí Z :" 
               FontSize="18"
-              Grid.Row="6"
+              Grid.Row="9"
               Grid.Column="2"
-              MinimumWidthRequest="200"
+              MinimumWidthRequest="100"
               MinimumHeightRequest="50"/>
             
             <Label 
               Text="{Binding RealPosZ}" 
               FontSize="24" 
               TextColor="Blue"
-              Grid.Row="6"
+              Grid.Row="9"
               Grid.Column="3"
-              MinimumWidthRequest="200"
+              MinimumWidthRequest="100"
               MinimumHeightRequest="50"/>
 
 
@@ -415,5 +405,5 @@
 
         </Grid>
     </ScrollView>
-
+    
 </ContentPage>
