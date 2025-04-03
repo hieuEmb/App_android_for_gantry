@@ -28,8 +28,8 @@ namespace App_android_for_gantry
         protected override async void OnAppearing()
         {          
             base.OnAppearing();
-            await _modbusService.ConnectPLCAsync();
-            _ =TryConnectModbusAsync();
+            await _modbusService.ConnectPLCAsync();// Boxview HOMEx, Homey, HomeZ
+            _ =TryConnectModbusAsync();// Boxview ket noi, tu dong ket noi lai
             _ =_modbusService.StartConnectionMonitoringAsync(Connection); // Ham TryConnectModbusAsync() va StartConnectionMonitoringAsync, se duoc goi cung luc
         }
         protected override async void OnDisappearing()
