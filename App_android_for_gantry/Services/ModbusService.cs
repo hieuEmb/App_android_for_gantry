@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Sockets;
@@ -35,6 +36,7 @@ namespace App_android_for_gantry.Services // Dung namespace de to chuc cau truc 
                     var factory = new ModbusFactory();
                     _modbusMaster = factory.CreateMaster(_tcpClient);
                     IsConnected = true;
+                    System.Diagnostics.Debug.WriteLine($"IsConnected_0: {IsConnected}");
                     return true; 
                 }
                 else
@@ -146,7 +148,7 @@ namespace App_android_for_gantry.Services // Dung namespace de to chuc cau truc 
             ushort[] register = await Task.Run(() => _modbusMaster.ReadHoldingRegisters(slaveId, registerAddress, 1));
 
             // In giá trị thanh ghi ra console
-            System.Diagnostics.Debug.WriteLine($"Giá trị thanh ghi tại {registerAddress}: {register[0]}");
+            //System.Diagnostics.Debug.WriteLine($"Giá trị thanh ghi tại {registerAddress}: {register[0]}");
 
             // Lấy bit 0 của thanh ghi (chuyển đổi sang bool)
             return (register[0] & 0x0001) != 0;

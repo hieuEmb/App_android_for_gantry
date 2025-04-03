@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -82,9 +83,11 @@ namespace App_android_for_gantry.ViewModels // Dung namespace de to chuc file co
         {
             Task.Run(async () =>
             {
+                await _modbusService.ConnectPLCAsync();
                 _isReading_Pos = true;
                 while (_isReading_Pos && _modbusService.IsConnected)
                 {
+                    System.Diagnostics.Debug.WriteLine($"IsConnected_2: {_modbusService.IsConnected}");
                     try
                     {
                         // Đọc ba giá trị cùng lúc
@@ -99,6 +102,7 @@ namespace App_android_for_gantry.ViewModels // Dung namespace de to chuc file co
                         RealPosX = await readXTask;
                         RealPosY = await readYTask;
                         RealPosZ = await readZTask;
+                       
                     }
                     catch
                     {

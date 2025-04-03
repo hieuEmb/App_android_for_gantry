@@ -26,10 +26,11 @@ namespace App_android_for_gantry
 /// //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //Tu ket noi khi mo App
         protected override async void OnAppearing()
-        {
+        {          
             base.OnAppearing();
-            await TryConnectModbusAsync();
-            await _modbusService.StartConnectionMonitoringAsync(Connection);// bat dong bo. ten doi tuong. ten method (danh sach doi so)
+            await _modbusService.ConnectPLCAsync();
+            _ =TryConnectModbusAsync();
+            _ =_modbusService.StartConnectionMonitoringAsync(Connection); // Ham TryConnectModbusAsync() va StartConnectionMonitoringAsync, se duoc goi cung luc
         }
         protected override async void OnDisappearing()
         {
@@ -44,7 +45,7 @@ namespace App_android_for_gantry
         // Read 1 bit  registerhoding
         private async Task TryConnectModbusAsync()
         {
-
+            System.Diagnostics.Debug.WriteLine($"IsConnected_1: {_modbusService.IsConnected}");
             if (_modbusService.IsConnected) // Kiểm tra kết nối trực tiếp
             {
                 await Task.WhenAll(
