@@ -70,7 +70,7 @@ namespace App_android_for_gantry.Services // Dung namespace de to chuc cau truc 
                     // Nếu mất kết nối, thử kết nối lại
                     if (!_isConnected)
                     {
-                        await Application.Current.MainPage.DisplayAlert("Lỗi", "Kiểm tra lại kết nối sau đó thử lại...", "Recon");
+                        await Application.Current.MainPage.DisplayAlert("Lỗi", "Kiểm tra lại kết nối sau đó thử lại...", "Reconection");
                         await ConnectPLCAsync();
                     }
                 }

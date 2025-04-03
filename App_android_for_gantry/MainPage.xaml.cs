@@ -31,7 +31,8 @@ namespace App_android_for_gantry
             base.OnAppearing();
             await _modbusService.ConnectPLCAsync();// Boxview HOMEx, Homey, HomeZ
             _ = _modbusService.StartConnectionMonitoringAsync(Connection); // Ham TryConnectModbusAsync() va StartConnectionMonitoringAsync, se duoc goi cung luc
-            _ =TryConnectModbusAsync();// Boxview ket noi, tu dong ket noi lai           
+            _ =TryConnectModbusAsync();// Boxview ket noi, tu dong ket noi lai
+            ViewModel.StartReadingPositions();
         }
         //protected override async void OnDisappearing()
         //{
