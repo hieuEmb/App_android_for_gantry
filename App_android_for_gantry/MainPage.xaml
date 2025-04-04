@@ -1,8 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="App_android_for_gantry.MainPage"
-             >
+             x:Class="App_android_for_gantry.MainPage">
                 
 
     <ScrollView>
@@ -63,7 +62,7 @@
                 HorizontalOptions="Center"
                 VerticalOptions="Center">
                 <Button.ImageSource>
-                    <FileImageSource File="home.png" />
+                    <FileImageSource File="home_image.png" />
                     <!-- Sử dụng hình ảnh PNG -->
                 </Button.ImageSource>
             </Button>
@@ -93,7 +92,7 @@
                 HorizontalOptions="Center"
                 VerticalOptions="Center">
             <Button.ImageSource>
-                <FileImageSource File="stop.png" />
+                <FileImageSource File="stop_image.png" />
                 <!-- Sử dụng hình ảnh PNG -->
             </Button.ImageSource>
             </Button>
@@ -124,7 +123,7 @@
                HorizontalOptions="Center"
                VerticalOptions="Center">
             <Button.ImageSource>
-                <FileImageSource File="auto.png" />
+                <FileImageSource File="auto_image.png" />
                 <!-- Sử dụng hình ảnh PNG -->
             </Button.ImageSource>
             </Button>
@@ -154,7 +153,7 @@
                HorizontalOptions="Center"
                VerticalOptions="Center">
             <Button.ImageSource>
-                <FileImageSource File="manual.png" />
+                <FileImageSource File="manual_image.png" />
                 <!-- Sử dụng hình ảnh PNG -->
             </Button.ImageSource>
             </Button>
@@ -250,7 +249,7 @@
                 HorizontalOptions="Center"
                 VerticalOptions="Center">
             <Button.ImageSource>
-                <FileImageSource File="import.png" />
+                <FileImageSource File="import_image.png" />
                 <!-- Sử dụng hình ảnh PNG -->
             </Button.ImageSource>
             </Button>
@@ -279,7 +278,7 @@
                 HorizontalOptions="Center"
                 VerticalOptions="Center">
             <Button.ImageSource>
-                <FileImageSource File="export.png" />
+                <FileImageSource File="export_image.png" />
                 <!-- Sử dụng hình ảnh PNG -->
             </Button.ImageSource>
             </Button>

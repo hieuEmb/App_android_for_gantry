@@ -2,8 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="App_android_for_gantry.Pages.ManualMode.ManualModePage"
-             Title="ManualModePage"
-             >
+             Title="ManualModePage">
 
     <ScrollView>
         <!-- RowDefinitions="*,*,*,*"(Xac dinh 4 hang trong grip, chia deu khon gian) -->
@@ -43,7 +42,7 @@
                 HorizontalOptions="Fill"
                 VerticalOptions="Fill">
             <Button.ImageSource>
-                    <FileImageSource File="conveyor.png" />
+                    <FileImageSource File="conveyor_image.png" />
                 <!-- Sử dụng hình ảnh PNG -->
             </Button.ImageSource>
             </Button>
@@ -63,7 +62,7 @@
                 HorizontalOptions="Fill"
                 VerticalOptions="Fill">
             <Button.ImageSource>
-                <FileImageSource File="air.png" />
+                <FileImageSource File="air_image.png" />
                 <!-- Sử dụng hình ảnh PNG -->
             </Button.ImageSource>
             </Button>
