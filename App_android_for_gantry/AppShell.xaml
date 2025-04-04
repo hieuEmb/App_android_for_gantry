@@ -42,7 +42,7 @@
        Route="ImportModePage"/>
 
     <ShellContent 
-       Title="ManualMode" 
+       Title="Manual" 
        ContentTemplate="{DataTemplate manualMode:ManualModePage}" 
        Route="ManualModePage"/>
 

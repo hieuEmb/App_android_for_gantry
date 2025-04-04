@@ -91,7 +91,7 @@ namespace App_android_for_gantry.ViewModels // Dung namespace de to chuc file co
                     try
                     {
                         // Đọc ba giá trị cùng lúc
-                        var readXTask = _modbusService.ReadLREALAsync(2);
+                        var readXTask = _modbusService.ReadLREALAsync(135);
                         var readYTask = _modbusService.ReadLREALAsync(4);
                         var readZTask = _modbusService.ReadLREALAsync(6);
 
@@ -99,17 +99,17 @@ namespace App_android_for_gantry.ViewModels // Dung namespace de to chuc file co
                         await Task.WhenAll(readXTask, readYTask, readZTask);
 
                         // Cập nhật các giá trị sau khi hoàn thành đọc
-                        RealPosX = await readXTask;
-                        RealPosY = await readYTask;
-                        RealPosZ = await readZTask;
-                       
+                        RealPosX = Math.Round(await readXTask, 0);                       
+                        RealPosY = Math.Round(await readYTask, 0);
+                        RealPosZ = Math.Round(await readZTask, 0);
+
                     }
                     catch
                     {
 
                     }
 
-                    await Task.Delay(500);
+                    await Task.Delay(100);
                 }
             });
         }
