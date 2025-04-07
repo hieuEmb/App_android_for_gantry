@@ -4,51 +4,40 @@
              x:Class="App_android_for_gantry.Pages.ImportMode.ImportModePage"
              Title="ImportModePage">
     <ScrollView>
-        <!-- RowDefinitions="*,*,*,*"(Xac dinh 4 hang trong grip, chia deu khon gian) -->
-        <!-- ColumnDefinitions="*,*,*,*"(Xac dinh 4 cot trong grip, chia deu khon gian) -->
-        <!--  Padding="10"( Khoang cach tu le Grip den noi dung ben trong) -->
-        <!-- RowSpacing="10" (khoang cach giua cac hang) -->
-        <!-- ColumnSpacing="10" (khoang cach giua cac cot) -->
+
         <Grid
-         RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto"
-         ColumnDefinitions="Auto,Auto,Auto,Auto,Auto"
-         Padding="5"
-         RowSpacing="5"
-         ColumnSpacing="5">
+         RowDefinitions="*"
+         ColumnDefinitions="*,*"
+         Padding="5">
 
 
-            <!-- x:Name="Button1"(Ten button de truy xuat trong c#) -->
-            <!-- Text="Start"(Noi dung hien thi) -->
-            <!-- Clicked="OnButtonClicked"(Xu ly su kien nhan nut or goi ham sau c# khi nhan nut) -->
-            <!-- Grid.Row="0" (Dat button vao cot thu 0 cua grip) -->
-            <!-- Grid.Column="0" (Dat button vao hang thu 0 cua grip) -->
-            <!-- HorizontalOptions="Fill" (Button gian ra theo chieu ngang cua o grip) -->
-            <!-- VerticalOptions="Fill" (Button gian ra theo chieu doc cua o grip)-->
-
-            <!-- Write -->
+            <!--  -->
             <Button 
              x:Name=" Write"    
-             Text="Write"
-             BackgroundColor="LightGray"
+             Text="Write"             
+             BorderWidth="2"  
+             BorderColor="Black" 
              Clicked="Write_System"
              Grid.Row="0"
-             Grid.Column="2"
+             Grid.Column="0"
+             Margin="0,0,0,0"
              WidthRequest="100"
              HeightRequest="70"
-             HorizontalOptions="Fill"
-             VerticalOptions="Fill"/>
+             HorizontalOptions="Center"
+             VerticalOptions="Center"/>
 
-            <!-- 123 -->
+            <!--  -->
             <Entry 
              x:Name="entryValue" 
              Placeholder="Nhập giá trị"
              Keyboard="Numeric"
              Grid.Row="0"
-             Grid.Column="3"
+             Grid.Column="1"
+             Margin="0,0,0,0"
              WidthRequest="100"
              HeightRequest="70"
-             HorizontalOptions="Fill"
-             VerticalOptions="Fill"/>
+             HorizontalOptions="Center"
+             VerticalOptions="Center"/>
 
         </Grid>
     </ScrollView>
