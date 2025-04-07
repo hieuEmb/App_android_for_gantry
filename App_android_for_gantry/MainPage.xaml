@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="App_android_for_gantry.MainPage">
+             x:Class="App_android_for_gantry.MainPage"
+             BackgroundImageSource="bg_1.jpg">
                 
 
     <ScrollView>
@@ -14,12 +15,14 @@
             <!-- Trang thai ket noi -->
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
             <Image
-            Source="bg.png"
+            Source="tab_home_image.png"
             Grid.Row="2"
             Grid.Column="0"
             Grid.ColumnSpan="3"
             Margin="0,0,0,0"
             Aspect="AspectFit"
+            WidthRequest="250"
+            HeightRequest="320"
             HorizontalOptions="Fill"
             VerticalOptions="Center" />
             <!-- Trang thai ket noi -->
