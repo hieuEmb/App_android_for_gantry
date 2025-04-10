@@ -64,7 +64,7 @@ namespace App_android_for_gantry.Services // Dung namespace de to chuc cau truc 
                     // Cập nhật màu sắc của BoxView trên UI
                     MainThread.BeginInvokeOnMainThread(() =>
                     {
-                        statusIndicator.Color = _isConnected ? Colors.Green : Colors.Red;
+                        statusIndicator.Color = _isConnected ? Colors.Green : Colors.LightGray;
                     });
 
                     // Nếu mất kết nối, thử kết nối lại

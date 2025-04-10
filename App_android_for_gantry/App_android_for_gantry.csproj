@@ -75,6 +75,9 @@
 	  <MauiXaml Update="Pages\Alarm\AlarmPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Pages\AutoMode\AutoModePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Pages\BillOder\BillOderPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

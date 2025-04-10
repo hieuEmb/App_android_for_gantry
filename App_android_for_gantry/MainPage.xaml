@@ -8,7 +8,7 @@
     <ScrollView>
 
         <Grid
-            RowDefinitions="*,*,*,*,*,*,*,*,*"
+            RowDefinitions="*,*,*,*,*,*,*,*"
             ColumnDefinitions="*,*,*"
             Padding="5">
 
@@ -16,10 +16,10 @@
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
             <Image
             Source="tab_home_image.png"
-            Grid.Row="2"
+            Grid.Row="3"
             Grid.Column="0"
             Grid.ColumnSpan="3"
-            Margin="0,0,0,0"
+            Margin="0,-175,0,0"
             Aspect="AspectFit"
             WidthRequest="250"
             HeightRequest="320"
@@ -35,8 +35,8 @@
                Color="LightGray"
                CornerRadius="10"
                Grid.Row="0"
-               Grid.Column="0"
-               Margin="0,0,0,0"
+               Grid.Column="1"
+               Margin="15,0,0,0"
                WidthRequest="30"
                HeightRequest="30"
                VerticalOptions="Center"
@@ -48,8 +48,8 @@
               TextColor="Black"
               FontSize="16"
               Grid.Row="1"
-              Grid.Column="0"
-              Margin="0,0,0,0"
+              Grid.Column="1"
+              Margin="15,0,0,50"
               WidthRequest="110"
               HeightRequest="20"
               HorizontalOptions="Center"
@@ -67,7 +67,7 @@
                 BorderWidth="2"
                 BorderColor="Black"                   
                 Clicked="Start_System"
-                Grid.Row="3"
+                Grid.Row="4"
                 Grid.Column="0"
                 Margin="0,0,0,0"
                 WidthRequest="100"
@@ -86,7 +86,7 @@
               FontAttributes="Bold"
               TextColor="Black"
               FontSize="16"
-              Grid.Row="4"
+              Grid.Row="5"
               Grid.Column="0"
               Margin="70,0,0,50"
               WidthRequest="110"
@@ -107,7 +107,7 @@
                 BorderWidth="2"  
                 BorderColor="Black" 
                 Clicked="Stop_System"
-                Grid.Row="3"
+                Grid.Row="4"
                 Grid.Column="1"
                 Margin="30,0,0,0"
                 WidthRequest="100"
@@ -126,7 +126,7 @@
               FontAttributes="Bold"
               TextColor="Black"
               FontSize="16"
-              Grid.Row="4"
+              Grid.Row="5"
               Grid.Column="1"
               Margin="100,0,0,50"
               WidthRequest="110"
@@ -139,7 +139,7 @@
 
             <!--AUTO_MODE -->
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
-            <Button
+            <!--<Button
                x:Name="Auto_Mode"
                BackgroundColor="WhiteSmoke"
                BorderWidth="2"  
@@ -153,7 +153,7 @@
                VerticalOptions="Center">
             <Button.ImageSource>
                 <FileImageSource File="auto_image.png" />
-                <!-- Sử dụng hình ảnh PNG -->
+                --><!-- Sử dụng hình ảnh PNG --><!--
             </Button.ImageSource>
             </Button>
 
@@ -169,7 +169,39 @@
               WidthRequest="110"
               HeightRequest="20"
               HorizontalOptions="Center"
+              VerticalOptions="Center"/>-->
+
+
+             <!-- Hình ảnh đại diện cho chế độ AUTO -->
+
+            <!-- Nút gạt -->
+            <Switch x:Name="modeSwitch"
+                Toggled="ModeSwitch_Toggled"
+                OnColor="Green"
+                ThumbColor="White"
+                Scale="2"
+                Grid.Row="0"
+                Grid.Column="0"
+                Margin="40,0,0,0"
+                WidthRequest="30"
+                HeightRequest="30"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"/>
+
+            <!-- Nhãn AUTO/Man -->
+            <Label 
+              Text="AUTO"
+              FontAttributes="Bold"
+              TextColor="Black"
+              FontSize="16"
+              Grid.Row="1"
+              Grid.Column="0"
+              Margin="70,0,0,50"
+              WidthRequest="110"
+              HeightRequest="20"
+              HorizontalOptions="Center"
               VerticalOptions="Center"/>
+
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
             
             
@@ -181,17 +213,16 @@
                BorderWidth="2"  
                BorderColor="Black" 
                Clicked="Man_Mode_System"
-               Grid.Row="5"
-               Grid.Column="1"
-               Margin="30,0,0,0"
-               WidthRequest="100"
-               HeightRequest="70"
+               Grid.Row="0"
+               Grid.Column="2"
+               Margin="0,0,0,0"
+               WidthRequest="30"
+               HeightRequest="30"
                HorizontalOptions="Center"
                VerticalOptions="Center">
             <Button.ImageSource>
-                <FileImageSource File="manual_image.png" />
-                <!-- Sử dụng hình ảnh PNG -->
-            </Button.ImageSource>
+                    <FileImageSource File="manual_image.png" />
+                </Button.ImageSource>
             </Button>
 
 
@@ -200,9 +231,9 @@
               FontAttributes="Bold"
               TextColor="Black"
               FontSize="16"
-              Grid.Row="6"
-              Grid.Column="1"
-              Margin="100,0,0,50"
+              Grid.Row="1"
+              Grid.Column="2"
+              Margin="75,0,0,50"
               WidthRequest="110"
               HeightRequest="20"
               HorizontalOptions="Center"
@@ -213,59 +244,60 @@
             
             <!--HOME_X -->
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
-            <BoxView
-               x:Name="Home_X"
-               Color="LightGray"
-               CornerRadius="10"
-               Grid.Row="3"
-               Grid.Column="3"
-               Margin="30,0,0,0"
-               WidthRequest="70"
-               HeightRequest="30"
-               VerticalOptions="Fill"
-               HorizontalOptions="Fill"/>
+        <VerticalStackLayout
+            Grid.Row="2"
+            Grid.Column="0"
+            Spacing="2"
+            Margin="10,-30,0,100"
+            HorizontalOptions="Start"
+            VerticalOptions="Center">
 
-            <Label 
-               Text="HOMEX"
-               FontAttributes="Bold"
-               TextColor="Black"
-               FontSize="16"
-               Grid.Row="4"
-               Grid.Column="3"
-               Margin="70,0,0,0"
-               WidthRequest="100"
-               HeightRequest="70"
-               HorizontalOptions="Center"
-               VerticalOptions="Center"/>
+            <BoxView
+           x:Name="Home_X"
+           Color="LightGray"
+           CornerRadius="10"
+           WidthRequest="70"
+           HeightRequest="30" />
+
+           <Label 
+           Text="HOMEX"
+           FontAttributes="Bold"
+           TextColor="Black"
+           FontSize="16"
+           Margin="30,0,0,100"
+           WidthRequest="100"
+           HeightRequest="30"
+           HorizontalOptions="Start"/>
+        </VerticalStackLayout>
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
             
             
             <!-- HOME_Y-->
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
-            <BoxView
-              x:Name="Home_Y"
-              Color="LightGray"
-              CornerRadius="10"
-              Grid.Row="5"
-              Grid.Column="2"
-              Margin="30,0,0,0"
-              WidthRequest="70"
-              HeightRequest="30"
-              VerticalOptions="Fill"
-              HorizontalOptions="Fill"/>
+        <VerticalStackLayout
+            Grid.Row="2"
+            Grid.Column="1"
+            Spacing="2"
+            Margin="10,-30,0,110"
+            HorizontalOptions="Start"
+            VerticalOptions="Center">
 
-                <Label 
-              Text="HOME_Y"
-              FontAttributes="Bold"
-              TextColor="Black"
-              FontSize="16"
-              Grid.Row="6"
-              Grid.Column="2"
-              Margin="70,0,0,0"
-              WidthRequest="100"
-              HeightRequest="70"
-              HorizontalOptions="Center"
-              VerticalOptions="Center"/>
+            <BoxView
+            x:Name="Home_Y"
+            Color="LightGray"
+            CornerRadius="10"
+            WidthRequest="70"
+            HeightRequest="30" />
+
+            <Label 
+            Text="HOME_Y"
+            FontAttributes="Bold"
+            TextColor="Black"
+            FontSize="16"
+            Margin="30,0,0,100"
+            WidthRequest="100"
+            HorizontalOptions="Start"/>
+        </VerticalStackLayout>
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
             
             
@@ -274,30 +306,31 @@
 
             <!-- HOME_Z-->
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
-            <BoxView
-              x:Name="Home_Z"
-              Color="LightGray"
-              CornerRadius="10"
-              Grid.Row="7"
-              Grid.Column="3"
-              Margin="30,0,0,0"
-              WidthRequest="70"
-              HeightRequest="30"
-              VerticalOptions="Fill"
-              HorizontalOptions="Fill"/>
+        <VerticalStackLayout
+           Grid.Row="2"
+           Grid.Column="2"
+           Spacing="2"
+           Margin="10,-30,0,110"
+           HorizontalOptions="Start"
+           VerticalOptions="Center">
 
-            <Label 
-              Text="HOME_Z"
-              FontAttributes="Bold"
-              TextColor="Black"
-              FontSize="16"
-              Grid.Row="9"
-              Grid.Column="2"
-              Margin="70,0,0,0"
-              WidthRequest="100"
-              HeightRequest="70"
-              HorizontalOptions="Center"
-              VerticalOptions="Center"/>
+            <BoxView
+            x:Name="Home_Z"
+            Color="LightGray"
+            CornerRadius="10"           
+            WidthRequest="70"
+            HeightRequest="30"/>
+
+             <Label 
+            Text="HOME_Z"
+            FontAttributes="Bold"
+            TextColor="Black"
+            FontSize="16"
+            Margin="30,0,0,100"
+            WidthRequest="100"
+            HorizontalOptions="Center"
+            VerticalOptions="Start"/>
+        </VerticalStackLayout>
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
             
             
@@ -311,7 +344,7 @@
                 BorderWidth="2"  
                 BorderColor="Black"  
                 Clicked="Improt_Mode_System"
-                Grid.Row="7"
+                Grid.Row="6"
                 Grid.Column="0"
                 Margin="0,0,0,0"
                 WidthRequest="100"
@@ -329,7 +362,7 @@
              FontAttributes="Bold"
              TextColor="Black"
              FontSize="16"
-             Grid.Row="8"
+             Grid.Row="7"
              Grid.Column="0"
              Margin="60,0,0,50"
              WidthRequest="110"
@@ -348,7 +381,7 @@
                 BorderWidth="2"  
                 BorderColor="Black" 
                 Clicked="Export_Mode_System"
-                Grid.Row="7"
+                Grid.Row="6"
                 Grid.Column="1"
                 Margin="30,0,0,0"
                 WidthRequest="100"
@@ -367,7 +400,7 @@
              FontAttributes="Bold"
              TextColor="Black"
              FontSize="16"
-             Grid.Row="8"
+             Grid.Row="7"
              Grid.Column="1"
              Margin="90,0,0,50"
              WidthRequest="110"

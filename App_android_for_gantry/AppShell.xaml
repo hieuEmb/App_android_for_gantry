@@ -9,6 +9,7 @@
     xmlns:exportmode="clr-namespace:App_android_for_gantry.Pages.ExportMode"
     xmlns:importmode="clr-namespace:App_android_for_gantry.Pages.ImportMode"
     xmlns:manualMode="clr-namespace:App_android_for_gantry.Pages.ManualMode"
+    xmlns:autoMode="clr-namespace:App_android_for_gantry.Pages.AutoMode"
     xmlns:storage="clr-namespace:App_android_for_gantry.Pages.Storage"
     xmlns:alarm="clr-namespace:App_android_for_gantry.Pages.Alarm"
     xmlns:resetethercat="clr-namespace:App_android_for_gantry.Pages.ResetEthercat"
@@ -47,15 +48,15 @@
        Route="ManualModePage"/>
 
     <ShellContent 
+       Title="Auto" 
+       ContentTemplate="{DataTemplate autoMode:AutoModePage}" 
+       Route="AutoModePage"/>
+
+
+    <ShellContent 
        Title="Storage" 
        ContentTemplate="{DataTemplate storage:StoragePage}" 
        Route="StoragePage"/>
-
-    <ShellContent 
-     Title="Alarm" 
-     ContentTemplate="{DataTemplate alarm:AlarmPage}" 
-     Route=" AlarmPage"/>
-
 
     <ShellContent 
      Title="Alarm" 

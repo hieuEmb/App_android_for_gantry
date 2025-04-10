@@ -105,36 +105,84 @@ namespace App_android_for_gantry
             Start.Background = Colors.LightGray;
         }
 
-        // Auto_Mode
-        private async void Auto_Mode_System(object sender, EventArgs e)
-        {
-            Auto_Mode.Background = Colors.Green;
-            await _modbusService.WriteHoldingRegisterAsync(1, 10, 1); // Ghi giá trị 1 vào MW10
-            Man_Mode.Background = Colors.LightGray;
-        }
 
-        // Man_mode
-        private async void Man_Mode_System(object sender, EventArgs e)
-        {
-            Man_Mode.Background = Colors.Green;
-            await _modbusService.WriteHoldingRegisterAsync(1, 12, 1); // Ghi giá trị 1 vào MW10
-            Auto_Mode.Background = Colors.LightGray;
-        }
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // Auto_Mode
+        //private async void Auto_Mode_System(object sender, EventArgs e)
+        //{
+        //    Auto_Mode.Background = Colors.Green;
+        //    await _modbusService.WriteHoldingRegisterAsync(1, 10, 1); // Ghi giá trị 1 vào MW10
+        //    Man_Mode.Background = Colors.LightGray;
+        //}
+
+
+        //// Man_mode
+        //private async void Man_Mode_System(object sender, EventArgs e)
+        //{
+        //    Man_Mode.Background = Colors.Green;
+        //    await _modbusService.WriteHoldingRegisterAsync(1, 12, 1); // Ghi giá trị 1 vào MW10
+        //    Auto_Mode.Background = Colors.LightGray;
+        //}
 
         // Import_Mode
-        private async void Improt_Mode_System(object sender, EventArgs e)
-        {
-            Improt_Mode.Background = Colors.Green;
-            await _modbusService.WriteHoldingRegisterAsync(1, 18, 1); // Ghi giá trị 1 vào MW10
-            Export_Mode.Background = Colors.LightGray;
-        }
+        //private async void Improt_Mode_System(object sender, EventArgs e)
+        //{
+        //    Improt_Mode.Background = Colors.Green;
+        //    await _modbusService.WriteHoldingRegisterAsync(1, 18, 1); // Ghi giá trị 1 vào MW10
+        //    Export_Mode.Background = Colors.LightGray;
+        //}
 
         // Export_mode
+        //private async void Export_Mode_System(object sender, EventArgs e)
+        //{
+        //    Export_Mode.Background = Colors.Green;
+        //    await _modbusService.WriteHoldingRegisterAsync(1, 22, 1); // Ghi giá trị 1 vào MW10
+        //    Improt_Mode.Background = Colors.LightGray;
+        //}
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+        // Dieu huong trang Auto
+        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //private async void Auto_Mode_System(object sender, EventArgs e)
+        //{
+        //    await Shell.Current.GoToAsync("//AutoModePage");
+        //}
+
+        // Dieu huong trang Man
+        private async void Man_Mode_System(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync("//ManualModePage");
+        }
+
+        // Dieu huong trang Import
+        private async void Improt_Mode_System(object sender, EventArgs e)
+        {
+            await Shell.Current.GoToAsync("//ImportModePage");
+        }
+
+        // Dieu huong trang Export
         private async void Export_Mode_System(object sender, EventArgs e)
         {
-            Export_Mode.Background = Colors.Green;
-            await _modbusService.WriteHoldingRegisterAsync(1, 22, 1); // Ghi giá trị 1 vào MW10
-            Improt_Mode.Background = Colors.LightGray;
+            await Shell.Current.GoToAsync("//ExportModePage");
+        }
+
+
+
+        private async void ModeSwitch_Toggled(object sender, ToggledEventArgs e)
+        {
+            if (e.Value)
+            {
+                // AUTO mode
+                await _modbusService.WriteHoldingRegisterAsync(1, 10, 1);
+                await _modbusService.WriteHoldingRegisterAsync(1, 12, 0);
+            }
+            else
+            {
+                // MANUAL mode
+                await _modbusService.WriteHoldingRegisterAsync(1, 12, 1);
+                await _modbusService.WriteHoldingRegisterAsync(1, 10, 0);
+            }
         }
 
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -142,4 +190,4 @@ namespace App_android_for_gantry
 
 
 
-    }
+}
