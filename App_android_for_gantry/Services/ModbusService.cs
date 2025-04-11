@@ -99,6 +99,49 @@ namespace App_android_for_gantry.Services // Dung namespace de to chuc cau truc 
         /// Đọc trạng thái của Coil (bit ON/OFF)
         /// </summary>
         /// 
+        public async Task StartReadingCoilAsync(BoxView boxView, byte slaveId, ushort registerAddress)
+        {
+            _isReading = true;
+
+            while (IsConnected && _isReading)
+            {
+                try
+                {
+                    if (IsConnected && _isReading)
+                    {
+                        bool Register_State = await ReadCoilAsBoolAsync(slaveId, registerAddress);
+
+                        // Cập nhật UI trên MainThread
+                        MainThread.BeginInvokeOnMainThread(() =>
+                        {
+                            boxView.Color = Register_State ? Colors.Green : Colors.Red;
+                        });
+                    }
+
+                }
+                catch
+                {
+
+                }
+                await Task.Delay(500);
+            }
+        }
+
+        public async Task<bool> ReadCoilAsBoolAsync(byte slaveId, ushort registerAddress)
+        {
+            if (_modbusMaster == null || _tcpClient == null || !_tcpClient.Connected)
+                throw new InvalidOperationException("Chưa kết nối PLC");
+
+            // Đọc 1 thanh ghi tại địa chỉ truyền vào
+            // Đọc 1 coil (bit) tại địa chỉ truyền vào
+            bool[] coils = await Task.Run(() => _modbusMaster.ReadCoils(slaveId, registerAddress, 1));
+
+            // In giá trị thanh ghi ra console
+            //System.Diagnostics.Debug.WriteLine($"Giá trị thanh ghi tại {registerAddress}: {register[0]}");
+
+            // Lấy bit 0 của thanh ghi (chuyển đổi sang bool)
+            return coils[0];
+        }
 
         public async Task<bool[]> ReadCoilsAsync(byte slaveId, ushort startAddress, ushort count)
         {
@@ -110,7 +153,7 @@ namespace App_android_for_gantry.Services // Dung namespace de to chuc cau truc 
         
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         /// <summary>
-        /// Đọc giá trị từ PLC và cập nhật BoxView liên tục
+        /// Đọc giá trị từ PLC và cập nhật BoxView liên tục cho trạng thái home
         /// </summary>
         public async Task StartReadingRegisterAsync(BoxView boxView, byte slaveId, ushort registerAddress)
         {

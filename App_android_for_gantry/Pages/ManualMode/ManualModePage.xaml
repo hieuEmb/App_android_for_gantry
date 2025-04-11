@@ -7,19 +7,21 @@
     <ScrollView>
 
         <Grid
-            RowDefinitions="*,*,*,*,*,*,*,*"
+            RowDefinitions="*,*,*,*,*,*,*,*,*,*"
             ColumnDefinitions="*,*,*"
             Padding="5">
 
 
-            <!-- Bang_tai_MAN-->
+            
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
             <Image
-            Source="bg.png"
-            Grid.Row="2"
+            Source="tab_manual_image.png"
+            Grid.Row="4"
             Grid.Column="0"
             Grid.ColumnSpan="3"
-            Margin="0,0,0,0"
+            WidthRequest="400"
+            HeightRequest="320"
+            Margin="0,-90,0,50"
             Aspect="AspectFit"
             HorizontalOptions="Fill"
             VerticalOptions="Center" />
@@ -34,7 +36,7 @@
                 BorderColor="Black" 
                 Pressed="Bang_Tai_Man_System_Pressed"
                 Released="Bang_Tai_Man_System_Released"
-                Grid.Row="7"
+                Grid.Row="9"
                 Grid.Column="2"
                 Margin="0,0,0,0"
                 WidthRequest="100"
@@ -58,7 +60,7 @@
                 BorderColor="Black"     
                 Pressed="Vacum_Man_System_Pressed"
                 Released="Vacum_Man_System_Released"
-                Grid.Row="7"
+                Grid.Row="9"
                 Grid.Column="0"
                 WidthRequest="100"
                 HeightRequest="70"
@@ -87,7 +89,7 @@
                BorderColor="Black"  
                Pressed="Jog_X_Down_System_Pressed"
                Released="Jog_X_Down_System_Released"
-               Grid.Row="5"
+               Grid.Row="7"
                Grid.Column="1"
                Margin="0,0,0,0"
                WidthRequest="100"
@@ -111,7 +113,7 @@
                BorderColor="Black"  
                Pressed="Jog_X_Up_System_Pressed"
                Released="Jog_X_Up_System_Released"
-               Grid.Row="3"
+               Grid.Row="5"
                Grid.Column="1"
                Margin="0,0,0,0"
                WidthRequest="100"
@@ -136,7 +138,7 @@
                BorderColor="Black"  
                Pressed="Jog_Y_Right_System_Pressed"
                Released="Jog_Y_Right_System_Released"
-               Grid.Row="4"
+               Grid.Row="6"
                Grid.Column="2"
                WidthRequest="100"
                HeightRequest="70"
@@ -160,7 +162,7 @@
                BorderColor="Black"  
                Pressed="Jog_Y_Left_System_Pressed"
                Released="Jog_Y_Left_System_Released"
-               Grid.Row="4"
+               Grid.Row="6"
                Grid.Column="0"
                Margin="0,0,0,0"
                WidthRequest="100"
@@ -184,9 +186,9 @@
                BorderColor="Black"
                Pressed="Jog_Z__Down_System_Pressed"
                Released="Jog_Z__Down_System_Released"
-               Grid.Row="6"
+               Grid.Row="8"
                Grid.Column="2"
-               Margin="0,0,0,0"
+               Margin="0,0,0,50"
                WidthRequest="100"
                HeightRequest="70"
                HorizontalOptions="Center"
@@ -208,9 +210,9 @@
                BorderColor="Black"
                Pressed="Jog_Z_Up_System_Pressed"
                Released="Jog_Z_Up_System_Released"
-               Grid.Row="6"
+               Grid.Row="8"
                Grid.Column="0"
-               Margin="0,0,0,0"
+               Margin="0,0,0,50"
                WidthRequest="100"
                HeightRequest="70"
                HorizontalOptions="Center"
@@ -310,6 +312,130 @@
                 HorizontalOptions="Center"
                 VerticalOptions="Center"/>
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
+            <!--BANG_TAI -->
+            <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
+            <VerticalStackLayout
+            Grid.Row="2"
+            Grid.Column="0"
+            Spacing="2"
+            Margin="-30,20,0,0"
+            HorizontalOptions="Start"
+            VerticalOptions="Center">
+
+                <BoxView
+           x:Name="Bang_tai"
+           Color="LightGray"
+           CornerRadius="10"
+           WidthRequest="70"
+           HeightRequest="30" />
+
+                <Label 
+           Text="CONVEY"
+           FontAttributes="Bold"
+           TextColor="Black"
+           FontSize="16"
+           Margin="30,0,0,100"
+           WidthRequest="100"
+           HeightRequest="30"
+           HorizontalOptions="Start"/>
+            </VerticalStackLayout>
+            <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
+
+            
+            
+            
+            <!--VANCUM -->
+            <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
+            <VerticalStackLayout
+            Grid.Row="3"
+            Grid.Column="0"
+            Spacing="2"
+            Margin="-30,-100,0,0"
+            HorizontalOptions="Start"
+            VerticalOptions="Center">
+
+                <BoxView
+           x:Name="Van_cum"
+           Color="LightGray"
+           CornerRadius="10"
+           WidthRequest="70"
+           HeightRequest="30" />
+
+                <Label 
+           Text="VANCUM"
+           FontAttributes="Bold"
+           TextColor="Black"
+           FontSize="16"
+           Margin="30,0,0,100"
+           WidthRequest="100"
+           HeightRequest="30"
+           HorizontalOptions="Start"/>
+            </VerticalStackLayout>
+            <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
+
+
+
+
+
+            <!--S1 -->
+            <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
+            <VerticalStackLayout
+            Grid.Row="2"
+            Grid.Column="2"
+            Spacing="2"
+            Margin="-30,25,0,0"
+            HorizontalOptions="Start"
+            VerticalOptions="Center">
+
+                <BoxView
+           x:Name="S1"
+           Color="LightGray"
+           CornerRadius="10"
+           WidthRequest="70"
+           HeightRequest="30" />
+
+                <Label 
+           Text="SENSOR 1"
+           FontAttributes="Bold"
+           TextColor="Black"
+           FontSize="16"
+           Margin="30,0,0,100"
+           WidthRequest="100"
+           HeightRequest="30"
+           HorizontalOptions="Start"/>
+            </VerticalStackLayout>
+            <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
+            
+            
+            <!--S2 -->
+            <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
+            <VerticalStackLayout
+            Grid.Row="3"
+            Grid.Column="2"
+            Spacing="2"
+            Margin="-30,-100,0,0"
+            HorizontalOptions="Start"
+            VerticalOptions="Center">
+
+                <BoxView
+           x:Name="S2"
+           Color="LightGray"
+           CornerRadius="10"
+           WidthRequest="70"
+           HeightRequest="30" />
+
+                <Label 
+           Text="SENSOR 2"
+           FontAttributes="Bold"
+           TextColor="Black"
+           FontSize="16"
+           Margin="30,0,0,100"
+           WidthRequest="100"
+           HeightRequest="30"
+           HorizontalOptions="Start"/>
+            </VerticalStackLayout>
+            <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
+
         </Grid>
     </ScrollView>
 </ContentPage>

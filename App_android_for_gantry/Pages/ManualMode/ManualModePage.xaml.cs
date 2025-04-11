@@ -128,4 +128,24 @@ public partial class ManualModePage : ContentPage
         await _modbusService.WriteHoldingRegisterAsync(1, 45, 0); // Ghi giá trị 1 vào MW30
         Jog_Z_Up.Background = Colors.BlueViolet;
     }
+
+    // Xử lý coil
+    private async Task ReadCoilModbusAsync()
+    {
+        System.Diagnostics.Debug.WriteLine($"IsConnected_1: {_modbusService.IsConnected}");
+        if (_modbusService.IsConnected) // Kiểm tra kết nối trực tiếp
+        {
+            await Task.WhenAll(
+                _modbusService.StartReadingCoilAsync(Bang_tai, 1, 0),
+                _modbusService.StartReadingCoilAsync(Van_cum, 1, 1)
+
+            );
+        }
+        else
+        {
+            Bang_tai.Color = Colors.LightGray;
+            Van_cum.Color = Colors.LightGray;
+            //Home_Z.Color = Colors.LightGray;
+        }
+    }
 }

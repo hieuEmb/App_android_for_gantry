@@ -12,6 +12,10 @@
             ColumnDefinitions="*,*,*"
             Padding="5">
 
+            
+            
+            
+            
             <!-- Trang thai ket noi -->
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
             <Image
@@ -25,9 +29,17 @@
             HeightRequest="320"
             HorizontalOptions="Fill"
             VerticalOptions="Center" />
-            <!-- Trang thai ket noi -->
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
 
+            
+            
+            
+            
+            
+            
+            
+            
+            
             <!-- Trang thai ket noi -->
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
             <BoxView
@@ -58,8 +70,14 @@
             
             
             
+            
+            
+            
+            
+            
+            
 
-            <!-- Nút nhấn Home -->
+            <!-- Button Home -->
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
             <Button 
                 x:Name="Start"                                                 
@@ -95,6 +113,17 @@
               VerticalOptions="Center"/>
             
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
             
             
             
@@ -137,43 +166,19 @@
             
             
 
-            <!--AUTO_MODE -->
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+            <!--Switch_MODE -->
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
-            <!--<Button
-               x:Name="Auto_Mode"
-               BackgroundColor="WhiteSmoke"
-               BorderWidth="2"  
-               BorderColor="Black" 
-               Clicked="Auto_Mode_System"
-               Grid.Row="5"
-               Grid.Column="0"
-               WidthRequest="100"
-               HeightRequest="70"
-               HorizontalOptions="Center"
-               VerticalOptions="Center">
-            <Button.ImageSource>
-                <FileImageSource File="auto_image.png" />
-                --><!-- Sử dụng hình ảnh PNG --><!--
-            </Button.ImageSource>
-            </Button>
-
-
-            <Label 
-              Text="AUTO"
-              FontAttributes="Bold"
-              TextColor="Black"
-              FontSize="16"
-              Grid.Row="6"
-              Grid.Column="0"
-              Margin="70,0,0,50"
-              WidthRequest="110"
-              HeightRequest="20"
-              HorizontalOptions="Center"
-              VerticalOptions="Center"/>-->
-
-
-             <!-- Hình ảnh đại diện cho chế độ AUTO -->
-
             <!-- Nút gạt -->
             <Switch x:Name="modeSwitch"
                 Toggled="ModeSwitch_Toggled"
@@ -190,7 +195,7 @@
 
             <!-- Nhãn AUTO/Man -->
             <Label 
-              Text="AUTO"
+              Text="MAN/AUTO"
               FontAttributes="Bold"
               TextColor="Black"
               FontSize="16"
@@ -203,6 +208,13 @@
               VerticalOptions="Center"/>
 
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
+            
+            
+            
+            
+            
+            
+            
             
             
             <!--MAN_MODE -->
@@ -242,6 +254,11 @@
             
             
             
+            
+            
+            
+                
+            
             <!--HOME_X -->
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
         <VerticalStackLayout
@@ -270,6 +287,11 @@
            HorizontalOptions="Start"/>
         </VerticalStackLayout>
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
+            
+            
+            
+            
+            
             
             
             <!-- HOME_Y-->
@@ -303,6 +325,11 @@
             
             
             
+            
+            
+            
+            
+            
 
             <!-- HOME_Z-->
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
@@ -332,6 +359,10 @@
             VerticalOptions="Start"/>
         </VerticalStackLayout>
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
+            
+            
+            
+            
             
             
             
@@ -373,6 +404,10 @@
             
             
 
+            
+            
+            
+            
             <!-- EXPORT_MODE-->
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
             <Button

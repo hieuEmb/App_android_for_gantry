@@ -106,23 +106,7 @@ namespace App_android_for_gantry
         }
 
 
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        // Auto_Mode
-        //private async void Auto_Mode_System(object sender, EventArgs e)
-        //{
-        //    Auto_Mode.Background = Colors.Green;
-        //    await _modbusService.WriteHoldingRegisterAsync(1, 10, 1); // Ghi giá trị 1 vào MW10
-        //    Man_Mode.Background = Colors.LightGray;
-        //}
 
-
-        //// Man_mode
-        //private async void Man_Mode_System(object sender, EventArgs e)
-        //{
-        //    Man_Mode.Background = Colors.Green;
-        //    await _modbusService.WriteHoldingRegisterAsync(1, 12, 1); // Ghi giá trị 1 vào MW10
-        //    Auto_Mode.Background = Colors.LightGray;
-        //}
 
         // Import_Mode
         //private async void Improt_Mode_System(object sender, EventArgs e)
@@ -142,12 +126,6 @@ namespace App_android_for_gantry
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-        // Dieu huong trang Auto
-        /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        //private async void Auto_Mode_System(object sender, EventArgs e)
-        //{
-        //    await Shell.Current.GoToAsync("//AutoModePage");
-        //}
 
         // Dieu huong trang Man
         private async void Man_Mode_System(object sender, EventArgs e)
@@ -158,6 +136,7 @@ namespace App_android_for_gantry
         // Dieu huong trang Import
         private async void Improt_Mode_System(object sender, EventArgs e)
         {
+            await _modbusService.WriteHoldingRegisterAsync(1, 18, 1);
             await Shell.Current.GoToAsync("//ImportModePage");
         }
 
@@ -165,10 +144,11 @@ namespace App_android_for_gantry
         private async void Export_Mode_System(object sender, EventArgs e)
         {
             await Shell.Current.GoToAsync("//ExportModePage");
+            await _modbusService.WriteHoldingRegisterAsync(1, 22, 1);
         }
 
 
-
+        // Switch butoon
         private async void ModeSwitch_Toggled(object sender, ToggledEventArgs e)
         {
             if (e.Value)
