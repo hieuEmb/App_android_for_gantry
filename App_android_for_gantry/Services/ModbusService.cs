@@ -280,6 +280,24 @@ namespace App_android_for_gantry.Services // Dung namespace de to chuc cau truc 
 
         }
 
+        // Doc gia tri word
+        //////////////////////////////////////////////////////////////////////////////////////////////////
+        public async Task<ushort> ReadWordAsync(ushort address)
+        {
+            try
+            {
+                if (_modbusMaster == null || _tcpClient == null || !_tcpClient.Connected)
+                    throw new InvalidOperationException("Chưa kết nối PLC");
+
+                ushort[] medicine = await _modbusMaster.ReadHoldingRegistersAsync(1, address, 1);
+                return medicine[0];
+            }
+            catch (Exception)
+            {
+                return (ushort)_fallbackValue; // fallback nếu cần
+            }
+        }
+
         // Đọc được rồi
         // Đọc đúng hay sai
         // Đọc rồi có cập nhật giao diện hay không how to use Binding vs MainPage.xamls và MainPage.xamls.cs

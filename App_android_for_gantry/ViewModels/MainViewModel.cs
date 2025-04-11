@@ -15,6 +15,10 @@ namespace App_android_for_gantry.ViewModels // Dung namespace de to chuc file co
     // Pos_X
     public class MainViewModel : INotifyPropertyChanged
     {
+        /// <summary>
+        /// //////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// </summary>
+        // Pos_X
         private double _realPosX;
         public double RealPosX
         {
@@ -60,6 +64,60 @@ namespace App_android_for_gantry.ViewModels // Dung namespace de to chuc file co
         }
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+
+
+
+        /// Medicine
+        ///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // Medicine_A
+        private ushort _WorMedicineA;
+        public ushort WorMedicineA
+        {
+            get => _WorMedicineA;
+            set
+            {
+                if (_WorMedicineA != value)
+                {
+                    _WorMedicineA = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        // Medicine_B
+        private ushort _WorMedicineB;
+        public ushort WorMedicineB
+        {
+            get => _WorMedicineB;
+            set
+            {
+                if (_WorMedicineB != value)
+                {
+                    _WorMedicineB = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        // Medicine_C
+        private ushort _WorMedicineC;
+        public ushort WorMedicineC
+        {
+            get => _WorMedicineC;
+            set
+            {
+                if (_WorMedicineC != value)
+                {
+                    _WorMedicineC = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
         // Ham duoc goi khi gia tri cua _realPosX, _realPosY,_realPosZ
         /// //////////////////////////////////////////////////////////////////      
         public event PropertyChangedEventHandler? PropertyChanged;
@@ -75,6 +133,7 @@ namespace App_android_for_gantry.ViewModels // Dung namespace de to chuc file co
         {
             _modbusService = new ModbusService(); // Khoi tao class ModbusService su dung thong qua tu khoa  _modbusService, chi doc ra tu Class ModbusService
             StartReadingPositions();
+            StartReadingMedicine();
         }
 
         // Ham doc RealPosX, RealPosY, RealPosZ 
@@ -102,6 +161,43 @@ namespace App_android_for_gantry.ViewModels // Dung namespace de to chuc file co
                         RealPosX = Math.Round(await readXTask, 0);                       
                         RealPosY = Math.Round(await readYTask, 0);
                         RealPosZ = Math.Round(await readZTask, 0);
+
+                    }
+                    catch
+                    {
+
+                    }
+
+                    await Task.Delay(100);
+                }
+            });
+        }
+        // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+        public void StartReadingMedicine()
+        {
+            Task.Run(async () =>
+            {
+                await _modbusService.ConnectPLCAsync();
+                _isReading_Pos = true;
+                while (_isReading_Pos && _modbusService.IsConnected)
+                {                  
+                    try
+                    {
+                        // Đọc ba giá trị cùng lúc
+                        var wordATask = _modbusService.ReadWordAsync(190);
+                        var wordBTask = _modbusService.ReadWordAsync(58);
+                        var wordCTask = _modbusService.ReadWordAsync(60);
+
+                        // Đợi tất cả các tác vụ đọc xong
+                        await Task.WhenAll(wordATask, wordBTask, wordCTask);
+
+                        // Cập nhật các giá trị sau khi hoàn thành đọc
+                        WorMedicineA = wordATask.Result;
+                        WorMedicineB = wordBTask.Result;
+                        WorMedicineC = wordCTask.Result;
 
                     }
                     catch

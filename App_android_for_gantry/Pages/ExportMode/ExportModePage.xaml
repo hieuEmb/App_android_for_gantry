@@ -3,10 +3,131 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="App_android_for_gantry.Pages.ExportMode.ExportModePage"
              Title="ExportModePage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .ExportModePage!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <ScrollView>
+
+        <Grid
+      RowDefinitions="*,*,*,*,*,*,*,*,*"
+      ColumnDefinitions="*"
+      Padding="5">
+
+            <!--Vd -->
+            <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
+            <!--  -->
+            <Button 
+          x:Name=" Write"    
+          Text="Export"             
+          BorderWidth="2"  
+          BorderColor="Black" 
+          Clicked="Write_System"
+          Grid.Row="8"
+          Grid.Column="0"
+          Margin="0,0,0,0"
+          WidthRequest="100"
+          HeightRequest="70"
+          HorizontalOptions="Center"
+          VerticalOptions="Center"/>
+
+            <!--  -->
+            <Entry 
+          x:Name="entryValue" 
+          Placeholder="Nhập giá trị"
+          Keyboard="Numeric"
+          Grid.Row="0"
+          Grid.Column="1"
+          Margin="0,0,0,0"
+          WidthRequest="100"
+          HeightRequest="70"
+          HorizontalOptions="Center"
+          VerticalOptions="Center"/>
+            <!--BANG_TAI -->
+            <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
+
+
+
+            <!--TEXT -->
+            <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
+        <HorizontalStackLayout 
+        Grid.Row="0" 
+        Grid.Column="0"
+	    Margin="0,0,0,0"
+        HorizontalOptions="Center"
+        Spacing="20">
+
+                <Label 
+            Text="Product Type"
+            FontAttributes="Bold" 
+            FontSize="16"
+	        Margin="0,0,0,0"
+            WidthRequest="110"
+            HeightRequest="20"
+            VerticalOptions="Center"/>
+
+                <Label 
+            Text="Inventory quantity"
+            FontAttributes="Bold" 
+            FontSize="16"
+            Margin="0,0,0,0"
+            WidthRequest="150"
+            HeightRequest="20"
+            VerticalOptions="Center"/>
+
+                <Label 
+            Text="Export"
+            FontAttributes="Bold" 
+            FontSize="16"
+            Margin="0,0,0,0"
+            WidthRequest="80"
+            HeightRequest="20"
+            VerticalOptions="Center"/>
+        </HorizontalStackLayout>
+            <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
+
+
+
+            <!--A -->
+            <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
+        <HorizontalStackLayout 
+            Grid.Row="1" 
+            Grid.Column="0"
+            Margin="0,0,0,0"
+            HorizontalOptions="Center"
+            Spacing="20"
+            VerticalOptions="Center">
+
+            <Label 
+            Text="Medicine A"
+            FontAttributes="Bold" 
+            FontSize="16"
+            Margin="0,0,0,0"
+            WidthRequest="110"
+            HeightRequest="20"
+            VerticalOptions="Center"/>
+
+            <Label 
+            Text="{Binding WorMedicineA}" 
+            FontAttributes="Bold"
+            TextColor="Black"
+            FontSize="16"
+            Margin="0,0,0,0"
+            WidthRequest="110"
+            HeightRequest="20"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"/>
+
+            <Entry 
+            x:Name="entryValue_A" 
+            Placeholder="Nhập giá trị"
+            Keyboard="Numeric"
+            Margin="0,0,0,0"
+            WidthRequest="100"
+            HeightRequest="40"
+            FontSize="14"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"/>
+        </HorizontalStackLayout>
+
+            <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
+
+        </Grid>
+    </ScrollView>
 </ContentPage>
