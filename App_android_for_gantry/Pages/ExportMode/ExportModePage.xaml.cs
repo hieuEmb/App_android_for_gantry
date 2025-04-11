@@ -23,10 +23,10 @@ public partial class ExportModePage : ContentPage
         ViewModel.StartReadingMedicine();
     }
 
-    // Write
+    // Xac nhan
     private async void Write_System(object sender, EventArgs e)
     {
-        // Ki?m tra xem Entry có d? li?u không
+        // Kiem tra xem Entry có du lieu không
         if (ushort.TryParse(entryValue_A.Text, out ushort value))
         {
             try
@@ -34,16 +34,16 @@ public partial class ExportModePage : ContentPage
                 System.Diagnostics.Debug.WriteLine($"value: {value}");
                 // Ghi giá tr? vào thanh ghi Modbus
                 await _modbusService.WriteHoldingRegisterAsync(1, 191, value);
-                await DisplayAlert("Thành công", $"?ã ghi {value} vào thanh ghi MW0", "OK");
+                await DisplayAlert("Thành công", $" Xu?t {value} s?n ph?m", "OK");
             }
             catch (Exception ex)
             {
-                await DisplayAlert("L?i", $"Không th? ghi d? li?u: {ex.Message}", "OK");
+                await DisplayAlert("L?i", $"Xu?t s?n ph?m th?t b?i: {ex.Message}", "OK");
             }
         }
         else
         {
-            await DisplayAlert("L?i", "Vui lòng nh?p s? h?p l?!", "OK");
+            await DisplayAlert("L?i", "Vui lòng s? l??ng s?n ph?m h?p l?!", "OK");
         }
     }
 }

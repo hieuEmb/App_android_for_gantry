@@ -2,7 +2,8 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="App_android_for_gantry.Pages.ExportMode.ExportModePage"
-             Title="ExportModePage">
+             Title="ExportModePage"
+             BackgroundImageSource="bg_1.jpg">
     <ScrollView>
 
         <Grid
@@ -15,30 +16,19 @@
             <!--  -->
             <Button 
           x:Name=" Write"    
-          Text="Export"             
-          BorderWidth="2"  
+          Text="Xác nhận"
+          BackgroundColor="Blue"
+          BorderWidth="1"  
           BorderColor="Black" 
           Clicked="Write_System"
           Grid.Row="8"
           Grid.Column="0"
           Margin="0,0,0,0"
-          WidthRequest="100"
+          WidthRequest="140"
           HeightRequest="70"
           HorizontalOptions="Center"
           VerticalOptions="Center"/>
 
-            <!--  -->
-            <Entry 
-          x:Name="entryValue" 
-          Placeholder="Nhập giá trị"
-          Keyboard="Numeric"
-          Grid.Row="0"
-          Grid.Column="1"
-          Margin="0,0,0,0"
-          WidthRequest="100"
-          HeightRequest="70"
-          HorizontalOptions="Center"
-          VerticalOptions="Center"/>
             <!--BANG_TAI -->
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
 
@@ -53,7 +43,7 @@
         HorizontalOptions="Center"
         Spacing="20">
 
-                <Label 
+        <Label 
             Text="Product Type"
             FontAttributes="Bold" 
             FontSize="16"
@@ -62,7 +52,7 @@
             HeightRequest="20"
             VerticalOptions="Center"/>
 
-                <Label 
+        <Label 
             Text="Inventory quantity"
             FontAttributes="Bold" 
             FontSize="16"
@@ -71,7 +61,7 @@
             HeightRequest="20"
             VerticalOptions="Center"/>
 
-                <Label 
+        <Label 
             Text="Export"
             FontAttributes="Bold" 
             FontSize="16"
@@ -117,6 +107,7 @@
             <Entry 
             x:Name="entryValue_A" 
             Placeholder="Nhập giá trị"
+            PlaceholderColor="Black"
             Keyboard="Numeric"
             Margin="0,0,0,0"
             WidthRequest="100"
