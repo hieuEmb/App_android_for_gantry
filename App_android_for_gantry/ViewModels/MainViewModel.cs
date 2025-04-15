@@ -116,6 +116,69 @@ namespace App_android_for_gantry.ViewModels // Dung namespace de to chuc file co
         }
 
 
+        // Medicine_D
+        private ushort _WorMedicineD;
+        public ushort WorMedicineD
+        {
+            get => _WorMedicineD;
+            set
+            {
+                if (_WorMedicineD != value)
+                {
+                    _WorMedicineD = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+
+        // Medicine_E
+        private ushort _WorMedicineE;
+        public ushort WorMedicineE
+        {
+            get => _WorMedicineE;
+            set
+            {
+                if (_WorMedicineE != value)
+                {
+                    _WorMedicineE = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+
+        // Medicine_F
+        private ushort _WorMedicineF;
+        public ushort WorMedicineF
+        {
+            get => _WorMedicineF;
+            set
+            {
+                if (_WorMedicineF != value)
+                {
+                    _WorMedicineF = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        // Medicine_G
+        private ushort _WorMedicineG;
+        public ushort WorMedicineG
+        {
+            get => _WorMedicineG;
+            set
+            {
+                if (_WorMedicineG != value)
+                {
+                    _WorMedicineG = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
         // Ham duoc goi khi gia tri cua _realPosX, _realPosY,_realPosZ
@@ -154,6 +217,7 @@ namespace App_android_for_gantry.ViewModels // Dung namespace de to chuc file co
                         var readYTask = _modbusService.ReadLREALAsync(4);
                         var readZTask = _modbusService.ReadLREALAsync(6);
 
+
                         // Đợi tất cả các tác vụ đọc xong
                         await Task.WhenAll(readXTask, readYTask, readZTask);
 
@@ -187,10 +251,13 @@ namespace App_android_for_gantry.ViewModels // Dung namespace de to chuc file co
                     try
                     {
                         // Đọc ba giá trị cùng lúc
-                        var wordATask = _modbusService.ReadWordAsync(190);
+                        var wordATask = _modbusService.ReadWordAsync(55);
                         var wordBTask = _modbusService.ReadWordAsync(58);
                         var wordCTask = _modbusService.ReadWordAsync(60);
-
+                        var wordDTask = _modbusService.ReadWordAsync(62);
+                        var wordETask = _modbusService.ReadWordAsync(67);
+                        var wordFTask = _modbusService.ReadWordAsync(70);
+                        var wordGTask = _modbusService.ReadWordAsync(72);
                         // Đợi tất cả các tác vụ đọc xong
                         await Task.WhenAll(wordATask, wordBTask, wordCTask);
 
@@ -198,6 +265,10 @@ namespace App_android_for_gantry.ViewModels // Dung namespace de to chuc file co
                         WorMedicineA = wordATask.Result;
                         WorMedicineB = wordBTask.Result;
                         WorMedicineC = wordCTask.Result;
+                        WorMedicineD = wordDTask.Result;
+                        WorMedicineE = wordETask.Result;
+                        WorMedicineF = wordFTask.Result;
+                        WorMedicineG = wordGTask.Result;
 
                     }
                     catch

@@ -17,15 +17,15 @@
             <Button 
           x:Name=" Write"    
           Text="Xác nhận"
-          BackgroundColor="Blue"
+          BackgroundColor="Green"
           BorderWidth="1"  
           BorderColor="Black" 
           Clicked="Write_System"
           Grid.Row="8"
           Grid.Column="0"
-          Margin="0,0,0,0"
-          WidthRequest="140"
-          HeightRequest="70"
+          Margin="280,0,0,0"
+          WidthRequest="100"
+          HeightRequest="50"
           HorizontalOptions="Center"
           VerticalOptions="Center"/>
 
@@ -44,7 +44,7 @@
         Spacing="20">
 
         <Label 
-            Text="Product Type"
+            Text="Product"
             FontAttributes="Bold" 
             FontSize="16"
 	        Margin="0,0,0,0"
@@ -53,7 +53,7 @@
             VerticalOptions="Center"/>
 
         <Label 
-            Text="Inventory quantity"
+            Text="Quantity"
             FontAttributes="Bold" 
             FontSize="16"
             Margin="0,0,0,0"
@@ -98,7 +98,7 @@
             FontAttributes="Bold"
             TextColor="Black"
             FontSize="16"
-            Margin="0,0,0,0"
+            Margin="20,0,0,0"
             WidthRequest="110"
             HeightRequest="20"
             VerticalOptions="Center"
@@ -116,6 +116,282 @@
             HorizontalOptions="Center"
             VerticalOptions="Center"/>
         </HorizontalStackLayout>
+
+            <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
+
+
+
+            <!--B -->
+            <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
+            <HorizontalStackLayout 
+            Grid.Row="2" 
+            Grid.Column="0"
+            Margin="0,0,0,0"
+            HorizontalOptions="Center"
+            Spacing="20"
+            VerticalOptions="Center">
+
+                <Label 
+            Text="Medicine B"
+            FontAttributes="Bold" 
+            FontSize="16"
+            Margin="0,0,0,0"
+            WidthRequest="110"
+            HeightRequest="20"
+            VerticalOptions="Center"/>
+
+                <Label 
+            Text="{Binding WorMedicineB}" 
+            FontAttributes="Bold"
+            TextColor="Black"
+            FontSize="16"
+            Margin="20,0,0,0"
+            WidthRequest="110"
+            HeightRequest="20"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"/>
+
+                <Entry 
+            x:Name="entryValue_B" 
+            Placeholder="Nhập giá trị"
+            PlaceholderColor="Black"
+            Keyboard="Numeric"
+            Margin="0,0,0,0"
+            WidthRequest="100"
+            HeightRequest="40"
+            FontSize="14"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"/>
+            </HorizontalStackLayout>
+
+            <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
+
+            <!--C -->
+            <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
+            <HorizontalStackLayout 
+           Grid.Row="3" 
+           Grid.Column="0"
+           Margin="0,0,0,0"
+           HorizontalOptions="Center"
+           Spacing="20"
+           VerticalOptions="Center">
+
+                <Label 
+           Text="Medicine C"
+           FontAttributes="Bold" 
+           FontSize="16"
+           Margin="0,0,0,0"
+           WidthRequest="110"
+           HeightRequest="20"
+           VerticalOptions="Center"/>
+
+                <Label 
+           Text="{Binding WorMedicineC}" 
+           FontAttributes="Bold"
+           TextColor="Black"
+           FontSize="16"
+           Margin="20,0,0,0"
+           WidthRequest="110"
+           HeightRequest="20"
+           VerticalOptions="Center"
+           HorizontalOptions="Center"/>
+
+                <Entry 
+           x:Name="entryValue_C" 
+           Placeholder="Nhập giá trị"
+           PlaceholderColor="Black"
+           Keyboard="Numeric"
+           Margin="0,0,0,0"
+           WidthRequest="100"
+           HeightRequest="40"
+           FontSize="14"
+           HorizontalOptions="Center"
+           VerticalOptions="Center"/>
+            </HorizontalStackLayout>
+
+            <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
+
+
+            <!--D -->
+            <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
+            <HorizontalStackLayout 
+           Grid.Row="4" 
+           Grid.Column="0"
+           Margin="0,0,0,0"
+           HorizontalOptions="Center"
+           Spacing="20"
+           VerticalOptions="Center">
+
+                <Label 
+           Text="Medicine D"
+           FontAttributes="Bold" 
+           FontSize="16"
+           Margin="0,0,0,0"
+           WidthRequest="110"
+           HeightRequest="20"
+           VerticalOptions="Center"/>
+
+                <Label 
+           Text="{Binding WorMedicineD}" 
+           FontAttributes="Bold"
+           TextColor="Black"
+           FontSize="16"
+           Margin="20,0,0,0"
+           WidthRequest="110"
+           HeightRequest="20"
+           VerticalOptions="Center"
+           HorizontalOptions="Center"/>
+
+                <Entry 
+           x:Name="entryValue_D" 
+           Placeholder="Nhập giá trị"
+           PlaceholderColor="Black"
+           Keyboard="Numeric"
+           Margin="0,0,0,0"
+           WidthRequest="100"
+           HeightRequest="40"
+           FontSize="14"
+           HorizontalOptions="Center"
+           VerticalOptions="Center"/>
+            </HorizontalStackLayout>
+
+            <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
+
+
+            <!--E -->
+            <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
+            <HorizontalStackLayout 
+           Grid.Row="5" 
+           Grid.Column="0"
+           Margin="0,0,0,0"
+           HorizontalOptions="Center"
+           Spacing="20"
+           VerticalOptions="Center">
+
+                <Label 
+           Text="Medicine E"
+           FontAttributes="Bold" 
+           FontSize="16"
+           Margin="0,0,0,0"
+           WidthRequest="110"
+           HeightRequest="20"
+           VerticalOptions="Center"/>
+
+                <Label 
+           Text="{Binding WorMedicineE}" 
+           FontAttributes="Bold"
+           TextColor="Black"
+           FontSize="16"
+           Margin="20,0,0,0"
+           WidthRequest="110"
+           HeightRequest="20"
+           VerticalOptions="Center"
+           HorizontalOptions="Center"/>
+
+                <Entry 
+           x:Name="entryValue_E" 
+           Placeholder="Nhập giá trị"
+           PlaceholderColor="Black"
+           Keyboard="Numeric"
+           Margin="0,0,0,0"
+           WidthRequest="100"
+           HeightRequest="40"
+           FontSize="14"
+           HorizontalOptions="Center"
+           VerticalOptions="Center"/>
+            </HorizontalStackLayout>
+
+            <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
+
+            <!--F -->
+            <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
+            <HorizontalStackLayout 
+           Grid.Row="6" 
+           Grid.Column="0"
+           Margin="0,0,0,0"
+           HorizontalOptions="Center"
+           Spacing="20"
+           VerticalOptions="Center">
+
+                <Label 
+           Text="Medicine F"
+           FontAttributes="Bold" 
+           FontSize="16"
+           Margin="0,0,0,0"
+           WidthRequest="110"
+           HeightRequest="20"
+           VerticalOptions="Center"/>
+
+                <Label 
+           Text="{Binding WorMedicineF}" 
+           FontAttributes="Bold"
+           TextColor="Black"
+           FontSize="16"
+           Margin="20,0,0,0"
+           WidthRequest="110"
+           HeightRequest="20"
+           VerticalOptions="Center"
+           HorizontalOptions="Center"/>
+
+                <Entry 
+           x:Name="entryValue_F" 
+           Placeholder="Nhập giá trị"
+           PlaceholderColor="Black"
+           Keyboard="Numeric"
+           Margin="0,0,0,0"
+           WidthRequest="100"
+           HeightRequest="40"
+           FontSize="14"
+           HorizontalOptions="Center"
+           VerticalOptions="Center"/>
+            </HorizontalStackLayout>
+
+            <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
+
+
+
+            <!--G -->
+            <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
+            <HorizontalStackLayout 
+           Grid.Row="7" 
+           Grid.Column="0"
+           Margin="0,0,0,0"
+           HorizontalOptions="Center"
+           Spacing="20"
+           VerticalOptions="Center">
+
+                <Label 
+           Text="Medicine G"
+           FontAttributes="Bold" 
+           FontSize="16"
+           Margin="0,0,0,0"
+           WidthRequest="110"
+           HeightRequest="20"
+           VerticalOptions="Center"/>
+
+                <Label 
+           Text="{Binding WorMedicineG}" 
+           FontAttributes="Bold"
+           TextColor="Black"
+           FontSize="16"
+           Margin="20,0,0,0"
+           WidthRequest="110"
+           HeightRequest="20"
+           VerticalOptions="Center"
+           HorizontalOptions="Center"/>
+
+                <Entry 
+           x:Name="entryValue_G" 
+           Placeholder="Nhập giá trị"
+           PlaceholderColor="Black"
+           Keyboard="Numeric"
+           Margin="0,0,0,0"
+           WidthRequest="100"
+           HeightRequest="40"
+           FontSize="14"
+           HorizontalOptions="Center"
+           VerticalOptions="Center"/>
+            </HorizontalStackLayout>
 
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
 

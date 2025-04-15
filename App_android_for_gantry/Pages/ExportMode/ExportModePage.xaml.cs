@@ -1,4 +1,4 @@
-using App_android_for_gantry.Services;
+﻿using App_android_for_gantry.Services;
 using App_android_for_gantry.ViewModels;
 using Microsoft.Maui.Networking;
 using System.ComponentModel;
@@ -26,24 +26,44 @@ public partial class ExportModePage : ContentPage
     // Xac nhan
     private async void Write_System(object sender, EventArgs e)
     {
-        // Kiem tra xem Entry c� du lieu kh�ng
-        if (ushort.TryParse(entryValue_A.Text, out ushort value))
+        try
         {
-            try
+            var entries = new List<(Entry entry, ushort address)>
+        {
+            (entryValue_A, 112),
+            (entryValue_B, 114),
+            (entryValue_C, 116),
+            (entryValue_D, 118),
+            (entryValue_E, 120),
+            (entryValue_F, 122),
+            (entryValue_G, 124),
+        };
+
+            bool hasWritten = false;
+
+            foreach (var (entry, address) in entries)
             {
-                System.Diagnostics.Debug.WriteLine($"value: {value}");
-                // Ghi gi� tr? v�o thanh ghi Modbus
-                await _modbusService.WriteHoldingRegisterAsync(1, 191, value);
-                await DisplayAlert("Th�nh c�ng", $" Xu?t {value} s?n ph?m", "OK");
+                if (!string.IsNullOrWhiteSpace(entry.Text) && ushort.TryParse(entry.Text, out ushort value))
+                {
+                    await _modbusService.WriteHoldingRegisterAsync(1, address, value);
+                    
+                    System.Diagnostics.Debug.WriteLine($"Ghi {value} vào địa chỉ {address}");
+                    hasWritten = true;
+                }
             }
-            catch (Exception ex)
+
+            if (hasWritten)
             {
-                await DisplayAlert("L?i", $"Xu?t s?n ph?m th?t b?i: {ex.Message}", "OK");
+                await _modbusService.WriteHoldingRegisterAsync(1, 126, 1); // Trigger chỉ khi có Entry hợp lệ
+                await DisplayAlert("Thành công", "Đã ghi các giá trị đã nhập thành công!", "OK");
             }
+            else
+                await DisplayAlert("Thông báo", "Không có ô nào được nhập giá trị!", "OK");
         }
-        else
+        catch (Exception ex)
         {
-            await DisplayAlert("L?i", "Vui l�ng s? l??ng s?n ph?m h?p l?!", "OK");
+            await DisplayAlert("Lỗi", $"Ghi dữ liệu thất bại: {ex.Message}", "OK");
         }
     }
+
 }
