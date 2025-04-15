@@ -20,6 +20,7 @@ public partial class ManualModePage : ContentPage
         base.OnAppearing();
         await _modbusService.ConnectPLCAsync();// Boxview HOMEx, Homey, HomeZ
         _ = ReadCoilModbusAsync();
+        _ = ReadInputsModbusAsync();
         ViewModel.StartReadingPositions();
     }
     // Bang_tai
@@ -137,8 +138,8 @@ public partial class ManualModePage : ContentPage
         if (_modbusService.IsConnected) // Kiểm tra kết nối trực tiếp
         {
             await Task.WhenAll(
-                _modbusService.StartReadingCoilAsync(Bang_tai, 1, 0),
-                _modbusService.StartReadingCoilAsync(Van_cum, 1, 1)
+                _modbusService.StartReadingCoilAsync(Bang_tai, 1, 1),
+                _modbusService.StartReadingCoilAsync(Van_cum, 1, 0)
 
             );
         }
@@ -146,6 +147,26 @@ public partial class ManualModePage : ContentPage
         {
             Bang_tai.Color = Colors.LightGray;
             Van_cum.Color = Colors.LightGray;
+            //Home_Z.Color = Colors.LightGray;
+        }
+    }
+
+
+    private async Task ReadInputsModbusAsync()
+    {
+        System.Diagnostics.Debug.WriteLine($"IsConnected_1: {_modbusService.IsConnected}");
+        if (_modbusService.IsConnected) // Kiểm tra kết nối trực tiếp
+        {
+            await Task.WhenAll(
+                _modbusService.StartReadingInputAsync(S1, 1, 0),
+                _modbusService.StartReadingInputAsync(S2, 1, 1)
+
+            );
+        }
+        else
+        {
+            S1.Color = Colors.LightGray;
+            S2.Color = Colors.LightGray;
             //Home_Z.Color = Colors.LightGray;
         }
     }
