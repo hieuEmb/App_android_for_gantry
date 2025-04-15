@@ -55,6 +55,14 @@ public partial class ExportModePage : ContentPage
             if (hasWritten)
             {
                 await _modbusService.WriteHoldingRegisterAsync(1, 126, 1); // Trigger chỉ khi có Entry hợp lệ
+                await Task.Delay(300); // Giữ trạng thái 1 trong 300ms
+                await _modbusService.WriteHoldingRegisterAsync(1, 126, 0); // Reset trigger về 0
+                // Xóa các giá trị nhập                                                          // Xoá nội dung các ô nhập
+                foreach (var (entry, _) in entries)
+                {
+                    entry.Text = string.Empty;
+                }
+                // thong bao
                 await DisplayAlert("Thành công", "Đã ghi các giá trị đã nhập thành công!", "OK");
             }
             else
@@ -64,6 +72,15 @@ public partial class ExportModePage : ContentPage
         {
             await DisplayAlert("Lỗi", $"Ghi dữ liệu thất bại: {ex.Message}", "OK");
         }
+    }
+
+    // Export_mode
+    private async void Export_System(object sender, EventArgs e)
+    {       
+        await _modbusService.WriteHoldingRegisterAsync(1, 22, 1); // Ghi giá trị 1 vào MW10
+        await Task.Delay(100);
+        await _modbusService.WriteHoldingRegisterAsync(1, 22, 0);
+
     }
 
 }

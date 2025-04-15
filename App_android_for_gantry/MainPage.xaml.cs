@@ -89,10 +89,9 @@ namespace App_android_for_gantry
         {
             Start.Background = Colors.Green;
             await _modbusService.WriteHoldingRegisterAsync(1, 0, 1); // Ghi giá trị 1 vào MW0
-            await Task.Delay(500);
+            await Task.Delay(100);
             await _modbusService.WriteHoldingRegisterAsync(1, 0, 0); // Reset về 0
-            await Task.Delay(500);
-            Stop.Background = Colors.LightGray;
+            Start.Background = Colors.WhiteSmoke;
         }
 
         // Stop
@@ -100,9 +99,9 @@ namespace App_android_for_gantry
         {
             Stop.Background = Colors.Green;
             await _modbusService.WriteHoldingRegisterAsync(1, 1, 1); // Ghi giá trị 1 vào MW1
-            await Task.Delay(500);
+            await Task.Delay(100);
             await _modbusService.WriteHoldingRegisterAsync(1, 1, 0); // Reset về 0
-            Start.Background = Colors.LightGray;
+            Stop.Background = Colors.WhiteSmoke;
         }
 
 
@@ -134,17 +133,19 @@ namespace App_android_for_gantry
         }
 
         // Dieu huong trang Import
-        private async void Improt_Mode_System(object sender, EventArgs e)
+        private async void 
+            Improt_Mode_System(object sender, EventArgs e)
         {
-            await _modbusService.WriteHoldingRegisterAsync(1, 18, 1);
+            //await _modbusService.WriteHoldingRegisterAsync(1, 18, 1);
             await Shell.Current.GoToAsync("//ImportModePage");
         }
 
         // Dieu huong trang Export
         private async void Export_Mode_System(object sender, EventArgs e)
         {
+            //await _modbusService.WriteHoldingRegisterAsync(1, 22, 1);
             await Shell.Current.GoToAsync("//ExportModePage");
-            await _modbusService.WriteHoldingRegisterAsync(1, 22, 1);
+           
         }
 
 

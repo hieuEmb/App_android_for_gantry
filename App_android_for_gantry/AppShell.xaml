@@ -23,24 +23,14 @@
         Route="MainPage" />
 
     <ShellContent 
-        Title="Settings" 
-        ContentTemplate="{DataTemplate settings:SettingPage}" 
-        Route="SettingPage"/>
-
-    <ShellContent 
-       Title="BillOder" 
-       ContentTemplate="{DataTemplate billoder:BillOderPage}" 
-       Route="BillOderPage"/>
-
-    <ShellContent 
-       Title="ExportMode" 
-       ContentTemplate="{DataTemplate exportmode:ExportModePage}" 
-       Route="ExportModePage"/>
-
-    <ShellContent 
        Title="ImportMode" 
        ContentTemplate="{DataTemplate importmode:ImportModePage}" 
        Route="ImportModePage"/>
+
+    <ShellContent 
+      Title="ExportMode" 
+      ContentTemplate="{DataTemplate exportmode:ExportModePage}" 
+      Route="ExportModePage"/>
 
     <ShellContent 
        Title="Manual" 
@@ -51,6 +41,16 @@
        Title="Auto" 
        ContentTemplate="{DataTemplate autoMode:AutoModePage}" 
        Route="AutoModePage"/>
+
+    <ShellContent 
+        Title="Settings" 
+        ContentTemplate="{DataTemplate settings:SettingPage}" 
+        Route="SettingPage"/>
+
+    <ShellContent 
+       Title="BillOder" 
+       ContentTemplate="{DataTemplate billoder:BillOderPage}" 
+       Route="BillOderPage"/>
 
 
     <ShellContent 

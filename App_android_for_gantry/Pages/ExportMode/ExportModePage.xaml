@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="App_android_for_gantry.Pages.ExportMode.ExportModePage"
              Title="ExportModePage"
-             BackgroundImageSource="bg_1.jpg">
+             >
     <ScrollView>
 
         <Grid
@@ -14,20 +14,40 @@
             <!--Vd -->
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
             <!--  -->
+
+            <HorizontalStackLayout 
+            Grid.Row="8"
+            Grid.Column="0"
+            Margin="0,0,0,0"
+            HorizontalOptions="Center"
+            Spacing="20">
+
             <Button 
-          x:Name=" Write"    
-          Text="Xác nhận"
-          BackgroundColor="Green"
-          BorderWidth="1"  
-          BorderColor="Black" 
-          Clicked="Write_System"
-          Grid.Row="8"
-          Grid.Column="0"
-          Margin="280,0,0,0"
-          WidthRequest="100"
-          HeightRequest="50"
-          HorizontalOptions="Center"
-          VerticalOptions="Center"/>
+            x:Name="Export"    
+            Text="Export"
+            BackgroundColor="Green"
+            BorderWidth="1"  
+            BorderColor="Black" 
+            Clicked="Export_System"
+            WidthRequest="100"
+            HeightRequest="50"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"/>
+
+            <Button 
+            x:Name="Write"    
+            Text="Comfirm"
+            BackgroundColor="Green"
+            BorderWidth="1"  
+            BorderColor="Black" 
+            Clicked="Write_System"
+            WidthRequest="100"
+            HeightRequest="50"
+            Margin="150,0,0,0"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"/>
+            </HorizontalStackLayout>
+
 
             <!--BANG_TAI -->
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->

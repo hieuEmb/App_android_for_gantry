@@ -3,15 +3,29 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="App_android_for_gantry.Pages.ImportMode.ImportModePage"
              Title="ImportModePage"
-             BackgroundImageSource="bg_1.jpg">
+            >
     <ScrollView>
 
         <Grid
-         RowDefinitions="*,*,*,*,*,*,*,*"
+         RowDefinitions="*,*,*,*,*,*,*,*,*"
          ColumnDefinitions="*,*"
          Padding="5">
 
 
+          <Button 
+          x:Name="Import"    
+          Text="Import"
+          BackgroundColor="Green"
+          BorderWidth="1"  
+          BorderColor="Black"   
+          Clicked="Import_System"
+          Grid.Row="8"
+          Grid.Column="0"
+          Margin="500,0,0,0"
+          WidthRequest="100"
+          HeightRequest="50"
+          HorizontalOptions="Center"
+          VerticalOptions="Center"/>
 
             <!--TEXT -->
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
