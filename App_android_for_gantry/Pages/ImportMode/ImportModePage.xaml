@@ -2,42 +2,288 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="App_android_for_gantry.Pages.ImportMode.ImportModePage"
-             Title="ImportModePage">
+             Title="ImportModePage"
+             BackgroundImageSource="bg_1.jpg">
     <ScrollView>
 
         <Grid
-         RowDefinitions="*"
+         RowDefinitions="*,*,*,*,*,*,*,*"
          ColumnDefinitions="*,*"
          Padding="5">
 
 
-            <!--  -->
-            <Button 
-             x:Name=" Write"    
-             Text="Write"             
-             BorderWidth="2"  
-             BorderColor="Black" 
-             Clicked="Write_System"
-             Grid.Row="0"
-             Grid.Column="0"
-             Margin="0,0,0,0"
-             WidthRequest="100"
-             HeightRequest="70"
-             HorizontalOptions="Center"
-             VerticalOptions="Center"/>
 
-            <!--  -->
-            <Entry 
-             x:Name="entryValue" 
-             Placeholder="Nhập giá trị"
-             Keyboard="Numeric"
-             Grid.Row="0"
-             Grid.Column="1"
-             Margin="0,0,0,0"
-             WidthRequest="100"
-             HeightRequest="70"
-             HorizontalOptions="Center"
-             VerticalOptions="Center"/>
+            <!--TEXT -->
+            <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
+            <HorizontalStackLayout 
+            Grid.Row="0" 
+            Grid.Column="0"
+            Margin="120,0,0,0"
+            HorizontalOptions="Center"
+            Spacing="0">
+
+            <Label 
+            Text="Product"
+            FontAttributes="Bold" 
+            FontSize="16"
+            Margin="0,0,0,0"
+            WidthRequest="110"
+            HeightRequest="20"
+            VerticalOptions="Center"/>
+
+                <Label 
+            Text="Quantity"
+            FontAttributes="Bold" 
+            FontSize="16"
+            Margin="0,0,0,0"
+            WidthRequest="150"
+            HeightRequest="20"
+            VerticalOptions="Center"/>
+            </HorizontalStackLayout>
+            <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
+
+
+
+            <!--A -->
+            <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
+            <HorizontalStackLayout 
+            Grid.Row="1" 
+            Grid.Column="0"
+            Margin="120,0,0,0"
+            HorizontalOptions="Center"
+            Spacing="0"
+            VerticalOptions="Center">
+
+            <Label 
+            Text="Medicine A"
+            FontAttributes="Bold" 
+            FontSize="16"
+            Margin="0,0,0,0"
+            WidthRequest="110"
+            HeightRequest="20"
+            VerticalOptions="Center"/>
+
+            <Label 
+            Text="{Binding WorMedicineA}" 
+            FontAttributes="Bold"
+            TextColor="Black"
+            FontSize="16"
+            Margin="20,0,0,0"
+            WidthRequest="110"
+            HeightRequest="20"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"/>
+
+            </HorizontalStackLayout>
+
+            <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
+
+
+
+            <!--B -->
+            <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
+            <HorizontalStackLayout 
+            Grid.Row="2" 
+            Grid.Column="0"
+            Margin="120,0,0,0"
+            HorizontalOptions="Center"
+            Spacing="0"
+            VerticalOptions="Center">
+
+                <Label 
+            Text="Medicine B"
+            FontAttributes="Bold" 
+            FontSize="16"
+            Margin="0,0,0,0"
+            WidthRequest="110"
+            HeightRequest="20"
+            VerticalOptions="Center"/>
+
+                <Label 
+            Text="{Binding WorMedicineB}" 
+            FontAttributes="Bold"
+            TextColor="Black"
+            FontSize="16"
+            Margin="20,0,0,0"
+            WidthRequest="110"
+            HeightRequest="20"
+            VerticalOptions="Center"
+            HorizontalOptions="Center"/>
+            </HorizontalStackLayout>
+
+            <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
+
+            <!--C -->
+            <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
+            <HorizontalStackLayout 
+           Grid.Row="3" 
+           Grid.Column="0"
+           Margin="120,0,0,0"
+           HorizontalOptions="Center"
+           Spacing="0"
+           VerticalOptions="Center">
+
+            <Label 
+           Text="Medicine C"
+           FontAttributes="Bold" 
+           FontSize="16"
+           Margin="0,0,0,0"
+           WidthRequest="110"
+           HeightRequest="20"
+           VerticalOptions="Center"/>
+
+            <Label 
+           Text="{Binding WorMedicineC}" 
+           FontAttributes="Bold"
+           TextColor="Black"
+           FontSize="16"
+           Margin="20,0,0,0"
+           WidthRequest="110"
+           HeightRequest="20"
+           VerticalOptions="Center"
+           HorizontalOptions="Center"/>
+
+            </HorizontalStackLayout>
+
+            <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
+
+
+            <!--D -->
+            <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
+            <HorizontalStackLayout 
+           Grid.Row="4" 
+           Grid.Column="0"
+           Margin="120,0,0,0"
+           HorizontalOptions="Center"
+           Spacing="0"
+           VerticalOptions="Center">
+
+                <Label 
+           Text="Medicine D"
+           FontAttributes="Bold" 
+           FontSize="16"
+           Margin="0,0,0,0"
+           WidthRequest="110"
+           HeightRequest="20"
+           VerticalOptions="Center"/>
+
+                <Label 
+           Text="{Binding WorMedicineD}" 
+           FontAttributes="Bold"
+           TextColor="Black"
+           FontSize="16"
+           Margin="20,0,0,0"
+           WidthRequest="110"
+           HeightRequest="20"
+           VerticalOptions="Center"
+           HorizontalOptions="Center"/>
+            </HorizontalStackLayout>
+
+            <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
+
+
+            <!--E -->
+            <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
+            <HorizontalStackLayout 
+           Grid.Row="5" 
+           Grid.Column="0"
+           Margin="120,0,0,0"
+           HorizontalOptions="Center"
+           Spacing="0"
+           VerticalOptions="Center">
+
+            <Label 
+           Text="Medicine E"
+           FontAttributes="Bold" 
+           FontSize="16"
+           Margin="0,0,0,0"
+           WidthRequest="110"
+           HeightRequest="20"
+           VerticalOptions="Center"/>
+
+                <Label 
+           Text="{Binding WorMedicineE}" 
+           FontAttributes="Bold"
+           TextColor="Black"
+           FontSize="16"
+           Margin="20,0,0,0"
+           WidthRequest="110"
+           HeightRequest="20"
+           VerticalOptions="Center"
+           HorizontalOptions="Center"/>
+
+            </HorizontalStackLayout>
+
+            <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
+
+            <!--F -->
+            <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
+            <HorizontalStackLayout 
+           Grid.Row="6" 
+           Grid.Column="0"
+           Margin="120,0,0,0"
+           HorizontalOptions="Center"
+           Spacing="0"
+           VerticalOptions="Center">
+
+                <Label 
+           Text="Medicine F"
+           FontAttributes="Bold" 
+           FontSize="16"
+           Margin="0,0,0,0"
+           WidthRequest="110"
+           HeightRequest="20"
+           VerticalOptions="Center"/>
+
+                <Label 
+           Text="{Binding WorMedicineF}" 
+           FontAttributes="Bold"
+           TextColor="Black"
+           FontSize="16"
+           Margin="20,0,0,0"
+           WidthRequest="110"
+           HeightRequest="20"
+           VerticalOptions="Center"
+           HorizontalOptions="Center"/>
+            </HorizontalStackLayout>
+
+            <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
+
+
+
+            <!--G -->
+            <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
+            <HorizontalStackLayout 
+           Grid.Row="7" 
+           Grid.Column="0"
+           Margin="120,0,0,0"
+           HorizontalOptions="Center"
+           Spacing="0"
+           VerticalOptions="Center">
+
+                <Label 
+           Text="Medicine G"
+           FontAttributes="Bold" 
+           FontSize="16"
+           Margin="0,0,0,0"
+           WidthRequest="110"
+           HeightRequest="20"
+           VerticalOptions="Center"/>
+
+                <Label 
+           Text="{Binding WorMedicineG}" 
+           FontAttributes="Bold"
+           TextColor="Black"
+           FontSize="16"
+           Margin="20,0,0,0"
+           WidthRequest="110"
+           HeightRequest="20"
+           VerticalOptions="Center"
+           HorizontalOptions="Center"/>
+            </HorizontalStackLayout>
+
+            <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
+
 
         </Grid>
     </ScrollView>
