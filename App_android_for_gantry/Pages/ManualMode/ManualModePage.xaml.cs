@@ -28,15 +28,16 @@ public partial class ManualModePage : ContentPage
     {
         if (e.Value)
         {
-            //OFF mode
-            await _modbusService.WriteHoldingRegisterAsync(1, 74, 1); // Ghi giá trị 1 vào MW30
-            await _modbusService.WriteHoldingRegisterAsync(1, 24, 0);
-        }
-        else
-        {
+
             // ON mode
             await _modbusService.WriteHoldingRegisterAsync(1, 24, 1); // Ghi giá trị 1 vào MW30
             await _modbusService.WriteHoldingRegisterAsync(1, 74, 0);
+        }
+        else
+        {
+            //OFF mode
+            await _modbusService.WriteHoldingRegisterAsync(1, 74, 1); // Ghi giá trị 1 vào MW30
+            await _modbusService.WriteHoldingRegisterAsync(1, 24, 0);
         }
     }
 
@@ -175,5 +176,22 @@ public partial class ManualModePage : ContentPage
             S2.Color = Colors.LightGray;
             //Home_Z.Color = Colors.LightGray;
         }
+    }
+
+    // Dieu huong trang Home
+    private async void Back_Home_System(object sender, EventArgs e)
+    {
+        await Shell.Current.GoToAsync("//MainPage");
+    }
+
+    // Stop
+    private async void Stop_System(object sender, EventArgs e)
+    {
+        Stop.Background = Colors.Green;
+        await _modbusService.WriteHoldingRegisterAsync(1, 1, 1); // Ghi giá trị 1 vào MW1
+        await _modbusService.WriteHoldingRegisterAsync(1, 0, 0);
+        await Task.Delay(100);
+        await _modbusService.WriteHoldingRegisterAsync(1, 1, 0); // Reset về 0
+        Stop.Background = Colors.WhiteSmoke;
     }
 }

@@ -12,29 +12,15 @@
          Padding="5">
 
 
-          <Button 
-          x:Name="Import"    
-          Text="Import"
-          BackgroundColor="Green"
-          BorderWidth="1"  
-          BorderColor="Black"   
-          Clicked="Import_System"
-          Grid.Row="8"
-          Grid.Column="0"
-          Margin="500,0,0,0"
-          WidthRequest="100"
-          HeightRequest="50"
-          HorizontalOptions="Center"
-          VerticalOptions="Center"/>
 
             <!--TEXT -->
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
             <HorizontalStackLayout 
-            Grid.Row="0" 
+            Grid.Row="1" 
             Grid.Column="0"
-            Margin="120,0,0,0"
+            Margin="90,-90,0,0"
             HorizontalOptions="Center"
-            Spacing="0">
+            Spacing="60">
 
             <Label 
             Text="Product"
@@ -61,11 +47,11 @@
             <!--A -->
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
             <HorizontalStackLayout 
-            Grid.Row="1" 
+            Grid.Row="2" 
             Grid.Column="0"
-            Margin="120,0,0,0"
+            Margin="90,-100,0,0"
             HorizontalOptions="Center"
-            Spacing="0"
+            Spacing="70"
             VerticalOptions="Center">
 
             <Label 
@@ -97,11 +83,11 @@
             <!--B -->
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
             <HorizontalStackLayout 
-            Grid.Row="2" 
+            Grid.Row="3" 
             Grid.Column="0"
-            Margin="120,0,0,0"
+            Margin="90,-100,0,0"
             HorizontalOptions="Center"
-            Spacing="0"
+            Spacing="70"
             VerticalOptions="Center">
 
                 <Label 
@@ -130,11 +116,11 @@
             <!--C -->
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
             <HorizontalStackLayout 
-           Grid.Row="3" 
+           Grid.Row="4" 
            Grid.Column="0"
-           Margin="120,0,0,0"
+           Margin="90,-100,0,0"
            HorizontalOptions="Center"
-           Spacing="0"
+           Spacing="70"
            VerticalOptions="Center">
 
             <Label 
@@ -165,11 +151,11 @@
             <!--D -->
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
             <HorizontalStackLayout 
-           Grid.Row="4" 
+           Grid.Row="5" 
            Grid.Column="0"
-           Margin="120,0,0,0"
+           Margin="90,-100,0,0"
            HorizontalOptions="Center"
-           Spacing="0"
+           Spacing="70"
            VerticalOptions="Center">
 
                 <Label 
@@ -199,11 +185,11 @@
             <!--E -->
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
             <HorizontalStackLayout 
-           Grid.Row="5" 
+           Grid.Row="6" 
            Grid.Column="0"
-           Margin="120,0,0,0"
+           Margin="90,-100,0,0"
            HorizontalOptions="Center"
-           Spacing="0"
+           Spacing="70"
            VerticalOptions="Center">
 
             <Label 
@@ -233,11 +219,11 @@
             <!--F -->
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
             <HorizontalStackLayout 
-           Grid.Row="6" 
+           Grid.Row="7" 
            Grid.Column="0"
-           Margin="120,0,0,0"
+           Margin="90,-100,0,0"
            HorizontalOptions="Center"
-           Spacing="0"
+           Spacing="70"
            VerticalOptions="Center">
 
                 <Label 
@@ -268,11 +254,11 @@
             <!--G -->
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
             <HorizontalStackLayout 
-           Grid.Row="7" 
+           Grid.Row="8" 
            Grid.Column="0"
-           Margin="120,0,0,0"
+           Margin="90,-100,0,0"
            HorizontalOptions="Center"
-           Spacing="0"
+           Spacing="70"
            VerticalOptions="Center">
 
                 <Label 
@@ -298,6 +284,82 @@
 
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
 
+            <!-- Back_home vs emerycu -->
+            <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
+            <HorizontalStackLayout
+                Grid.Row="0"
+                Grid.Column="0"
+                Margin="0,0,0,50"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Spacing="150">
+
+                <!--- Back_Home -->
+                <VerticalStackLayout
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Spacing="5">
+
+                    <Button 
+                    x:Name="Back_Home"
+                    BackgroundColor="White"
+                    Clicked="Back_Home_System"
+                    WidthRequest="100"
+                    HeightRequest="70"
+                    Margin="-40,0,0,-10"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center">
+                        <Button.ImageSource>
+                            <FileImageSource File="tab_return_image.png" />
+                        </Button.ImageSource>
+                    </Button>
+
+                    <Label 
+                    Text="RETURN"
+                    FontAttributes="Bold"
+                    TextColor="Black"
+                    FontSize="14"
+                    WidthRequest="110"
+                    HeightRequest="20"
+                    Margin="10,0,0,10"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"/>
+                </VerticalStackLayout>
+
+                <!-- Nút EMERGENCY -->
+                <VerticalStackLayout
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Spacing="5">
+
+                    <Button 
+                    x:Name="Stop"
+                    BackgroundColor="WhiteSmoke"
+                    BorderWidth="2"  
+                    BorderColor="Black" 
+                    Clicked="Stop_System"
+                    WidthRequest="30"
+                    HeightRequest="30"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center">
+                        <Button.ImageSource>
+                            <FileImageSource File="stop_image.png" />
+                        </Button.ImageSource>
+                    </Button>
+
+                    <Label 
+                    Text="EMERGENCY"
+                    FontAttributes="Bold"
+                    TextColor="Black"
+                    FontSize="16"
+                    WidthRequest="110"
+                    HeightRequest="20"
+                    Margin="20,0,0,10"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"/>
+                </VerticalStackLayout>
+
+            </HorizontalStackLayout>
 
         </Grid>
     </ScrollView>

@@ -7,7 +7,7 @@
     <ScrollView>
 
         <Grid
-      RowDefinitions="*,*,*,*,*,*,*,*,*"
+      RowDefinitions="*,*,*,*,*,*,*,*,*,*"
       ColumnDefinitions="*"
       Padding="5">
 
@@ -16,23 +16,12 @@
             <!--  -->
 
             <HorizontalStackLayout 
-            Grid.Row="8"
+            Grid.Row="9"
             Grid.Column="0"
             Margin="0,0,0,0"
             HorizontalOptions="Center"
             Spacing="20">
 
-            <Button 
-            x:Name="Export"    
-            Text="Export"
-            BackgroundColor="Green"
-            BorderWidth="1"  
-            BorderColor="Black" 
-            Clicked="Export_System"
-            WidthRequest="100"
-            HeightRequest="50"
-            HorizontalOptions="Center"
-            VerticalOptions="Center"/>
 
             <Button 
             x:Name="Write"    
@@ -43,7 +32,7 @@
             Clicked="Write_System"
             WidthRequest="100"
             HeightRequest="50"
-            Margin="150,0,0,0"
+            Margin="280,0,0,0"
             HorizontalOptions="Center"
             VerticalOptions="Center"/>
             </HorizontalStackLayout>
@@ -57,7 +46,7 @@
             <!--TEXT -->
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
         <HorizontalStackLayout 
-        Grid.Row="0" 
+        Grid.Row="1" 
         Grid.Column="0"
 	    Margin="0,0,0,0"
         HorizontalOptions="Center"
@@ -97,7 +86,7 @@
             <!--A -->
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
         <HorizontalStackLayout 
-            Grid.Row="1" 
+            Grid.Row="2" 
             Grid.Column="0"
             Margin="0,0,0,0"
             HorizontalOptions="Center"
@@ -144,7 +133,7 @@
             <!--B -->
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
             <HorizontalStackLayout 
-            Grid.Row="2" 
+            Grid.Row="3" 
             Grid.Column="0"
             Margin="0,0,0,0"
             HorizontalOptions="Center"
@@ -189,7 +178,7 @@
             <!--C -->
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
             <HorizontalStackLayout 
-           Grid.Row="3" 
+           Grid.Row="4" 
            Grid.Column="0"
            Margin="0,0,0,0"
            HorizontalOptions="Center"
@@ -235,7 +224,7 @@
             <!--D -->
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
             <HorizontalStackLayout 
-           Grid.Row="4" 
+           Grid.Row="5" 
            Grid.Column="0"
            Margin="0,0,0,0"
            HorizontalOptions="Center"
@@ -281,7 +270,7 @@
             <!--E -->
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
             <HorizontalStackLayout 
-           Grid.Row="5" 
+           Grid.Row="6" 
            Grid.Column="0"
            Margin="0,0,0,0"
            HorizontalOptions="Center"
@@ -326,7 +315,7 @@
             <!--F -->
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
             <HorizontalStackLayout 
-           Grid.Row="6" 
+           Grid.Row="7" 
            Grid.Column="0"
            Margin="0,0,0,0"
            HorizontalOptions="Center"
@@ -373,7 +362,7 @@
             <!--G -->
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
             <HorizontalStackLayout 
-           Grid.Row="7" 
+           Grid.Row="8" 
            Grid.Column="0"
            Margin="0,0,0,0"
            HorizontalOptions="Center"
@@ -414,6 +403,85 @@
             </HorizontalStackLayout>
 
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
+            <!-- Back_home vs emerycu -->
+            <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
+            <HorizontalStackLayout
+                Grid.Row="0"
+                Grid.Column="0"
+                Margin="0,0,0,0"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Spacing="150">
+
+                <!--- Back_Home -->
+                <VerticalStackLayout
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Spacing="5">
+
+                    <Button 
+                    x:Name="Back_Home"
+                    BackgroundColor="White"
+                    Clicked="Back_Home_System"
+                    WidthRequest="100"
+                    HeightRequest="70"
+                    Margin="-40,0,0,-10"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center">
+                        <Button.ImageSource>
+                            <FileImageSource File="tab_return_image.png" />
+                        </Button.ImageSource>
+                    </Button>
+
+                    <Label 
+                    Text="RETURN"
+                    FontAttributes="Bold"
+                    TextColor="Black"
+                    FontSize="14"
+                    WidthRequest="110"
+                    HeightRequest="20"
+                    Margin="10,0,0,10"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"/>
+                </VerticalStackLayout>
+
+                <!-- Nút EMERGENCY -->
+                <VerticalStackLayout
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Spacing="5">
+
+                    <Button 
+                    x:Name="Stop"
+                    BackgroundColor="WhiteSmoke"
+                    BorderWidth="2"  
+                    BorderColor="Black" 
+                    Clicked="Stop_System_Ex"
+                    WidthRequest="30"
+                    HeightRequest="30"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center">
+                        <Button.ImageSource>
+                            <FileImageSource File="stop_image.png" />
+                        </Button.ImageSource>
+                    </Button>
+
+                    <Label 
+                    Text="EMERGENCY"
+                    FontAttributes="Bold"
+                    TextColor="Black"
+                    FontSize="16"
+                    WidthRequest="110"
+                    HeightRequest="20"
+                    Margin="20,0,0,10"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"/>
+                </VerticalStackLayout>
+
+            </HorizontalStackLayout>
+            <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
+            
+
 
         </Grid>
     </ScrollView>

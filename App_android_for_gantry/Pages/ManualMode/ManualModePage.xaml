@@ -8,7 +8,7 @@
     <ScrollView>
 
         <Grid
-            RowDefinitions="*,*,*,*,*,*,*,*,*"
+            RowDefinitions="*,*,*,*,*,*,*,*,*,*"
             ColumnDefinitions="*,*,*"
             Padding="5">
 
@@ -17,7 +17,7 @@
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
             <Image
             Source="tab_manual_image.png"
-            Grid.Row="4"
+            Grid.Row="5"
             Grid.Column="0"
             Grid.ColumnSpan="3"
             WidthRequest="400"
@@ -30,72 +30,72 @@
             
             <!-- Bang_tai_MAN-->
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
-            <VerticalStackLayout
-    Grid.Row="2"
-    Grid.Column="1"
-    Margin="0,0,30,40"
-    HorizontalOptions="Center"
-    VerticalOptions="Center"
-    Spacing="5">
+        <VerticalStackLayout
+            Grid.Row="3"
+            Grid.Column="1"
+            Margin="60,0,30,40"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            Spacing="5">
 
-                <Switch 
-        x:Name="modeSwitch_BANG_TAI"
-        Toggled="ModeSwitch_BANG_TAI_MAN"
-        OnColor="Green"
-        ThumbColor="White"
-        Scale="2"
-        WidthRequest="30"
-        HeightRequest="30"
-        HorizontalOptions="Center"
-        VerticalOptions="Center" />
+        <Switch 
+            x:Name="modeSwitch_BANG_TAI"
+            Toggled="ModeSwitch_BANG_TAI_MAN"
+            OnColor="Green"
+            ThumbColor="White"
+            Scale="2"
+            WidthRequest="30"
+            HeightRequest="30"
+            HorizontalOptions="Center"
+            VerticalOptions="Center" />
 
-                <Label 
-        Text="OFF/ON"
-        FontAttributes="Bold"
-        TextColor="Black"
-        FontSize="16"
-        WidthRequest="110"
-        HeightRequest="20"
-        Margin="0,0,0,50"
-        HorizontalOptions="Center"
-        VerticalOptions="Center"/>
-            </VerticalStackLayout>
+        <Label 
+            Text="OFF/ON"
+            FontAttributes="Bold"
+            TextColor="Black"
+            FontSize="16"
+            WidthRequest="110"
+            HeightRequest="20"
+            Margin="0,0,0,50"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"/>
+        </VerticalStackLayout>
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
             
             
 
             <!-- Vacum_MAN-->
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
-            <VerticalStackLayout
-    Grid.Row="3"
-    Grid.Column="1"
-    Margin="-30,-130,0,30"
-    HorizontalOptions="Center"
-    VerticalOptions="Center"
-    Spacing="5">
+        <VerticalStackLayout
+            Grid.Row="4"
+            Grid.Column="1"
+            Margin="40,-130,0,30"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"
+            Spacing="5">
 
-                <Switch 
-        x:Name="modeSwitch_VANCUM"
-        Toggled="ModeSwitch_VACUM_MAN"
-        OnColor="Green"
-        ThumbColor="White"
-        Scale="2"
-        WidthRequest="30"
-        HeightRequest="30"
-        HorizontalOptions="Center"
-        VerticalOptions="Center" />
+        <Switch 
+            x:Name="modeSwitch_VANCUM"
+            Toggled="ModeSwitch_VACUM_MAN"
+            OnColor="Green"
+            ThumbColor="White"
+            Scale="2"
+            WidthRequest="30"
+            HeightRequest="30"
+            HorizontalOptions="Center"
+            VerticalOptions="Center" />
 
-                <Label 
-        Text="OFF/ON"
-        FontAttributes="Bold"
-        TextColor="Black"
-        FontSize="16"
-        WidthRequest="110"
-        HeightRequest="20"
-        Margin="0,0,0,50"
-        HorizontalOptions="Center"
-        VerticalOptions="Center"/>
-            </VerticalStackLayout>
+        <Label 
+            Text="OFF/ON"
+            FontAttributes="Bold"
+            TextColor="Black"
+            FontSize="16"
+            WidthRequest="110"
+            HeightRequest="20"
+            Margin="0,0,0,50"
+            HorizontalOptions="Center"
+            VerticalOptions="Center"/>
+    </VerticalStackLayout>
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
 
 
@@ -113,7 +113,7 @@
                BorderColor="Black"  
                Pressed="Jog_X_Down_System_Pressed"
                Released="Jog_X_Down_System_Released"
-               Grid.Row="7"
+               Grid.Row="8"
                Grid.Column="1"
                Margin="0,0,0,0"
                WidthRequest="100"
@@ -137,7 +137,7 @@
                BorderColor="Black"  
                Pressed="Jog_X_Up_System_Pressed"
                Released="Jog_X_Up_System_Released"
-               Grid.Row="5"
+               Grid.Row="6"
                Grid.Column="1"
                Margin="0,0,0,0"
                WidthRequest="100"
@@ -162,7 +162,7 @@
                BorderColor="Black"  
                Pressed="Jog_Y_Right_System_Pressed"
                Released="Jog_Y_Right_System_Released"
-               Grid.Row="6"
+               Grid.Row="7"
                Grid.Column="2"
                WidthRequest="100"
                HeightRequest="70"
@@ -186,7 +186,7 @@
                BorderColor="Black"  
                Pressed="Jog_Y_Left_System_Pressed"
                Released="Jog_Y_Left_System_Released"
-               Grid.Row="6"
+               Grid.Row="7"
                Grid.Column="0"
                Margin="0,0,0,0"
                WidthRequest="100"
@@ -210,7 +210,7 @@
                BorderColor="Black"
                Pressed="Jog_Z__Down_System_Pressed"
                Released="Jog_Z__Down_System_Released"
-               Grid.Row="8"
+               Grid.Row="9"
                Grid.Column="2"
                Margin="0,0,0,50"
                WidthRequest="100"
@@ -234,7 +234,7 @@
                BorderColor="Black"
                Pressed="Jog_Z_Up_System_Pressed"
                Released="Jog_Z_Up_System_Released"
-               Grid.Row="8"
+               Grid.Row="9"
                Grid.Column="0"
                Margin="0,0,0,50"
                WidthRequest="100"
@@ -258,9 +258,9 @@
                 FontAttributes="Bold"
                 TextColor="Black"
                 FontSize="16"
-                Grid.Row="1"
+                Grid.Row="2"
                 Grid.Column="0"
-                Margin="0,0,0,0"
+                Margin="30,0,0,0"
                 WidthRequest="110"
                 HeightRequest="20"
                 HorizontalOptions="Center"
@@ -270,9 +270,9 @@
                 FontAttributes="Bold"
                 TextColor="Black"
                 FontSize="16"
-                Grid.Row="0"
+                Grid.Row="1"
                 Grid.Column="0"
-                Margin="0,0,0,0"
+                Margin="50,0,0,0"
                 WidthRequest="110"
                 HeightRequest="20"
                 HorizontalOptions="Center"
@@ -287,9 +287,9 @@
                 Text="POSY"
                 FontAttributes="Bold" 
                 FontSize="16"
-                Grid.Row="1"
+                Grid.Row="2"
                 Grid.Column="1"
-                Margin="0,0,0,0"
+                Margin="60,0,0,0"
                 WidthRequest="110"
                 HeightRequest="20"
                 HorizontalOptions="Center"
@@ -299,9 +299,9 @@
                 FontAttributes="Bold"
                 TextColor="Black"
                 FontSize="16"
-                Grid.Row="0"
+                Grid.Row="1"
                 Grid.Column="1"
-                Margin="0,0,0,0"
+                Margin="80,0,0,0"
                 WidthRequest="110"
                 HeightRequest="20"
                 HorizontalOptions="Center"
@@ -312,12 +312,12 @@
             <!-- POS_Z -->
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
             <Label 
-                Text="POSY"
+                Text="POSZ"
                 FontAttributes="Bold" 
                 FontSize="16"
-                Grid.Row="1"
+                Grid.Row="2"
                 Grid.Column="2"
-                Margin="0,0,0,0"
+                Margin="70,0,0,0"
                 WidthRequest="110"
                 HeightRequest="20"
                 HorizontalOptions="Center"
@@ -328,9 +328,9 @@
                 FontAttributes="Bold"
                 TextColor="Black"
                 FontSize="16"
-                Grid.Row="0"
+                Grid.Row="1"
                 Grid.Column="2"
-                Margin="0,0,0,0"
+                Margin="100,0,0,0"
                 WidthRequest="110"
                 HeightRequest="20"
                 HorizontalOptions="Center"
@@ -339,10 +339,10 @@
             <!--BANG_TAI -->
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
             <VerticalStackLayout
-            Grid.Row="2"
+            Grid.Row="3"
             Grid.Column="0"
             Spacing="2"
-            Margin="-30,20,0,0"
+            Margin="-10,20,0,0"
             HorizontalOptions="Start"
             VerticalOptions="Center">
 
@@ -371,10 +371,10 @@
             <!--VANCUM -->
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
             <VerticalStackLayout
-            Grid.Row="3"
+            Grid.Row="4"
             Grid.Column="0"
             Spacing="2"
-            Margin="-30,-100,0,0"
+            Margin="-10,-100,0,0"
             HorizontalOptions="Start"
             VerticalOptions="Center">
 
@@ -404,10 +404,10 @@
             <!--S1 -->
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
             <VerticalStackLayout
-            Grid.Row="2"
+            Grid.Row="3"
             Grid.Column="2"
             Spacing="2"
-            Margin="-30,25,0,0"
+            Margin="0,25,0,0"
             HorizontalOptions="Start"
             VerticalOptions="Center">
 
@@ -434,10 +434,10 @@
             <!--S2 -->
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
             <VerticalStackLayout
-            Grid.Row="3"
+            Grid.Row="4"
             Grid.Column="2"
             Spacing="2"
-            Margin="-30,-100,0,0"
+            Margin="0,-100,0,0"
             HorizontalOptions="Start"
             VerticalOptions="Center">
 
@@ -459,6 +459,84 @@
            HorizontalOptions="Start"/>
             </VerticalStackLayout>
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
+
+
+            <!-- Back_home vs emerycu -->
+            <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
+            <HorizontalStackLayout
+                Grid.Row="0"
+                Grid.Column="0"
+                Margin="0,0,0,0"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Spacing="150">
+
+                <!--- Back_Home -->
+                <VerticalStackLayout
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Spacing="5">
+
+                    <Button 
+                    x:Name="Back_Home"
+                    BackgroundColor="White"
+                    Clicked="Back_Home_System"
+                    WidthRequest="100"
+                    HeightRequest="70"
+                    Margin="-40,0,0,-10"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center">
+                        <Button.ImageSource>
+                            <FileImageSource File="tab_return_image.png" />
+                        </Button.ImageSource>
+                    </Button>
+
+                    <Label 
+                    Text="RETURN"
+                    FontAttributes="Bold"
+                    TextColor="Black"
+                    FontSize="14"
+                    WidthRequest="110"
+                    HeightRequest="20"
+                    Margin="10,0,0,10"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"/>
+                </VerticalStackLayout>
+
+                <!-- Nút EMERGENCY -->
+                <VerticalStackLayout
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Spacing="5">
+
+                    <Button 
+                    x:Name="Stop"
+                    BackgroundColor="WhiteSmoke"
+                    BorderWidth="2"  
+                    BorderColor="Black" 
+                    Clicked="Stop_System"
+                    WidthRequest="30"
+                    HeightRequest="30"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center">
+                        <Button.ImageSource>
+                            <FileImageSource File="stop_image.png" />
+                        </Button.ImageSource>
+                    </Button>
+
+                    <Label 
+                    Text="EMERGENCY"
+                    FontAttributes="Bold"
+                    TextColor="Black"
+                    FontSize="16"
+                    WidthRequest="110"
+                    HeightRequest="20"
+                    Margin="20,0,0,10"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"/>
+                </VerticalStackLayout>
+
+            </HorizontalStackLayout>
 
         </Grid>
     </ScrollView>

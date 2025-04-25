@@ -13,9 +13,6 @@
             Padding="5">
 
             
-            
-            
-            
             <!-- Trang thai ket noi -->
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
             <Image
@@ -156,10 +153,10 @@
         HeightRequest="30"
         HorizontalOptions="Center"
         VerticalOptions="Center">
-                    <Button.ImageSource>
-                        <FileImageSource File="stop_image.png" />
-                    </Button.ImageSource>
-                </Button>
+        <Button.ImageSource>
+                <FileImageSource File="stop_image.png" />
+            </Button.ImageSource>
+        </Button>
 
         <Label 
         Text="EMERGENCY"
@@ -171,7 +168,7 @@
         Margin="20,0,0,10"
         HorizontalOptions="Center"
         VerticalOptions="Center"/>
-            </VerticalStackLayout>
+    </VerticalStackLayout>
 
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
             
@@ -191,15 +188,15 @@
             <!--Switch_MODE -->
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
             <!-- Nút gạt -->
-            <VerticalStackLayout
-    Grid.Row="0"
-    Grid.Column="0"
-    Margin="40,0,0,0"
-    HorizontalOptions="Center"
-    VerticalOptions="Center"
-    Spacing="5">
+        <VerticalStackLayout
+        Grid.Row="0"
+        Grid.Column="0"
+        Margin="40,0,0,0"
+        HorizontalOptions="Center"
+        VerticalOptions="Center"
+        Spacing="5">    
 
-                <Switch 
+        <Switch 
         x:Name="modeSwitch"
         Toggled="ModeSwitch_Toggled"
         OnColor="Green"
@@ -210,7 +207,7 @@
         HorizontalOptions="Center"
         VerticalOptions="Center" />
 
-                <Label 
+        <Label 
         Text="MAN/AUTO"
         FontAttributes="Bold"
         TextColor="Black"
@@ -224,15 +221,7 @@
 
 
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
-            
-            
-            
-            
-            
-            
-            
-            
-            
+        
             <!--MAN_MODE -->
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
     <VerticalStackLayout
@@ -253,10 +242,10 @@
             HeightRequest="70"
             HorizontalOptions="Center"
             VerticalOptions="Center">
-                    <Button.ImageSource>
+            <Button.ImageSource>
                         <FileImageSource File="manual_image.png" />
-                    </Button.ImageSource>
-                </Button>
+            </Button.ImageSource>
+        </Button>
 
         <Label 
             Text="MAN"

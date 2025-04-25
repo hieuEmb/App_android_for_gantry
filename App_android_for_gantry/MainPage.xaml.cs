@@ -99,6 +99,7 @@ namespace App_android_for_gantry
         {
             Stop.Background = Colors.Green;
             await _modbusService.WriteHoldingRegisterAsync(1, 1, 1); // Ghi giá trị 1 vào MW1
+            await _modbusService.WriteHoldingRegisterAsync(1, 0, 0);
             await Task.Delay(100);
             await _modbusService.WriteHoldingRegisterAsync(1, 1, 0); // Reset về 0
             Stop.Background = Colors.WhiteSmoke;
@@ -138,6 +139,9 @@ namespace App_android_for_gantry
         {
             //await _modbusService.WriteHoldingRegisterAsync(1, 18, 1);
             await Shell.Current.GoToAsync("//ImportModePage");
+            await _modbusService.WriteHoldingRegisterAsync(1, 18, 1); // Ghi giá trị 1 vào MW10
+            await Task.Delay(100);
+            await _modbusService.WriteHoldingRegisterAsync(1, 18, 0);
         }
 
         // Dieu huong trang Export
@@ -145,7 +149,10 @@ namespace App_android_for_gantry
         {
             //await _modbusService.WriteHoldingRegisterAsync(1, 22, 1);
             await Shell.Current.GoToAsync("//ExportModePage");
-           
+            await _modbusService.WriteHoldingRegisterAsync(1, 22, 1); // Ghi giá trị 1 vào MW10
+            await Task.Delay(100);
+            await _modbusService.WriteHoldingRegisterAsync(1, 22, 0);
+
         }
 
 
