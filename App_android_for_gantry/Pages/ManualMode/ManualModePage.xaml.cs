@@ -24,33 +24,39 @@ public partial class ManualModePage : ContentPage
         ViewModel.StartReadingPositions();
     }
     // Bang_tai
-    private async void Bang_Tai_Man_System_Pressed(object sender, EventArgs e)
+    private async void ModeSwitch_BANG_TAI_MAN(object sender, ToggledEventArgs e)
     {
-        await _modbusService.WriteHoldingRegisterAsync(1, 24, 1); // Ghi giá trị 1 vào MW30
-        await _modbusService.WriteHoldingRegisterAsync(1, 74, 0);
-        Bang_Tai_Man.Background = Colors.Green;
-    }
-
-    private async void Bang_Tai_Man_System_Released(object sender, EventArgs e)
-    {
-        await _modbusService.WriteHoldingRegisterAsync(1, 74, 1); // Ghi giá trị 1 vào MW30
-        await _modbusService.WriteHoldingRegisterAsync(1, 24, 0);
-        Bang_Tai_Man.Background = Colors.LightGray;
+        if (e.Value)
+        {
+            //OFF mode
+            await _modbusService.WriteHoldingRegisterAsync(1, 74, 1); // Ghi giá trị 1 vào MW30
+            await _modbusService.WriteHoldingRegisterAsync(1, 24, 0);
+        }
+        else
+        {
+            // ON mode
+            await _modbusService.WriteHoldingRegisterAsync(1, 24, 1); // Ghi giá trị 1 vào MW30
+            await _modbusService.WriteHoldingRegisterAsync(1, 74, 0);
+        }
     }
 
     // Vancum
-    private async void Vacum_Man_System_Pressed(object sender, EventArgs e)
+    private async void ModeSwitch_VACUM_MAN(object sender, ToggledEventArgs e)
     {
-        await _modbusService.WriteHoldingRegisterAsync(1, 16, 1); // Ghi giá trị 1 vào MW16
-        await _modbusService.WriteHoldingRegisterAsync(1, 76, 0);
-        Vacum_Man.Background = Colors.Green;
-    }
+        if (e.Value)
+        {
 
-    private async void Vacum_Man_System_Released(object sender, EventArgs e)
-    {
-        await _modbusService.WriteHoldingRegisterAsync(1, 76, 1); // Ghi giá trị 1 vào MW16
-        await _modbusService.WriteHoldingRegisterAsync(1, 16, 0);
-        Vacum_Man.Background = Colors.LightGray;
+            //ON mode
+            await _modbusService.WriteHoldingRegisterAsync(1, 16, 1); // Ghi giá trị 1 vào MW16
+            await _modbusService.WriteHoldingRegisterAsync(1, 76, 0);
+          
+        }
+        else
+        {
+            // OFF mode
+            await _modbusService.WriteHoldingRegisterAsync(1, 76, 1); // Ghi giá trị 1 vào MW16
+            await _modbusService.WriteHoldingRegisterAsync(1, 16, 0);
+        }
     }
 
 

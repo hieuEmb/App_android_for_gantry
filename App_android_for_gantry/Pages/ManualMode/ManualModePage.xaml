@@ -8,7 +8,7 @@
     <ScrollView>
 
         <Grid
-            RowDefinitions="*,*,*,*,*,*,*,*,*,*"
+            RowDefinitions="*,*,*,*,*,*,*,*,*"
             ColumnDefinitions="*,*,*"
             Padding="5">
 
@@ -21,7 +21,7 @@
             Grid.Column="0"
             Grid.ColumnSpan="3"
             WidthRequest="400"
-            HeightRequest="320"
+            HeightRequest="200"
             Margin="0,-90,0,50"
             Aspect="AspectFit"
             HorizontalOptions="Fill"
@@ -30,49 +30,72 @@
             
             <!-- Bang_tai_MAN-->
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
-            <Button
-                x:Name="Bang_Tai_Man"
-                BackgroundColor="WhiteSmoke"
-                BorderWidth="2"  
-                BorderColor="Black" 
-                Pressed="Bang_Tai_Man_System_Pressed"
-                Released="Bang_Tai_Man_System_Released"
-                Grid.Row="9"
-                Grid.Column="2"
-                Margin="0,0,0,0"
-                WidthRequest="100"
-                HeightRequest="70"
-                HorizontalOptions="Center"
-                VerticalOptions="Center">
-            <Button.ImageSource>
-                    <FileImageSource File="conveyor_image.png" />
-                </Button.ImageSource>
-            </Button>
+            <VerticalStackLayout
+    Grid.Row="2"
+    Grid.Column="1"
+    Margin="0,0,30,40"
+    HorizontalOptions="Center"
+    VerticalOptions="Center"
+    Spacing="5">
+
+                <Switch 
+        x:Name="modeSwitch_BANG_TAI"
+        Toggled="ModeSwitch_BANG_TAI_MAN"
+        OnColor="Green"
+        ThumbColor="White"
+        Scale="2"
+        WidthRequest="30"
+        HeightRequest="30"
+        HorizontalOptions="Center"
+        VerticalOptions="Center" />
+
+                <Label 
+        Text="OFF/ON"
+        FontAttributes="Bold"
+        TextColor="Black"
+        FontSize="16"
+        WidthRequest="110"
+        HeightRequest="20"
+        Margin="0,0,0,50"
+        HorizontalOptions="Center"
+        VerticalOptions="Center"/>
+            </VerticalStackLayout>
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
             
             
 
             <!-- Vacum_MAN-->
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
-            <Button
-                x:Name="Vacum_Man"
-                BackgroundColor="WhiteSmoke"
-                BorderWidth="2"  
-                BorderColor="Black"     
-                Pressed="Vacum_Man_System_Pressed"
-                Released="Vacum_Man_System_Released"
-                Grid.Row="9"
-                Grid.Column="0"
-                WidthRequest="100"
-                HeightRequest="70"
-                Margin="0,0,0,0"
-                HorizontalOptions="Center"
-                VerticalOptions="Center">
-            <Button.ImageSource>
-                <FileImageSource File="air_image.png" />
-                <!-- Sử dụng hình ảnh PNG -->
-            </Button.ImageSource>
-            </Button>
+            <VerticalStackLayout
+    Grid.Row="3"
+    Grid.Column="1"
+    Margin="-30,-130,0,30"
+    HorizontalOptions="Center"
+    VerticalOptions="Center"
+    Spacing="5">
+
+                <Switch 
+        x:Name="modeSwitch_VANCUM"
+        Toggled="ModeSwitch_VACUM_MAN"
+        OnColor="Green"
+        ThumbColor="White"
+        Scale="2"
+        WidthRequest="30"
+        HeightRequest="30"
+        HorizontalOptions="Center"
+        VerticalOptions="Center" />
+
+                <Label 
+        Text="OFF/ON"
+        FontAttributes="Bold"
+        TextColor="Black"
+        FontSize="16"
+        WidthRequest="110"
+        HeightRequest="20"
+        Margin="0,0,0,50"
+        HorizontalOptions="Center"
+        VerticalOptions="Center"/>
+            </VerticalStackLayout>
             <!-- ///////////////////////////////////////////////////////////////////////////////////// -->
 
 
