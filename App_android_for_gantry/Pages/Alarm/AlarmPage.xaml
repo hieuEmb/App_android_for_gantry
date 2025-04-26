@@ -3,10 +3,50 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="App_android_for_gantry.Pages.Alarm.AlarmPage"
              Title="AlarmPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <StackLayout BackgroundColor="White">
+        <!-- Kiểm tra số lượng sự kiện -->
+        <Label Text="{Binding Events.Count, StringFormat='Số sự kiện: {0}'}" 
+               FontSize="Large" 
+               TextColor="Blue" 
+               HorizontalOptions="Center" />
+
+        <!-- Tiêu đề cột -->
+        <StackLayout Orientation="Horizontal" Padding="10" BackgroundColor="LightBlue">
+            <Label Text="Ngày" WidthRequest="80" FontAttributes="Bold" />
+            <Label Text="Thời gian" WidthRequest="80" FontAttributes="Bold" />
+            <Label Text="Loại sự kiện" WidthRequest="100" FontAttributes="Bold" />
+            <Label Text="A" WidthRequest="50" FontAttributes="Bold" />
+            <Label Text="B" WidthRequest="50" FontAttributes="Bold" />
+            <Label Text="C" WidthRequest="50" FontAttributes="Bold" />
+            <Label Text="D" WidthRequest="50" FontAttributes="Bold" />
+            <Label Text="E" WidthRequest="50" FontAttributes="Bold" />
+            <Label Text="F" WidthRequest="50" FontAttributes="Bold" />
+            <Label Text="G" WidthRequest="50" FontAttributes="Bold" />
+        </StackLayout>
+
+        <!-- ListView hiển thị danh sách -->
+        <ListView ItemsSource="{Binding Events}"
+                  BackgroundColor="LightGray"
+                  HeightRequest="300"
+                  VerticalOptions="FillAndExpand">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <StackLayout Orientation="Horizontal" Padding="10">
+                            <Label Text="{Binding Date}" WidthRequest="80" />
+                            <Label Text="{Binding Time}" WidthRequest="80" />
+                            <Label Text="{Binding EventType}" WidthRequest="100" />
+                            <Label Text="{Binding ValueA}" WidthRequest="50" />
+                            <Label Text="{Binding ValueB}" WidthRequest="50" />
+                            <Label Text="{Binding ValueC}" WidthRequest="50" />
+                            <Label Text="{Binding ValueD}" WidthRequest="50" />
+                            <Label Text="{Binding ValueE}" WidthRequest="50" />
+                            <Label Text="{Binding ValueF}" WidthRequest="50" />
+                            <Label Text="{Binding ValueG}" WidthRequest="50" />
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+    </StackLayout>
 </ContentPage>
