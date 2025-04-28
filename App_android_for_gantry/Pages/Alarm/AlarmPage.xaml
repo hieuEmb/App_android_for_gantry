@@ -4,49 +4,45 @@
              x:Class="App_android_for_gantry.Pages.Alarm.AlarmPage"
              Title="AlarmPage">
     <StackLayout BackgroundColor="White">
-        <!-- Kiểm tra số lượng sự kiện -->
-        <Label Text="{Binding Events.Count, StringFormat='Số sự kiện: {0}'}" 
-               FontSize="Large" 
-               TextColor="Blue" 
-               HorizontalOptions="Center" />
 
-        <!-- Tiêu đề cột -->
-        <StackLayout Orientation="Horizontal" Padding="10" BackgroundColor="LightBlue">
-            <Label Text="Ngày" WidthRequest="80" FontAttributes="Bold" />
-            <Label Text="Thời gian" WidthRequest="80" FontAttributes="Bold" />
-            <Label Text="Loại sự kiện" WidthRequest="100" FontAttributes="Bold" />
-            <Label Text="A" WidthRequest="50" FontAttributes="Bold" />
-            <Label Text="B" WidthRequest="50" FontAttributes="Bold" />
-            <Label Text="C" WidthRequest="50" FontAttributes="Bold" />
-            <Label Text="D" WidthRequest="50" FontAttributes="Bold" />
-            <Label Text="E" WidthRequest="50" FontAttributes="Bold" />
-            <Label Text="F" WidthRequest="50" FontAttributes="Bold" />
-            <Label Text="G" WidthRequest="50" FontAttributes="Bold" />
+        <!-- Tiêu đề -->
+        <Label Text="Inventory Transaction History" 
+               FontSize="Large" 
+               TextColor="Black" 
+               HorizontalOptions="Center"
+               Margin="0,10,0,10" />
+
+        <!-- Header cột -->
+        <StackLayout Orientation="Horizontal" Padding="5" BackgroundColor="LightBlue">
+            <Label Text="DATE" WidthRequest="80" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+            <Label Text="TIME" WidthRequest="80" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+            <Label Text="EVENT" WidthRequest="100" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+            <Label Text="ITEM" WidthRequest="80" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+            <Label Text="QTY" WidthRequest="60" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
         </StackLayout>
 
-        <!-- ListView hiển thị danh sách -->
+        <!-- Danh sách lịch sử -->
         <ListView ItemsSource="{Binding Events}"
-                  BackgroundColor="LightGray"
-                  HeightRequest="300"
-                  VerticalOptions="FillAndExpand">
+                  BackgroundColor="WhiteSmoke"
+                  HeightRequest="700"
+                  VerticalOptions="FillAndExpand"
+                  SeparatorVisibility="Default">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <StackLayout Orientation="Horizontal" Padding="10">
-                            <Label Text="{Binding Date}" WidthRequest="80" />
-                            <Label Text="{Binding Time}" WidthRequest="80" />
-                            <Label Text="{Binding EventType}" WidthRequest="100" />
-                            <Label Text="{Binding ValueA}" WidthRequest="50" />
-                            <Label Text="{Binding ValueB}" WidthRequest="50" />
-                            <Label Text="{Binding ValueC}" WidthRequest="50" />
-                            <Label Text="{Binding ValueD}" WidthRequest="50" />
-                            <Label Text="{Binding ValueE}" WidthRequest="50" />
-                            <Label Text="{Binding ValueF}" WidthRequest="50" />
-                            <Label Text="{Binding ValueG}" WidthRequest="50" />
+                        <StackLayout Orientation="Horizontal" Padding="5">
+                            <Label Text="{Binding Date}" WidthRequest="80" HorizontalTextAlignment="Center"/>
+                            <Label Text="{Binding Time}" WidthRequest="80" HorizontalTextAlignment="Center"/>
+                            <Label Text="{Binding EventType}" WidthRequest="100" HorizontalTextAlignment="Center"/>
+                            <Label Text="{Binding ItemType}" WidthRequest="80" HorizontalTextAlignment="Center"/>
+                            <Label Text="{Binding Quantity}" WidthRequest="60" HorizontalTextAlignment="Center"/>
+                            <!-- Nút xóa sự kiện -->
+                            <Button Text="Xóa" Clicked="OnDeleteEventClicked" />
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+
     </StackLayout>
 </ContentPage>

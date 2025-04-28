@@ -1,5 +1,6 @@
 ﻿using App_android_for_gantry.Services;
 using App_android_for_gantry.ViewModels;
+using App_android_for_gantry.Pages.Alarm;
 using Microsoft.Maui.Networking;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -16,7 +17,7 @@ public partial class ExportModePage : ContentPage
     private ModbusService _modbusService = new ModbusService();
     public MainViewModel ViewModel { get; set; } = new MainViewModel();
     private DatabaseService _databaseService = new DatabaseService(); // Thêm DatabaseService
-
+    
     protected override async void OnAppearing()
     {
         base.OnAppearing();
@@ -29,20 +30,21 @@ public partial class ExportModePage : ContentPage
     {
         try
         {
-            var entries = new List<(Entry entry, ushort address)>
+            var entries = new List<(Entry entry, ushort address, string itemType)>
         {
-            (entryValue_A, 112),
-            (entryValue_B, 114),
-            (entryValue_C, 116),
-            (entryValue_D, 118),
-            (entryValue_E, 120),
-            (entryValue_F, 122),
-            (entryValue_G, 124),
+            (entryValue_A, 112, "Loại A"),
+            (entryValue_B, 114, "Loại B"),
+            (entryValue_C, 116, "Loại C"),
+            (entryValue_D, 118, "Loại D"),
+            (entryValue_E, 120, "Loại E"),
+            (entryValue_F, 122, "Loại F"),
+            (entryValue_G, 124, "Loại G"),
         };
 
             bool hasWritten = false;
+            List<Models.WarehouseEvent> eventList = new List<Models.WarehouseEvent>();
 
-            foreach (var (entry, address) in entries)
+            foreach (var (entry, address, itemType) in entries)
             {
                 if (!string.IsNullOrWhiteSpace(entry.Text) && ushort.TryParse(entry.Text, out ushort value))
                 {
@@ -50,6 +52,19 @@ public partial class ExportModePage : ContentPage
                     
                     System.Diagnostics.Debug.WriteLine($"Ghi {value} vào địa chỉ {address}");
                     hasWritten = true;
+
+
+                    // Lưu vào database mỗi loại
+                    var eventItem = new Models.WarehouseEvent
+                    {
+                        Date = DateTime.Now.ToString("dd/MM/yy"),
+                        Time = DateTime.Now.ToString("HH:mm:ss"),
+                        EventType = "Xuất kho",
+                        ItemType = itemType,
+                        Quantity = value
+                    };
+                    await _databaseService.SaveEventAsync(eventItem);
+
                 }
             }
 
@@ -59,27 +74,14 @@ public partial class ExportModePage : ContentPage
                 await Task.Delay(300); // Giữ trạng thái 1 trong 300ms
                 await _modbusService.WriteHoldingRegisterAsync(1, 126, 0); // Reset trigger về 0
 
-                // Điền thông tin vào mẫu và lưu vào SQLite
-                var eventItem = new Models.WarehouseEvent
-                {
-                    Date = DateTime.Now.ToString("dd/MM/yy"),
-                    Time = DateTime.Now.ToString("HH:mm:ss"),
-                    EventType = "Xuất kho",
-                    ValueA = string.IsNullOrWhiteSpace(entryValue_A.Text) ? 0 : int.Parse(entryValue_A.Text),
-                    ValueB = string.IsNullOrWhiteSpace(entryValue_B.Text) ? 0 : int.Parse(entryValue_B.Text),
-                    ValueC = string.IsNullOrWhiteSpace(entryValue_C.Text) ? 0 : int.Parse(entryValue_C.Text),
-                    ValueD = string.IsNullOrWhiteSpace(entryValue_D.Text) ? 0 : int.Parse(entryValue_D.Text),
-                    ValueE = string.IsNullOrWhiteSpace(entryValue_E.Text) ? 0 : int.Parse(entryValue_E.Text),
-                    ValueF = string.IsNullOrWhiteSpace(entryValue_F.Text) ? 0 : int.Parse(entryValue_F.Text),
-                    ValueG = string.IsNullOrWhiteSpace(entryValue_G.Text) ? 0 : int.Parse(entryValue_G.Text),
-                };
-                await _databaseService.SaveEventAsync(eventItem);
 
-                // Xóa các giá trị nhập                                                        
-                foreach (var (entry, _) in entries)
+                // Xóa các Entry sau khi ghi
+                foreach (var (entry, _, _) in entries)
                 {
                     entry.Text = string.Empty;
                 }
+
+
                 // thong bao
 
                 await DisplayAlert("Thành công", "Đã ghi các giá trị đã nhập thành công!", "OK");

@@ -14,12 +14,7 @@ namespace App_android_for_gantry.Models
         public string Date { get; set; }
         public string Time { get; set; }
         public string EventType { get; set; }
-        public int ValueA { get; set; }
-        public int ValueB { get; set; }
-        public int ValueC { get; set; }
-        public int ValueD { get; set; }
-        public int ValueE { get; set; }
-        public int ValueF { get; set; }
-        public int ValueG { get; set; }
+        public string ItemType { get; set; }  // "Loại A", "Loại B", ...
+        public int Quantity { get; set; }     // số lượng người dùng nhập
     }
 }

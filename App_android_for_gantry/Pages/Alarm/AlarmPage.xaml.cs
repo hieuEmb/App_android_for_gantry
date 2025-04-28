@@ -20,26 +20,34 @@ public partial class AlarmPage : ContentPage, INotifyPropertyChanged
             OnPropertyChanged();
         }
     }
-
     public AlarmPage()
     {
         InitializeComponent();
         BindingContext = this;
-        System.Diagnostics.Debug.WriteLine($"BindingContext sau khi thiết lập: {BindingContext}");
-
-        // Thêm dữ liệu giả và tải dữ liệu
-        Device.BeginInvokeOnMainThread(async () =>
-        {
-            await Task.Delay(100); // Đợi giao diện tải xong
-            await AddSampleData(); // Thêm dữ liệu giả vào SQLite
-            await LoadEvents();    // Tải dữ liệu từ SQLite
-        });
     }
 
-    protected override void OnAppearing()
+    protected override async void OnAppearing()
     {
         base.OnAppearing();
-        // LoadEvents(); // Không cần gọi lại vì đã gọi trong constructor
+        await AddSampleData();
+        await LoadEvents();
+    }
+/// <summary>
+/// ////////////////////////////////////////////////// Xử lý việc lưu lưu trữ, hiển thị dữ liệu
+/// </summary>
+/// <returns></returns>
+    private async Task AddSampleData()
+    {
+        var sampleEvent = new WarehouseEvent
+        {
+            Date = DateTime.Now.ToString("dd/MM/yy"),
+            Time = DateTime.Now.ToString("HH:mm:ss"),
+            EventType = "Xuất kho",
+            ItemType = "Loại C",
+            Quantity = 5
+        };
+        await _databaseService.SaveEventAsync(sampleEvent);
+        System.Diagnostics.Debug.WriteLine("Đã thêm dữ liệu giả vào cơ sở dữ liệu.");
     }
 
     private async Task LoadEvents()
@@ -52,29 +60,43 @@ public partial class AlarmPage : ContentPage, INotifyPropertyChanged
         }
         System.Diagnostics.Debug.WriteLine($"Số lượng sự kiện từ cơ sở dữ liệu: {Events.Count}");
     }
-
-    private async Task AddSampleData()
-    {
-        var sampleEvent = new WarehouseEvent
-        {
-            Date = "25/04/26",
-            Time = "10:19:42",
-            EventType = "Xuất kho",
-            ValueA = 10,
-            ValueB = 20,
-            ValueC = 1,
-            ValueD = 1,
-            ValueE = 1,
-            ValueF = 1,
-            ValueG = 00
-        };
-        await _databaseService.SaveEventAsync(sampleEvent);
-        System.Diagnostics.Debug.WriteLine("Đã thêm dữ liệu giả vào cơ sở dữ liệu.");
-    }
+/// <summary>
+/// ///////////////////////////////////////////////////////////////////////////////////////////////
+/// </summary>
 
     public event PropertyChangedEventHandler PropertyChanged;
     protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+    }
+
+    // Phương thức xóa sự kiện
+    private async Task DeleteEvent(WarehouseEvent eventToDelete)
+    {
+        try
+        {
+            // Xóa sự kiện khỏi cơ sở dữ liệu
+            await _databaseService.DeleteEventAsync(eventToDelete);
+
+            // Cập nhật lại danh sách sự kiện
+            await LoadEvents();
+            System.Diagnostics.Debug.WriteLine("Đã xóa sự kiện thành công.");
+        }
+        catch (Exception ex)
+        {
+            System.Diagnostics.Debug.WriteLine($"Lỗi khi xóa sự kiện: {ex.Message}");
+        }
+    }
+
+    private async void OnDeleteEventClicked(object sender, EventArgs e)
+    {
+        var button = sender as Button;
+        var eventToDelete = button?.BindingContext as WarehouseEvent;
+
+        if (eventToDelete != null)
+        {
+            // Xóa sự kiện
+            await DeleteEvent(eventToDelete);
+        }
     }
 }
