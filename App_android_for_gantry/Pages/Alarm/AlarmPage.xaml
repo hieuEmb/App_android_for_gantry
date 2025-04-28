@@ -23,8 +23,9 @@
 
         <!-- Danh sách lịch sử -->
         <ListView ItemsSource="{Binding Events}"
+                  SelectedItem="{Binding SelectedEvent}" 
                   BackgroundColor="WhiteSmoke"
-                  HeightRequest="700"
+                  HeightRequest="350"
                   VerticalOptions="FillAndExpand"
                   SeparatorVisibility="Default">
             <ListView.ItemTemplate>
@@ -36,13 +37,17 @@
                             <Label Text="{Binding EventType}" WidthRequest="100" HorizontalTextAlignment="Center"/>
                             <Label Text="{Binding ItemType}" WidthRequest="80" HorizontalTextAlignment="Center"/>
                             <Label Text="{Binding Quantity}" WidthRequest="60" HorizontalTextAlignment="Center"/>
-                            <!-- Nút xóa sự kiện -->
-                            <Button Text="Xóa" Clicked="OnDeleteEventClicked" />
+
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
+
+        <!-- Nút Xóa sự kiện đã chọn -->
+        <Button Text="Xóa sự kiện đã chọn"
+        Clicked="OnDeleteEventClicked"
+        VerticalOptions="EndAndExpand" />
 
     </StackLayout>
 </ContentPage>

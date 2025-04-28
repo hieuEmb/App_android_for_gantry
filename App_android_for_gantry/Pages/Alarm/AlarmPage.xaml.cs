@@ -3,6 +3,7 @@ using App_android_for_gantry.Models;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows.Input;
 
 namespace App_android_for_gantry.Pages.Alarm;
 
@@ -10,6 +11,7 @@ public partial class AlarmPage : ContentPage, INotifyPropertyChanged
 {
     private DatabaseService _databaseService = new DatabaseService();
     private ObservableCollection<WarehouseEvent> _events = new ObservableCollection<WarehouseEvent>();
+    private WarehouseEvent _selectedEvent;
 
     public ObservableCollection<WarehouseEvent> Events
     {
@@ -20,10 +22,36 @@ public partial class AlarmPage : ContentPage, INotifyPropertyChanged
             OnPropertyChanged();
         }
     }
+
+    public WarehouseEvent SelectedEvent  // Property for the selected event
+    {
+        get => _selectedEvent;
+        set
+        {
+            _selectedEvent = value;
+            OnPropertyChanged();  // Notify property changed to update UI binding
+        }
+    }
+
+
+    // When an item is selected from the ListView
+    private void OnEventSelected(object sender, SelectedItemChangedEventArgs e)
+    {
+        // Save the selected event in the SelectedEvent property
+        var selectedEvent = e.SelectedItem as WarehouseEvent;
+        if (selectedEvent != null)
+        {
+            SelectedEvent = selectedEvent;  // Assign the selected event to the property
+        }
+    }
+
+    public ICommand DeleteCommand { get; }
+
     public AlarmPage()
     {
         InitializeComponent();
         BindingContext = this;
+        // Khởi tạo lệnh xóa       
     }
 
     protected override async void OnAppearing()
@@ -43,7 +71,7 @@ public partial class AlarmPage : ContentPage, INotifyPropertyChanged
             Date = DateTime.Now.ToString("dd/MM/yy"),
             Time = DateTime.Now.ToString("HH:mm:ss"),
             EventType = "Xuất kho",
-            ItemType = "Loại C",
+            ItemType = "Loại F",
             Quantity = 5
         };
         await _databaseService.SaveEventAsync(sampleEvent);
@@ -70,33 +98,28 @@ public partial class AlarmPage : ContentPage, INotifyPropertyChanged
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
 
-    // Phương thức xóa sự kiện
-    private async Task DeleteEvent(WarehouseEvent eventToDelete)
-    {
-        try
-        {
-            // Xóa sự kiện khỏi cơ sở dữ liệu
-            await _databaseService.DeleteEventAsync(eventToDelete);
-
-            // Cập nhật lại danh sách sự kiện
-            await LoadEvents();
-            System.Diagnostics.Debug.WriteLine("Đã xóa sự kiện thành công.");
-        }
-        catch (Exception ex)
-        {
-            System.Diagnostics.Debug.WriteLine($"Lỗi khi xóa sự kiện: {ex.Message}");
-        }
-    }
-
+    // Khi nhấn nút "Xóa sự kiện đã chọn"
+    // When the "Delete Selected Event" button is clicked
     private async void OnDeleteEventClicked(object sender, EventArgs e)
     {
-        var button = sender as Button;
-        var eventToDelete = button?.BindingContext as WarehouseEvent;
-
-        if (eventToDelete != null)
+        if (SelectedEvent != null)
         {
-            // Xóa sự kiện
-            await DeleteEvent(eventToDelete);
+            var rowsDeleted = await _databaseService.DeleteEventAsync(SelectedEvent);
+            if (rowsDeleted > 0)
+            {
+                // Reload events after deleting the selected event
+                await LoadEvents();
+                await DisplayAlert("Notification", "Event deleted successfully!", "OK");
+            }
+            else
+            {
+                await DisplayAlert("Error", "Unable to delete event.", "OK");
+            }
+        }
+        else
+        {
+            await DisplayAlert("Notification", "Please select an event to delete.", "OK");
         }
     }
+
 }
