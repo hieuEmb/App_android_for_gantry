@@ -55,7 +55,7 @@ public partial class ExportModePage : ContentPage
 
 
                     // Lưu vào database mỗi loại
-                    var eventItem = new Models.WarehouseEvent
+                    var export_event = new Models.WarehouseEvent
                     {
                         Date = DateTime.Now.ToString("dd/MM/yy"),
                         Time = DateTime.Now.ToString("HH:mm:ss"),
@@ -63,7 +63,7 @@ public partial class ExportModePage : ContentPage
                         ItemType = itemType,
                         Quantity = value
                     };
-                    await _databaseService.SaveEventAsync(eventItem);
+                    await _databaseService.SaveEventAsync(export_event);
 
                 }
             }

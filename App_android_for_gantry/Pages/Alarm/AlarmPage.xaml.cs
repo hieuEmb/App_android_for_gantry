@@ -50,15 +50,14 @@ public partial class AlarmPage : ContentPage, INotifyPropertyChanged
     public AlarmPage()
     {
         InitializeComponent();
-        BindingContext = this;
-        // Khởi tạo lệnh xóa       
+        BindingContext = this;           
     }
 
     protected override async void OnAppearing()
     {
         base.OnAppearing();
-        await AddSampleData();
-        await LoadEvents();
+        await AddSampleData(); // 1
+        await LoadEvents();// 2
     }
 /// <summary>
 /// ////////////////////////////////////////////////// Xử lý việc lưu lưu trữ, hiển thị dữ liệu
@@ -71,8 +70,8 @@ public partial class AlarmPage : ContentPage, INotifyPropertyChanged
             Date = DateTime.Now.ToString("dd/MM/yy"),
             Time = DateTime.Now.ToString("HH:mm:ss"),
             EventType = "Xuất kho",
-            ItemType = "Loại F",
-            Quantity = 5
+            ItemType = "Loại A",
+            Quantity = 2
         };
         await _databaseService.SaveEventAsync(sampleEvent);
         System.Diagnostics.Debug.WriteLine("Đã thêm dữ liệu giả vào cơ sở dữ liệu.");
@@ -104,22 +103,29 @@ public partial class AlarmPage : ContentPage, INotifyPropertyChanged
     {
         if (SelectedEvent != null)
         {
-            var rowsDeleted = await _databaseService.DeleteEventAsync(SelectedEvent);
-            if (rowsDeleted > 0)
+            // Hiển thị hộp thoại xác nhận
+            bool isConfirmed = await DisplayAlert("Confirm", "Are you sure you want to delete this event?", "Yes", "No");
+
+            if (isConfirmed)
             {
-                // Reload events after deleting the selected event
-                await LoadEvents();
-                await DisplayAlert("Notification", "Event deleted successfully!", "OK");
+                var rowsDeleted = await _databaseService.DeleteEventAsync(SelectedEvent);
+                if (rowsDeleted > 0)
+                {
+                    await LoadEvents();
+                    await DisplayAlert("Notification", "Event deleted successfully!", "OK");
+                }
+                else
+                {
+                    await DisplayAlert("Error", "Unable to delete event.", "OK");
+                }
             }
-            else
-            {
-                await DisplayAlert("Error", "Unable to delete event.", "OK");
-            }
+            // Nếu người dùng bấm "No" thì không làm gì cả
         }
         else
         {
             await DisplayAlert("Notification", "Please select an event to delete.", "OK");
         }
     }
+
 
 }

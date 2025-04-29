@@ -45,7 +45,7 @@
         </ListView>
 
         <!-- Nút Xóa sự kiện đã chọn -->
-        <Button Text="Xóa sự kiện đã chọn"
+        <Button Text="Delete"
         Clicked="OnDeleteEventClicked"
         VerticalOptions="EndAndExpand" />
 

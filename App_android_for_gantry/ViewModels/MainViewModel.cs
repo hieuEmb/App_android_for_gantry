@@ -239,7 +239,8 @@ namespace App_android_for_gantry.ViewModels // Dung namespace de to chuc file co
         // ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-
+        // Thêm biến lưu trạng thái lần trước
+        private Dictionary<string, ushort> lastQuantities = new();
         public void StartReadingMedicine()
         {
             Task.Run(async () =>
@@ -250,7 +251,7 @@ namespace App_android_for_gantry.ViewModels // Dung namespace de to chuc file co
                 {                  
                     try
                     {
-                        // Đọc ba giá trị cùng lúc
+                        // Đọc nhiều giá trị cùng lúc
                         var wordATask = _modbusService.ReadWordAsync(55);
                         var wordBTask = _modbusService.ReadWordAsync(58);
                         var wordCTask = _modbusService.ReadWordAsync(60);
@@ -269,6 +270,46 @@ namespace App_android_for_gantry.ViewModels // Dung namespace de to chuc file co
                         WorMedicineE = wordETask.Result;
                         WorMedicineF = wordFTask.Result;
                         WorMedicineG = wordGTask.Result;
+
+                        // Tạo danh sách hiện tại
+                        var currentQuantities = new Dictionary<string, ushort>
+                        {
+                            { "MedicineA", WorMedicineA },
+                            { "MedicineB", WorMedicineB },
+                            { "MedicineC", WorMedicineC },
+                            { "MedicineD", WorMedicineD },
+                            { "MedicineE", WorMedicineE },
+                            { "MedicineF", WorMedicineF },
+                            { "MedicineG", WorMedicineG },
+                        };
+
+                        foreach (var (itemType, quantity) in currentQuantities)
+                        {
+                            if (!lastQuantities.ContainsKey(itemType) || lastQuantities[itemType] != quantity)
+                            {
+                                // Nếu số lượng thay đổi và lớn hơn 0 thì ghi nhận
+                                if (quantity > 0)
+                                {
+                                    var import_event = new Models.WarehouseEvent
+                                    {
+                                        Date = DateTime.Now.ToString("dd/MM/yy"),
+                                        Time = DateTime.Now.ToString("HH:mm:ss"),
+                                        EventType = "Nhập kho",
+                                        ItemType = itemType,
+                                        Quantity = quantity
+                                    };
+
+                                    // Lưu vào database
+                                    var databaseService = new DatabaseService();
+                                    await databaseService.SaveEventAsync(import_event);
+
+                                    Debug.WriteLine($"Đã lưu nhập kho: {itemType} - {quantity}");
+                                }
+
+                                // Cập nhật trạng thái cũ
+                                lastQuantities[itemType] = quantity;
+                            }
+                        }
 
                     }
                     catch
