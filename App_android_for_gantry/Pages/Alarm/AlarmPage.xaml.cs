@@ -56,7 +56,7 @@ public partial class AlarmPage : ContentPage, INotifyPropertyChanged
     protected override async void OnAppearing()
     {
         base.OnAppearing();
-        await AddSampleData(); // 1
+        //await AddSampleData(); // 1
         await LoadEvents();// 2
     }
 /// <summary>

@@ -296,7 +296,7 @@ namespace App_android_for_gantry.ViewModels // Dung namespace de to chuc file co
                                         Time = DateTime.Now.ToString("HH:mm:ss"),
                                         EventType = "Nhập kho",
                                         ItemType = itemType,
-                                        Quantity = quantity
+                                        Quantity = 1
                                     };
 
                                     // Lưu vào database
