@@ -35,5 +35,12 @@ namespace App_android_for_gantry.Services
             return _database.DeleteAsync(eventItem); // Xóa sự kiện khỏi cơ sở dữ liệu
         }
 
+        // Phương thức xóa tất cả sự kiện
+        // Phương thức xóa toàn bộ sự kiện trong bảng WarehouseEvent
+        public Task<int> DeleteAllEventsAsync()
+        {
+            return _database.DeleteAllAsync<WarehouseEvent>();
+        }
+
     }
 }

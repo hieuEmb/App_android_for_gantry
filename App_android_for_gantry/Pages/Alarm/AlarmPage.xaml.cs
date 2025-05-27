@@ -127,5 +127,18 @@ public partial class AlarmPage : ContentPage, INotifyPropertyChanged
         }
     }
 
+    // Hàm xóa toàn bộ sự kiện
+    private async void OnDeleteAllClicked(object sender, EventArgs e)
+    {
+        bool confirm = await DisplayAlert("Xác nhận", "Bạn có chắc chắn muốn xóa TẤT CẢ sự kiện không?", "Xóa hết", "Hủy");
+
+        if (confirm)
+        {
+            await _databaseService.DeleteAllEventsAsync();
+            await LoadEvents(); // Làm mới lại danh sách hiển thị sau khi xóa
+            await DisplayAlert("Thông báo", "Đã xóa toàn bộ sự kiện!", "OK");
+        }
+    }
+
 
 }
