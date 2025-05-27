@@ -45,7 +45,7 @@
         </ListView>
 
         <!-- Nút Xóa sự kiện đã chọn -->
-        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0,10,0,10" Spacing="20">
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Margin="0,290,0,10" Spacing="20">
             <Button Text="Delete"
             Clicked="OnDeleteEventClicked"
             WidthRequest="120" />
